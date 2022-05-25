@@ -1,0 +1,2883 @@
+{
+    "type": "Root",
+    "cxx_class": "gem5::Root",
+    "name": null,
+    "path": "root",
+    "eventq_index": 0,
+    "full_system": false,
+    "sim_quantum": 0,
+    "time_sync_enable": false,
+    "time_sync_period": 100000000000,
+    "time_sync_spin_threshold": 100000000,
+    "system": {
+        "type": "System",
+        "cxx_class": "gem5::System",
+        "name": "system",
+        "path": "system",
+        "cache_line_size": 64,
+        "eventq_index": 0,
+        "exit_on_work_items": false,
+        "init_param": 0,
+        "kvm_vm": null,
+        "m5ops_base": 4294901760,
+        "mem_mode": "atomic",
+        "mem_ranges": [
+            "0:536870912"
+        ],
+        "memories": [
+            "system.mem_ctrls"
+        ],
+        "mmap_using_noreserve": false,
+        "multi_thread": false,
+        "num_work_ids": 16,
+        "readfile": "",
+        "redirect_paths": [
+            {
+                "type": "RedirectPath",
+                "cxx_class": "gem5::RedirectPath",
+                "name": "redirect_paths0",
+                "path": "system.redirect_paths0",
+                "app_path": "/proc",
+                "eventq_index": 0,
+                "host_paths": [
+                    "always-out/fs/proc"
+                ]
+            },
+            {
+                "type": "RedirectPath",
+                "cxx_class": "gem5::RedirectPath",
+                "name": "redirect_paths1",
+                "path": "system.redirect_paths1",
+                "app_path": "/sys",
+                "eventq_index": 0,
+                "host_paths": [
+                    "always-out/fs/sys"
+                ]
+            },
+            {
+                "type": "RedirectPath",
+                "cxx_class": "gem5::RedirectPath",
+                "name": "redirect_paths2",
+                "path": "system.redirect_paths2",
+                "app_path": "/tmp",
+                "eventq_index": 0,
+                "host_paths": [
+                    "always-out/fs/tmp"
+                ]
+            }
+        ],
+        "shadow_rom_ranges": [],
+        "shared_backstore": "",
+        "symbolfile": "",
+        "thermal_components": [],
+        "thermal_model": null,
+        "work_begin_ckpt_count": 0,
+        "work_begin_cpu_id_exit": -1,
+        "work_begin_exit_count": 0,
+        "work_cpus_ckpt_count": 0,
+        "work_end_ckpt_count": 0,
+        "work_end_exit_count": 0,
+        "work_item_id": -1,
+        "workload": {
+            "type": "X86EmuLinux",
+            "cxx_class": "gem5::X86ISA::EmuLinux",
+            "name": "workload",
+            "path": "system.workload",
+            "eventq_index": 0,
+            "wait_for_remote_gdb": false
+        },
+        "clk_domain": {
+            "type": "SrcClockDomain",
+            "cxx_class": "gem5::SrcClockDomain",
+            "name": "clk_domain",
+            "path": "system.clk_domain",
+            "clock": [
+                1000
+            ],
+            "domain_id": -1,
+            "eventq_index": 0,
+            "init_perf_level": 0,
+            "voltage_domain": "system.voltage_domain"
+        },
+        "cpu": [
+            {
+                "type": "AtomicSimpleCPU",
+                "cxx_class": "gem5::AtomicSimpleCPU",
+                "name": "cpu00",
+                "path": "system.cpu00",
+                "branchPred": null,
+                "checker": null,
+                "clk_domain": "system.cpu_clk_domain",
+                "cpu_id": 0,
+                "decoder": [
+                    {
+                        "type": "X86Decoder",
+                        "cxx_class": "gem5::X86ISA::Decoder",
+                        "name": "decoder",
+                        "path": "system.cpu00.decoder",
+                        "eventq_index": 0,
+                        "isa": "system.cpu00.isa"
+                    }
+                ],
+                "do_checkpoint_insts": true,
+                "do_statistics_insts": true,
+                "eventq_index": 0,
+                "function_trace": false,
+                "function_trace_start": 0,
+                "interrupts": [
+                    {
+                        "type": "X86LocalApic",
+                        "cxx_class": "gem5::X86ISA::Interrupts",
+                        "name": "interrupts",
+                        "path": "system.cpu00.interrupts",
+                        "clk_domain": {
+                            "type": "DerivedClockDomain",
+                            "cxx_class": "gem5::DerivedClockDomain",
+                            "name": "clk_domain",
+                            "path": "system.cpu00.interrupts.clk_domain",
+                            "clk_divider": 16,
+                            "clk_domain": "system.cpu_clk_domain",
+                            "eventq_index": 0
+                        },
+                        "eventq_index": 0,
+                        "int_latency": 1000,
+                        "pio_latency": 100000,
+                        "system": "system",
+                        "int_requestor": {
+                            "role": "GEM5 REQUESTOR",
+                            "peer": "system.membus.cpu_side_ports[5]",
+                            "is_source": "True"
+                        },
+                        "int_responder": {
+                            "role": "GEM5 RESPONDER",
+                            "peer": "system.membus.mem_side_ports[1]",
+                            "is_source": "False"
+                        },
+                        "pio": {
+                            "role": "GEM5 RESPONDER",
+                            "peer": "system.membus.mem_side_ports[0]",
+                            "is_source": "False"
+                        }
+                    }
+                ],
+                "isa": [
+                    {
+                        "type": "X86ISA",
+                        "cxx_class": "gem5::X86ISA::ISA",
+                        "name": "isa",
+                        "path": "system.cpu00.isa",
+                        "eventq_index": 0,
+                        "vendor_string": "M5 Simulator"
+                    }
+                ],
+                "max_insts_all_threads": 0,
+                "max_insts_any_thread": 0,
+                "mmu": {
+                    "type": "X86MMU",
+                    "cxx_class": "gem5::X86ISA::MMU",
+                    "name": "mmu",
+                    "path": "system.cpu00.mmu",
+                    "dtb": {
+                        "type": "X86TLB",
+                        "cxx_class": "gem5::X86ISA::TLB",
+                        "name": "dtb",
+                        "path": "system.cpu00.mmu.dtb",
+                        "entry_type": "data",
+                        "eventq_index": 0,
+                        "next_level": null,
+                        "size": 64,
+                        "system": "system",
+                        "walker": {
+                            "type": "X86PagetableWalker",
+                            "cxx_class": "gem5::X86ISA::Walker",
+                            "name": "walker",
+                            "path": "system.cpu00.mmu.dtb.walker",
+                            "clk_domain": "system.cpu_clk_domain",
+                            "eventq_index": 0,
+                            "num_squash_per_cycle": 4,
+                            "power_model": [],
+                            "power_state": {
+                                "type": "PowerState",
+                                "cxx_class": "gem5::PowerState",
+                                "name": "power_state",
+                                "path": "system.cpu00.mmu.dtb.walker.power_state",
+                                "clk_gate_bins": 20,
+                                "clk_gate_max": 1000000000000,
+                                "clk_gate_min": 1000,
+                                "default_state": "UNDEFINED",
+                                "eventq_index": 0,
+                                "leaders": [],
+                                "possible_states": []
+                            },
+                            "system": "system",
+                            "port": {
+                                "role": "GEM5 REQUESTOR",
+                                "peer": "system.membus.cpu_side_ports[4]",
+                                "is_source": "True"
+                            }
+                        }
+                    },
+                    "eventq_index": 0,
+                    "itb": {
+                        "type": "X86TLB",
+                        "cxx_class": "gem5::X86ISA::TLB",
+                        "name": "itb",
+                        "path": "system.cpu00.mmu.itb",
+                        "entry_type": "instruction",
+                        "eventq_index": 0,
+                        "next_level": null,
+                        "size": 64,
+                        "system": "system",
+                        "walker": {
+                            "type": "X86PagetableWalker",
+                            "cxx_class": "gem5::X86ISA::Walker",
+                            "name": "walker",
+                            "path": "system.cpu00.mmu.itb.walker",
+                            "clk_domain": "system.cpu_clk_domain",
+                            "eventq_index": 0,
+                            "num_squash_per_cycle": 4,
+                            "power_model": [],
+                            "power_state": {
+                                "type": "PowerState",
+                                "cxx_class": "gem5::PowerState",
+                                "name": "power_state",
+                                "path": "system.cpu00.mmu.itb.walker.power_state",
+                                "clk_gate_bins": 20,
+                                "clk_gate_max": 1000000000000,
+                                "clk_gate_min": 1000,
+                                "default_state": "UNDEFINED",
+                                "eventq_index": 0,
+                                "leaders": [],
+                                "possible_states": []
+                            },
+                            "system": "system",
+                            "port": {
+                                "role": "GEM5 REQUESTOR",
+                                "peer": "system.membus.cpu_side_ports[3]",
+                                "is_source": "True"
+                            }
+                        }
+                    }
+                },
+                "numThreads": 1,
+                "power_gating_on_idle": false,
+                "power_model": [],
+                "power_state": {
+                    "type": "PowerState",
+                    "cxx_class": "gem5::PowerState",
+                    "name": "power_state",
+                    "path": "system.cpu00.power_state",
+                    "clk_gate_bins": 20,
+                    "clk_gate_max": 1000000000000,
+                    "clk_gate_min": 1000,
+                    "default_state": "UNDEFINED",
+                    "eventq_index": 0,
+                    "leaders": [],
+                    "possible_states": [
+                        "ON",
+                        "CLK_GATED",
+                        "OFF"
+                    ]
+                },
+                "progress_interval": 0,
+                "pwr_gating_latency": 300,
+                "simpoint_start_insts": [],
+                "simulate_data_stalls": false,
+                "simulate_inst_stalls": false,
+                "socket_id": 0,
+                "switched_out": false,
+                "syscallRetryLatency": 10000,
+                "system": "system",
+                "tracer": {
+                    "type": "ExeTracer",
+                    "cxx_class": "gem5::Trace::ExeTracer",
+                    "name": "tracer",
+                    "path": "system.cpu00.tracer",
+                    "eventq_index": 0
+                },
+                "width": 1,
+                "workload": [
+                    {
+                        "type": "Process",
+                        "cxx_class": "gem5::Process",
+                        "name": "workload",
+                        "path": "system.cpu00.workload",
+                        "cmd": [
+                            "./tests/test-progs/test-suite/SingleSource/Benchmarks/Stanford/IntMM"
+                        ],
+                        "cwd": "/gem5",
+                        "drivers": [],
+                        "egid": 100,
+                        "env": [],
+                        "errout": "cerr",
+                        "euid": 100,
+                        "eventq_index": 0,
+                        "executable": "./tests/test-progs/test-suite/SingleSource/Benchmarks/Stanford/IntMM",
+                        "gid": 1001,
+                        "input": "cin",
+                        "kvmInSE": false,
+                        "maxStackSize": 67108864,
+                        "output": "cout",
+                        "pgid": 100,
+                        "pid": 100,
+                        "ppid": 0,
+                        "release": "5.1.0",
+                        "simpoint": 0,
+                        "system": "system",
+                        "uid": 100,
+                        "useArchPT": false
+                    }
+                ],
+                "dcache_port": {
+                    "role": "GEM5 REQUESTOR",
+                    "peer": "system.membus.cpu_side_ports[2]",
+                    "is_source": "True"
+                },
+                "icache_port": {
+                    "role": "GEM5 REQUESTOR",
+                    "peer": "system.membus.cpu_side_ports[1]",
+                    "is_source": "True"
+                }
+            },
+            {
+                "type": "AtomicSimpleCPU",
+                "cxx_class": "gem5::AtomicSimpleCPU",
+                "name": "cpu01",
+                "path": "system.cpu01",
+                "branchPred": null,
+                "checker": null,
+                "clk_domain": "system.cpu_clk_domain",
+                "cpu_id": 1,
+                "decoder": [
+                    {
+                        "type": "X86Decoder",
+                        "cxx_class": "gem5::X86ISA::Decoder",
+                        "name": "decoder",
+                        "path": "system.cpu01.decoder",
+                        "eventq_index": 0,
+                        "isa": "system.cpu01.isa"
+                    }
+                ],
+                "do_checkpoint_insts": true,
+                "do_statistics_insts": true,
+                "eventq_index": 0,
+                "function_trace": false,
+                "function_trace_start": 0,
+                "interrupts": [
+                    {
+                        "type": "X86LocalApic",
+                        "cxx_class": "gem5::X86ISA::Interrupts",
+                        "name": "interrupts",
+                        "path": "system.cpu01.interrupts",
+                        "clk_domain": {
+                            "type": "DerivedClockDomain",
+                            "cxx_class": "gem5::DerivedClockDomain",
+                            "name": "clk_domain",
+                            "path": "system.cpu01.interrupts.clk_domain",
+                            "clk_divider": 16,
+                            "clk_domain": "system.cpu_clk_domain",
+                            "eventq_index": 0
+                        },
+                        "eventq_index": 0,
+                        "int_latency": 1000,
+                        "pio_latency": 100000,
+                        "system": "system",
+                        "int_requestor": {
+                            "role": "GEM5 REQUESTOR",
+                            "peer": "system.membus.cpu_side_ports[10]",
+                            "is_source": "True"
+                        },
+                        "int_responder": {
+                            "role": "GEM5 RESPONDER",
+                            "peer": "system.membus.mem_side_ports[3]",
+                            "is_source": "False"
+                        },
+                        "pio": {
+                            "role": "GEM5 RESPONDER",
+                            "peer": "system.membus.mem_side_ports[2]",
+                            "is_source": "False"
+                        }
+                    }
+                ],
+                "isa": [
+                    {
+                        "type": "X86ISA",
+                        "cxx_class": "gem5::X86ISA::ISA",
+                        "name": "isa",
+                        "path": "system.cpu01.isa",
+                        "eventq_index": 0,
+                        "vendor_string": "M5 Simulator"
+                    }
+                ],
+                "max_insts_all_threads": 0,
+                "max_insts_any_thread": 0,
+                "mmu": {
+                    "type": "X86MMU",
+                    "cxx_class": "gem5::X86ISA::MMU",
+                    "name": "mmu",
+                    "path": "system.cpu01.mmu",
+                    "dtb": {
+                        "type": "X86TLB",
+                        "cxx_class": "gem5::X86ISA::TLB",
+                        "name": "dtb",
+                        "path": "system.cpu01.mmu.dtb",
+                        "entry_type": "data",
+                        "eventq_index": 0,
+                        "next_level": null,
+                        "size": 64,
+                        "system": "system",
+                        "walker": {
+                            "type": "X86PagetableWalker",
+                            "cxx_class": "gem5::X86ISA::Walker",
+                            "name": "walker",
+                            "path": "system.cpu01.mmu.dtb.walker",
+                            "clk_domain": "system.cpu_clk_domain",
+                            "eventq_index": 0,
+                            "num_squash_per_cycle": 4,
+                            "power_model": [],
+                            "power_state": {
+                                "type": "PowerState",
+                                "cxx_class": "gem5::PowerState",
+                                "name": "power_state",
+                                "path": "system.cpu01.mmu.dtb.walker.power_state",
+                                "clk_gate_bins": 20,
+                                "clk_gate_max": 1000000000000,
+                                "clk_gate_min": 1000,
+                                "default_state": "UNDEFINED",
+                                "eventq_index": 0,
+                                "leaders": [],
+                                "possible_states": []
+                            },
+                            "system": "system",
+                            "port": {
+                                "role": "GEM5 REQUESTOR",
+                                "peer": "system.membus.cpu_side_ports[9]",
+                                "is_source": "True"
+                            }
+                        }
+                    },
+                    "eventq_index": 0,
+                    "itb": {
+                        "type": "X86TLB",
+                        "cxx_class": "gem5::X86ISA::TLB",
+                        "name": "itb",
+                        "path": "system.cpu01.mmu.itb",
+                        "entry_type": "instruction",
+                        "eventq_index": 0,
+                        "next_level": null,
+                        "size": 64,
+                        "system": "system",
+                        "walker": {
+                            "type": "X86PagetableWalker",
+                            "cxx_class": "gem5::X86ISA::Walker",
+                            "name": "walker",
+                            "path": "system.cpu01.mmu.itb.walker",
+                            "clk_domain": "system.cpu_clk_domain",
+                            "eventq_index": 0,
+                            "num_squash_per_cycle": 4,
+                            "power_model": [],
+                            "power_state": {
+                                "type": "PowerState",
+                                "cxx_class": "gem5::PowerState",
+                                "name": "power_state",
+                                "path": "system.cpu01.mmu.itb.walker.power_state",
+                                "clk_gate_bins": 20,
+                                "clk_gate_max": 1000000000000,
+                                "clk_gate_min": 1000,
+                                "default_state": "UNDEFINED",
+                                "eventq_index": 0,
+                                "leaders": [],
+                                "possible_states": []
+                            },
+                            "system": "system",
+                            "port": {
+                                "role": "GEM5 REQUESTOR",
+                                "peer": "system.membus.cpu_side_ports[8]",
+                                "is_source": "True"
+                            }
+                        }
+                    }
+                },
+                "numThreads": 1,
+                "power_gating_on_idle": false,
+                "power_model": [],
+                "power_state": {
+                    "type": "PowerState",
+                    "cxx_class": "gem5::PowerState",
+                    "name": "power_state",
+                    "path": "system.cpu01.power_state",
+                    "clk_gate_bins": 20,
+                    "clk_gate_max": 1000000000000,
+                    "clk_gate_min": 1000,
+                    "default_state": "UNDEFINED",
+                    "eventq_index": 0,
+                    "leaders": [],
+                    "possible_states": [
+                        "ON",
+                        "CLK_GATED",
+                        "OFF"
+                    ]
+                },
+                "progress_interval": 0,
+                "pwr_gating_latency": 300,
+                "simpoint_start_insts": [],
+                "simulate_data_stalls": false,
+                "simulate_inst_stalls": false,
+                "socket_id": 0,
+                "switched_out": false,
+                "syscallRetryLatency": 10000,
+                "system": "system",
+                "tracer": {
+                    "type": "ExeTracer",
+                    "cxx_class": "gem5::Trace::ExeTracer",
+                    "name": "tracer",
+                    "path": "system.cpu01.tracer",
+                    "eventq_index": 0
+                },
+                "width": 1,
+                "workload": [
+                    "system.cpu00.workload"
+                ],
+                "dcache_port": {
+                    "role": "GEM5 REQUESTOR",
+                    "peer": "system.membus.cpu_side_ports[7]",
+                    "is_source": "True"
+                },
+                "icache_port": {
+                    "role": "GEM5 REQUESTOR",
+                    "peer": "system.membus.cpu_side_ports[6]",
+                    "is_source": "True"
+                }
+            },
+            {
+                "type": "AtomicSimpleCPU",
+                "cxx_class": "gem5::AtomicSimpleCPU",
+                "name": "cpu02",
+                "path": "system.cpu02",
+                "branchPred": null,
+                "checker": null,
+                "clk_domain": "system.cpu_clk_domain",
+                "cpu_id": 2,
+                "decoder": [
+                    {
+                        "type": "X86Decoder",
+                        "cxx_class": "gem5::X86ISA::Decoder",
+                        "name": "decoder",
+                        "path": "system.cpu02.decoder",
+                        "eventq_index": 0,
+                        "isa": "system.cpu02.isa"
+                    }
+                ],
+                "do_checkpoint_insts": true,
+                "do_statistics_insts": true,
+                "eventq_index": 0,
+                "function_trace": false,
+                "function_trace_start": 0,
+                "interrupts": [
+                    {
+                        "type": "X86LocalApic",
+                        "cxx_class": "gem5::X86ISA::Interrupts",
+                        "name": "interrupts",
+                        "path": "system.cpu02.interrupts",
+                        "clk_domain": {
+                            "type": "DerivedClockDomain",
+                            "cxx_class": "gem5::DerivedClockDomain",
+                            "name": "clk_domain",
+                            "path": "system.cpu02.interrupts.clk_domain",
+                            "clk_divider": 16,
+                            "clk_domain": "system.cpu_clk_domain",
+                            "eventq_index": 0
+                        },
+                        "eventq_index": 0,
+                        "int_latency": 1000,
+                        "pio_latency": 100000,
+                        "system": "system",
+                        "int_requestor": {
+                            "role": "GEM5 REQUESTOR",
+                            "peer": "system.membus.cpu_side_ports[15]",
+                            "is_source": "True"
+                        },
+                        "int_responder": {
+                            "role": "GEM5 RESPONDER",
+                            "peer": "system.membus.mem_side_ports[5]",
+                            "is_source": "False"
+                        },
+                        "pio": {
+                            "role": "GEM5 RESPONDER",
+                            "peer": "system.membus.mem_side_ports[4]",
+                            "is_source": "False"
+                        }
+                    }
+                ],
+                "isa": [
+                    {
+                        "type": "X86ISA",
+                        "cxx_class": "gem5::X86ISA::ISA",
+                        "name": "isa",
+                        "path": "system.cpu02.isa",
+                        "eventq_index": 0,
+                        "vendor_string": "M5 Simulator"
+                    }
+                ],
+                "max_insts_all_threads": 0,
+                "max_insts_any_thread": 0,
+                "mmu": {
+                    "type": "X86MMU",
+                    "cxx_class": "gem5::X86ISA::MMU",
+                    "name": "mmu",
+                    "path": "system.cpu02.mmu",
+                    "dtb": {
+                        "type": "X86TLB",
+                        "cxx_class": "gem5::X86ISA::TLB",
+                        "name": "dtb",
+                        "path": "system.cpu02.mmu.dtb",
+                        "entry_type": "data",
+                        "eventq_index": 0,
+                        "next_level": null,
+                        "size": 64,
+                        "system": "system",
+                        "walker": {
+                            "type": "X86PagetableWalker",
+                            "cxx_class": "gem5::X86ISA::Walker",
+                            "name": "walker",
+                            "path": "system.cpu02.mmu.dtb.walker",
+                            "clk_domain": "system.cpu_clk_domain",
+                            "eventq_index": 0,
+                            "num_squash_per_cycle": 4,
+                            "power_model": [],
+                            "power_state": {
+                                "type": "PowerState",
+                                "cxx_class": "gem5::PowerState",
+                                "name": "power_state",
+                                "path": "system.cpu02.mmu.dtb.walker.power_state",
+                                "clk_gate_bins": 20,
+                                "clk_gate_max": 1000000000000,
+                                "clk_gate_min": 1000,
+                                "default_state": "UNDEFINED",
+                                "eventq_index": 0,
+                                "leaders": [],
+                                "possible_states": []
+                            },
+                            "system": "system",
+                            "port": {
+                                "role": "GEM5 REQUESTOR",
+                                "peer": "system.membus.cpu_side_ports[14]",
+                                "is_source": "True"
+                            }
+                        }
+                    },
+                    "eventq_index": 0,
+                    "itb": {
+                        "type": "X86TLB",
+                        "cxx_class": "gem5::X86ISA::TLB",
+                        "name": "itb",
+                        "path": "system.cpu02.mmu.itb",
+                        "entry_type": "instruction",
+                        "eventq_index": 0,
+                        "next_level": null,
+                        "size": 64,
+                        "system": "system",
+                        "walker": {
+                            "type": "X86PagetableWalker",
+                            "cxx_class": "gem5::X86ISA::Walker",
+                            "name": "walker",
+                            "path": "system.cpu02.mmu.itb.walker",
+                            "clk_domain": "system.cpu_clk_domain",
+                            "eventq_index": 0,
+                            "num_squash_per_cycle": 4,
+                            "power_model": [],
+                            "power_state": {
+                                "type": "PowerState",
+                                "cxx_class": "gem5::PowerState",
+                                "name": "power_state",
+                                "path": "system.cpu02.mmu.itb.walker.power_state",
+                                "clk_gate_bins": 20,
+                                "clk_gate_max": 1000000000000,
+                                "clk_gate_min": 1000,
+                                "default_state": "UNDEFINED",
+                                "eventq_index": 0,
+                                "leaders": [],
+                                "possible_states": []
+                            },
+                            "system": "system",
+                            "port": {
+                                "role": "GEM5 REQUESTOR",
+                                "peer": "system.membus.cpu_side_ports[13]",
+                                "is_source": "True"
+                            }
+                        }
+                    }
+                },
+                "numThreads": 1,
+                "power_gating_on_idle": false,
+                "power_model": [],
+                "power_state": {
+                    "type": "PowerState",
+                    "cxx_class": "gem5::PowerState",
+                    "name": "power_state",
+                    "path": "system.cpu02.power_state",
+                    "clk_gate_bins": 20,
+                    "clk_gate_max": 1000000000000,
+                    "clk_gate_min": 1000,
+                    "default_state": "UNDEFINED",
+                    "eventq_index": 0,
+                    "leaders": [],
+                    "possible_states": [
+                        "ON",
+                        "CLK_GATED",
+                        "OFF"
+                    ]
+                },
+                "progress_interval": 0,
+                "pwr_gating_latency": 300,
+                "simpoint_start_insts": [],
+                "simulate_data_stalls": false,
+                "simulate_inst_stalls": false,
+                "socket_id": 0,
+                "switched_out": false,
+                "syscallRetryLatency": 10000,
+                "system": "system",
+                "tracer": {
+                    "type": "ExeTracer",
+                    "cxx_class": "gem5::Trace::ExeTracer",
+                    "name": "tracer",
+                    "path": "system.cpu02.tracer",
+                    "eventq_index": 0
+                },
+                "width": 1,
+                "workload": [
+                    "system.cpu00.workload"
+                ],
+                "dcache_port": {
+                    "role": "GEM5 REQUESTOR",
+                    "peer": "system.membus.cpu_side_ports[12]",
+                    "is_source": "True"
+                },
+                "icache_port": {
+                    "role": "GEM5 REQUESTOR",
+                    "peer": "system.membus.cpu_side_ports[11]",
+                    "is_source": "True"
+                }
+            },
+            {
+                "type": "AtomicSimpleCPU",
+                "cxx_class": "gem5::AtomicSimpleCPU",
+                "name": "cpu03",
+                "path": "system.cpu03",
+                "branchPred": null,
+                "checker": null,
+                "clk_domain": "system.cpu_clk_domain",
+                "cpu_id": 3,
+                "decoder": [
+                    {
+                        "type": "X86Decoder",
+                        "cxx_class": "gem5::X86ISA::Decoder",
+                        "name": "decoder",
+                        "path": "system.cpu03.decoder",
+                        "eventq_index": 0,
+                        "isa": "system.cpu03.isa"
+                    }
+                ],
+                "do_checkpoint_insts": true,
+                "do_statistics_insts": true,
+                "eventq_index": 0,
+                "function_trace": false,
+                "function_trace_start": 0,
+                "interrupts": [
+                    {
+                        "type": "X86LocalApic",
+                        "cxx_class": "gem5::X86ISA::Interrupts",
+                        "name": "interrupts",
+                        "path": "system.cpu03.interrupts",
+                        "clk_domain": {
+                            "type": "DerivedClockDomain",
+                            "cxx_class": "gem5::DerivedClockDomain",
+                            "name": "clk_domain",
+                            "path": "system.cpu03.interrupts.clk_domain",
+                            "clk_divider": 16,
+                            "clk_domain": "system.cpu_clk_domain",
+                            "eventq_index": 0
+                        },
+                        "eventq_index": 0,
+                        "int_latency": 1000,
+                        "pio_latency": 100000,
+                        "system": "system",
+                        "int_requestor": {
+                            "role": "GEM5 REQUESTOR",
+                            "peer": "system.membus.cpu_side_ports[20]",
+                            "is_source": "True"
+                        },
+                        "int_responder": {
+                            "role": "GEM5 RESPONDER",
+                            "peer": "system.membus.mem_side_ports[7]",
+                            "is_source": "False"
+                        },
+                        "pio": {
+                            "role": "GEM5 RESPONDER",
+                            "peer": "system.membus.mem_side_ports[6]",
+                            "is_source": "False"
+                        }
+                    }
+                ],
+                "isa": [
+                    {
+                        "type": "X86ISA",
+                        "cxx_class": "gem5::X86ISA::ISA",
+                        "name": "isa",
+                        "path": "system.cpu03.isa",
+                        "eventq_index": 0,
+                        "vendor_string": "M5 Simulator"
+                    }
+                ],
+                "max_insts_all_threads": 0,
+                "max_insts_any_thread": 0,
+                "mmu": {
+                    "type": "X86MMU",
+                    "cxx_class": "gem5::X86ISA::MMU",
+                    "name": "mmu",
+                    "path": "system.cpu03.mmu",
+                    "dtb": {
+                        "type": "X86TLB",
+                        "cxx_class": "gem5::X86ISA::TLB",
+                        "name": "dtb",
+                        "path": "system.cpu03.mmu.dtb",
+                        "entry_type": "data",
+                        "eventq_index": 0,
+                        "next_level": null,
+                        "size": 64,
+                        "system": "system",
+                        "walker": {
+                            "type": "X86PagetableWalker",
+                            "cxx_class": "gem5::X86ISA::Walker",
+                            "name": "walker",
+                            "path": "system.cpu03.mmu.dtb.walker",
+                            "clk_domain": "system.cpu_clk_domain",
+                            "eventq_index": 0,
+                            "num_squash_per_cycle": 4,
+                            "power_model": [],
+                            "power_state": {
+                                "type": "PowerState",
+                                "cxx_class": "gem5::PowerState",
+                                "name": "power_state",
+                                "path": "system.cpu03.mmu.dtb.walker.power_state",
+                                "clk_gate_bins": 20,
+                                "clk_gate_max": 1000000000000,
+                                "clk_gate_min": 1000,
+                                "default_state": "UNDEFINED",
+                                "eventq_index": 0,
+                                "leaders": [],
+                                "possible_states": []
+                            },
+                            "system": "system",
+                            "port": {
+                                "role": "GEM5 REQUESTOR",
+                                "peer": "system.membus.cpu_side_ports[19]",
+                                "is_source": "True"
+                            }
+                        }
+                    },
+                    "eventq_index": 0,
+                    "itb": {
+                        "type": "X86TLB",
+                        "cxx_class": "gem5::X86ISA::TLB",
+                        "name": "itb",
+                        "path": "system.cpu03.mmu.itb",
+                        "entry_type": "instruction",
+                        "eventq_index": 0,
+                        "next_level": null,
+                        "size": 64,
+                        "system": "system",
+                        "walker": {
+                            "type": "X86PagetableWalker",
+                            "cxx_class": "gem5::X86ISA::Walker",
+                            "name": "walker",
+                            "path": "system.cpu03.mmu.itb.walker",
+                            "clk_domain": "system.cpu_clk_domain",
+                            "eventq_index": 0,
+                            "num_squash_per_cycle": 4,
+                            "power_model": [],
+                            "power_state": {
+                                "type": "PowerState",
+                                "cxx_class": "gem5::PowerState",
+                                "name": "power_state",
+                                "path": "system.cpu03.mmu.itb.walker.power_state",
+                                "clk_gate_bins": 20,
+                                "clk_gate_max": 1000000000000,
+                                "clk_gate_min": 1000,
+                                "default_state": "UNDEFINED",
+                                "eventq_index": 0,
+                                "leaders": [],
+                                "possible_states": []
+                            },
+                            "system": "system",
+                            "port": {
+                                "role": "GEM5 REQUESTOR",
+                                "peer": "system.membus.cpu_side_ports[18]",
+                                "is_source": "True"
+                            }
+                        }
+                    }
+                },
+                "numThreads": 1,
+                "power_gating_on_idle": false,
+                "power_model": [],
+                "power_state": {
+                    "type": "PowerState",
+                    "cxx_class": "gem5::PowerState",
+                    "name": "power_state",
+                    "path": "system.cpu03.power_state",
+                    "clk_gate_bins": 20,
+                    "clk_gate_max": 1000000000000,
+                    "clk_gate_min": 1000,
+                    "default_state": "UNDEFINED",
+                    "eventq_index": 0,
+                    "leaders": [],
+                    "possible_states": [
+                        "ON",
+                        "CLK_GATED",
+                        "OFF"
+                    ]
+                },
+                "progress_interval": 0,
+                "pwr_gating_latency": 300,
+                "simpoint_start_insts": [],
+                "simulate_data_stalls": false,
+                "simulate_inst_stalls": false,
+                "socket_id": 0,
+                "switched_out": false,
+                "syscallRetryLatency": 10000,
+                "system": "system",
+                "tracer": {
+                    "type": "ExeTracer",
+                    "cxx_class": "gem5::Trace::ExeTracer",
+                    "name": "tracer",
+                    "path": "system.cpu03.tracer",
+                    "eventq_index": 0
+                },
+                "width": 1,
+                "workload": [
+                    "system.cpu00.workload"
+                ],
+                "dcache_port": {
+                    "role": "GEM5 REQUESTOR",
+                    "peer": "system.membus.cpu_side_ports[17]",
+                    "is_source": "True"
+                },
+                "icache_port": {
+                    "role": "GEM5 REQUESTOR",
+                    "peer": "system.membus.cpu_side_ports[16]",
+                    "is_source": "True"
+                }
+            },
+            {
+                "type": "AtomicSimpleCPU",
+                "cxx_class": "gem5::AtomicSimpleCPU",
+                "name": "cpu04",
+                "path": "system.cpu04",
+                "branchPred": null,
+                "checker": null,
+                "clk_domain": "system.cpu_clk_domain",
+                "cpu_id": 4,
+                "decoder": [
+                    {
+                        "type": "X86Decoder",
+                        "cxx_class": "gem5::X86ISA::Decoder",
+                        "name": "decoder",
+                        "path": "system.cpu04.decoder",
+                        "eventq_index": 0,
+                        "isa": "system.cpu04.isa"
+                    }
+                ],
+                "do_checkpoint_insts": true,
+                "do_statistics_insts": true,
+                "eventq_index": 0,
+                "function_trace": false,
+                "function_trace_start": 0,
+                "interrupts": [
+                    {
+                        "type": "X86LocalApic",
+                        "cxx_class": "gem5::X86ISA::Interrupts",
+                        "name": "interrupts",
+                        "path": "system.cpu04.interrupts",
+                        "clk_domain": {
+                            "type": "DerivedClockDomain",
+                            "cxx_class": "gem5::DerivedClockDomain",
+                            "name": "clk_domain",
+                            "path": "system.cpu04.interrupts.clk_domain",
+                            "clk_divider": 16,
+                            "clk_domain": "system.cpu_clk_domain",
+                            "eventq_index": 0
+                        },
+                        "eventq_index": 0,
+                        "int_latency": 1000,
+                        "pio_latency": 100000,
+                        "system": "system",
+                        "int_requestor": {
+                            "role": "GEM5 REQUESTOR",
+                            "peer": "system.membus.cpu_side_ports[25]",
+                            "is_source": "True"
+                        },
+                        "int_responder": {
+                            "role": "GEM5 RESPONDER",
+                            "peer": "system.membus.mem_side_ports[9]",
+                            "is_source": "False"
+                        },
+                        "pio": {
+                            "role": "GEM5 RESPONDER",
+                            "peer": "system.membus.mem_side_ports[8]",
+                            "is_source": "False"
+                        }
+                    }
+                ],
+                "isa": [
+                    {
+                        "type": "X86ISA",
+                        "cxx_class": "gem5::X86ISA::ISA",
+                        "name": "isa",
+                        "path": "system.cpu04.isa",
+                        "eventq_index": 0,
+                        "vendor_string": "M5 Simulator"
+                    }
+                ],
+                "max_insts_all_threads": 0,
+                "max_insts_any_thread": 0,
+                "mmu": {
+                    "type": "X86MMU",
+                    "cxx_class": "gem5::X86ISA::MMU",
+                    "name": "mmu",
+                    "path": "system.cpu04.mmu",
+                    "dtb": {
+                        "type": "X86TLB",
+                        "cxx_class": "gem5::X86ISA::TLB",
+                        "name": "dtb",
+                        "path": "system.cpu04.mmu.dtb",
+                        "entry_type": "data",
+                        "eventq_index": 0,
+                        "next_level": null,
+                        "size": 64,
+                        "system": "system",
+                        "walker": {
+                            "type": "X86PagetableWalker",
+                            "cxx_class": "gem5::X86ISA::Walker",
+                            "name": "walker",
+                            "path": "system.cpu04.mmu.dtb.walker",
+                            "clk_domain": "system.cpu_clk_domain",
+                            "eventq_index": 0,
+                            "num_squash_per_cycle": 4,
+                            "power_model": [],
+                            "power_state": {
+                                "type": "PowerState",
+                                "cxx_class": "gem5::PowerState",
+                                "name": "power_state",
+                                "path": "system.cpu04.mmu.dtb.walker.power_state",
+                                "clk_gate_bins": 20,
+                                "clk_gate_max": 1000000000000,
+                                "clk_gate_min": 1000,
+                                "default_state": "UNDEFINED",
+                                "eventq_index": 0,
+                                "leaders": [],
+                                "possible_states": []
+                            },
+                            "system": "system",
+                            "port": {
+                                "role": "GEM5 REQUESTOR",
+                                "peer": "system.membus.cpu_side_ports[24]",
+                                "is_source": "True"
+                            }
+                        }
+                    },
+                    "eventq_index": 0,
+                    "itb": {
+                        "type": "X86TLB",
+                        "cxx_class": "gem5::X86ISA::TLB",
+                        "name": "itb",
+                        "path": "system.cpu04.mmu.itb",
+                        "entry_type": "instruction",
+                        "eventq_index": 0,
+                        "next_level": null,
+                        "size": 64,
+                        "system": "system",
+                        "walker": {
+                            "type": "X86PagetableWalker",
+                            "cxx_class": "gem5::X86ISA::Walker",
+                            "name": "walker",
+                            "path": "system.cpu04.mmu.itb.walker",
+                            "clk_domain": "system.cpu_clk_domain",
+                            "eventq_index": 0,
+                            "num_squash_per_cycle": 4,
+                            "power_model": [],
+                            "power_state": {
+                                "type": "PowerState",
+                                "cxx_class": "gem5::PowerState",
+                                "name": "power_state",
+                                "path": "system.cpu04.mmu.itb.walker.power_state",
+                                "clk_gate_bins": 20,
+                                "clk_gate_max": 1000000000000,
+                                "clk_gate_min": 1000,
+                                "default_state": "UNDEFINED",
+                                "eventq_index": 0,
+                                "leaders": [],
+                                "possible_states": []
+                            },
+                            "system": "system",
+                            "port": {
+                                "role": "GEM5 REQUESTOR",
+                                "peer": "system.membus.cpu_side_ports[23]",
+                                "is_source": "True"
+                            }
+                        }
+                    }
+                },
+                "numThreads": 1,
+                "power_gating_on_idle": false,
+                "power_model": [],
+                "power_state": {
+                    "type": "PowerState",
+                    "cxx_class": "gem5::PowerState",
+                    "name": "power_state",
+                    "path": "system.cpu04.power_state",
+                    "clk_gate_bins": 20,
+                    "clk_gate_max": 1000000000000,
+                    "clk_gate_min": 1000,
+                    "default_state": "UNDEFINED",
+                    "eventq_index": 0,
+                    "leaders": [],
+                    "possible_states": [
+                        "ON",
+                        "CLK_GATED",
+                        "OFF"
+                    ]
+                },
+                "progress_interval": 0,
+                "pwr_gating_latency": 300,
+                "simpoint_start_insts": [],
+                "simulate_data_stalls": false,
+                "simulate_inst_stalls": false,
+                "socket_id": 0,
+                "switched_out": false,
+                "syscallRetryLatency": 10000,
+                "system": "system",
+                "tracer": {
+                    "type": "ExeTracer",
+                    "cxx_class": "gem5::Trace::ExeTracer",
+                    "name": "tracer",
+                    "path": "system.cpu04.tracer",
+                    "eventq_index": 0
+                },
+                "width": 1,
+                "workload": [
+                    "system.cpu00.workload"
+                ],
+                "dcache_port": {
+                    "role": "GEM5 REQUESTOR",
+                    "peer": "system.membus.cpu_side_ports[22]",
+                    "is_source": "True"
+                },
+                "icache_port": {
+                    "role": "GEM5 REQUESTOR",
+                    "peer": "system.membus.cpu_side_ports[21]",
+                    "is_source": "True"
+                }
+            },
+            {
+                "type": "AtomicSimpleCPU",
+                "cxx_class": "gem5::AtomicSimpleCPU",
+                "name": "cpu05",
+                "path": "system.cpu05",
+                "branchPred": null,
+                "checker": null,
+                "clk_domain": "system.cpu_clk_domain",
+                "cpu_id": 5,
+                "decoder": [
+                    {
+                        "type": "X86Decoder",
+                        "cxx_class": "gem5::X86ISA::Decoder",
+                        "name": "decoder",
+                        "path": "system.cpu05.decoder",
+                        "eventq_index": 0,
+                        "isa": "system.cpu05.isa"
+                    }
+                ],
+                "do_checkpoint_insts": true,
+                "do_statistics_insts": true,
+                "eventq_index": 0,
+                "function_trace": false,
+                "function_trace_start": 0,
+                "interrupts": [
+                    {
+                        "type": "X86LocalApic",
+                        "cxx_class": "gem5::X86ISA::Interrupts",
+                        "name": "interrupts",
+                        "path": "system.cpu05.interrupts",
+                        "clk_domain": {
+                            "type": "DerivedClockDomain",
+                            "cxx_class": "gem5::DerivedClockDomain",
+                            "name": "clk_domain",
+                            "path": "system.cpu05.interrupts.clk_domain",
+                            "clk_divider": 16,
+                            "clk_domain": "system.cpu_clk_domain",
+                            "eventq_index": 0
+                        },
+                        "eventq_index": 0,
+                        "int_latency": 1000,
+                        "pio_latency": 100000,
+                        "system": "system",
+                        "int_requestor": {
+                            "role": "GEM5 REQUESTOR",
+                            "peer": "system.membus.cpu_side_ports[30]",
+                            "is_source": "True"
+                        },
+                        "int_responder": {
+                            "role": "GEM5 RESPONDER",
+                            "peer": "system.membus.mem_side_ports[11]",
+                            "is_source": "False"
+                        },
+                        "pio": {
+                            "role": "GEM5 RESPONDER",
+                            "peer": "system.membus.mem_side_ports[10]",
+                            "is_source": "False"
+                        }
+                    }
+                ],
+                "isa": [
+                    {
+                        "type": "X86ISA",
+                        "cxx_class": "gem5::X86ISA::ISA",
+                        "name": "isa",
+                        "path": "system.cpu05.isa",
+                        "eventq_index": 0,
+                        "vendor_string": "M5 Simulator"
+                    }
+                ],
+                "max_insts_all_threads": 0,
+                "max_insts_any_thread": 0,
+                "mmu": {
+                    "type": "X86MMU",
+                    "cxx_class": "gem5::X86ISA::MMU",
+                    "name": "mmu",
+                    "path": "system.cpu05.mmu",
+                    "dtb": {
+                        "type": "X86TLB",
+                        "cxx_class": "gem5::X86ISA::TLB",
+                        "name": "dtb",
+                        "path": "system.cpu05.mmu.dtb",
+                        "entry_type": "data",
+                        "eventq_index": 0,
+                        "next_level": null,
+                        "size": 64,
+                        "system": "system",
+                        "walker": {
+                            "type": "X86PagetableWalker",
+                            "cxx_class": "gem5::X86ISA::Walker",
+                            "name": "walker",
+                            "path": "system.cpu05.mmu.dtb.walker",
+                            "clk_domain": "system.cpu_clk_domain",
+                            "eventq_index": 0,
+                            "num_squash_per_cycle": 4,
+                            "power_model": [],
+                            "power_state": {
+                                "type": "PowerState",
+                                "cxx_class": "gem5::PowerState",
+                                "name": "power_state",
+                                "path": "system.cpu05.mmu.dtb.walker.power_state",
+                                "clk_gate_bins": 20,
+                                "clk_gate_max": 1000000000000,
+                                "clk_gate_min": 1000,
+                                "default_state": "UNDEFINED",
+                                "eventq_index": 0,
+                                "leaders": [],
+                                "possible_states": []
+                            },
+                            "system": "system",
+                            "port": {
+                                "role": "GEM5 REQUESTOR",
+                                "peer": "system.membus.cpu_side_ports[29]",
+                                "is_source": "True"
+                            }
+                        }
+                    },
+                    "eventq_index": 0,
+                    "itb": {
+                        "type": "X86TLB",
+                        "cxx_class": "gem5::X86ISA::TLB",
+                        "name": "itb",
+                        "path": "system.cpu05.mmu.itb",
+                        "entry_type": "instruction",
+                        "eventq_index": 0,
+                        "next_level": null,
+                        "size": 64,
+                        "system": "system",
+                        "walker": {
+                            "type": "X86PagetableWalker",
+                            "cxx_class": "gem5::X86ISA::Walker",
+                            "name": "walker",
+                            "path": "system.cpu05.mmu.itb.walker",
+                            "clk_domain": "system.cpu_clk_domain",
+                            "eventq_index": 0,
+                            "num_squash_per_cycle": 4,
+                            "power_model": [],
+                            "power_state": {
+                                "type": "PowerState",
+                                "cxx_class": "gem5::PowerState",
+                                "name": "power_state",
+                                "path": "system.cpu05.mmu.itb.walker.power_state",
+                                "clk_gate_bins": 20,
+                                "clk_gate_max": 1000000000000,
+                                "clk_gate_min": 1000,
+                                "default_state": "UNDEFINED",
+                                "eventq_index": 0,
+                                "leaders": [],
+                                "possible_states": []
+                            },
+                            "system": "system",
+                            "port": {
+                                "role": "GEM5 REQUESTOR",
+                                "peer": "system.membus.cpu_side_ports[28]",
+                                "is_source": "True"
+                            }
+                        }
+                    }
+                },
+                "numThreads": 1,
+                "power_gating_on_idle": false,
+                "power_model": [],
+                "power_state": {
+                    "type": "PowerState",
+                    "cxx_class": "gem5::PowerState",
+                    "name": "power_state",
+                    "path": "system.cpu05.power_state",
+                    "clk_gate_bins": 20,
+                    "clk_gate_max": 1000000000000,
+                    "clk_gate_min": 1000,
+                    "default_state": "UNDEFINED",
+                    "eventq_index": 0,
+                    "leaders": [],
+                    "possible_states": [
+                        "ON",
+                        "CLK_GATED",
+                        "OFF"
+                    ]
+                },
+                "progress_interval": 0,
+                "pwr_gating_latency": 300,
+                "simpoint_start_insts": [],
+                "simulate_data_stalls": false,
+                "simulate_inst_stalls": false,
+                "socket_id": 0,
+                "switched_out": false,
+                "syscallRetryLatency": 10000,
+                "system": "system",
+                "tracer": {
+                    "type": "ExeTracer",
+                    "cxx_class": "gem5::Trace::ExeTracer",
+                    "name": "tracer",
+                    "path": "system.cpu05.tracer",
+                    "eventq_index": 0
+                },
+                "width": 1,
+                "workload": [
+                    "system.cpu00.workload"
+                ],
+                "dcache_port": {
+                    "role": "GEM5 REQUESTOR",
+                    "peer": "system.membus.cpu_side_ports[27]",
+                    "is_source": "True"
+                },
+                "icache_port": {
+                    "role": "GEM5 REQUESTOR",
+                    "peer": "system.membus.cpu_side_ports[26]",
+                    "is_source": "True"
+                }
+            },
+            {
+                "type": "AtomicSimpleCPU",
+                "cxx_class": "gem5::AtomicSimpleCPU",
+                "name": "cpu06",
+                "path": "system.cpu06",
+                "branchPred": null,
+                "checker": null,
+                "clk_domain": "system.cpu_clk_domain",
+                "cpu_id": 6,
+                "decoder": [
+                    {
+                        "type": "X86Decoder",
+                        "cxx_class": "gem5::X86ISA::Decoder",
+                        "name": "decoder",
+                        "path": "system.cpu06.decoder",
+                        "eventq_index": 0,
+                        "isa": "system.cpu06.isa"
+                    }
+                ],
+                "do_checkpoint_insts": true,
+                "do_statistics_insts": true,
+                "eventq_index": 0,
+                "function_trace": false,
+                "function_trace_start": 0,
+                "interrupts": [
+                    {
+                        "type": "X86LocalApic",
+                        "cxx_class": "gem5::X86ISA::Interrupts",
+                        "name": "interrupts",
+                        "path": "system.cpu06.interrupts",
+                        "clk_domain": {
+                            "type": "DerivedClockDomain",
+                            "cxx_class": "gem5::DerivedClockDomain",
+                            "name": "clk_domain",
+                            "path": "system.cpu06.interrupts.clk_domain",
+                            "clk_divider": 16,
+                            "clk_domain": "system.cpu_clk_domain",
+                            "eventq_index": 0
+                        },
+                        "eventq_index": 0,
+                        "int_latency": 1000,
+                        "pio_latency": 100000,
+                        "system": "system",
+                        "int_requestor": {
+                            "role": "GEM5 REQUESTOR",
+                            "peer": "system.membus.cpu_side_ports[35]",
+                            "is_source": "True"
+                        },
+                        "int_responder": {
+                            "role": "GEM5 RESPONDER",
+                            "peer": "system.membus.mem_side_ports[13]",
+                            "is_source": "False"
+                        },
+                        "pio": {
+                            "role": "GEM5 RESPONDER",
+                            "peer": "system.membus.mem_side_ports[12]",
+                            "is_source": "False"
+                        }
+                    }
+                ],
+                "isa": [
+                    {
+                        "type": "X86ISA",
+                        "cxx_class": "gem5::X86ISA::ISA",
+                        "name": "isa",
+                        "path": "system.cpu06.isa",
+                        "eventq_index": 0,
+                        "vendor_string": "M5 Simulator"
+                    }
+                ],
+                "max_insts_all_threads": 0,
+                "max_insts_any_thread": 0,
+                "mmu": {
+                    "type": "X86MMU",
+                    "cxx_class": "gem5::X86ISA::MMU",
+                    "name": "mmu",
+                    "path": "system.cpu06.mmu",
+                    "dtb": {
+                        "type": "X86TLB",
+                        "cxx_class": "gem5::X86ISA::TLB",
+                        "name": "dtb",
+                        "path": "system.cpu06.mmu.dtb",
+                        "entry_type": "data",
+                        "eventq_index": 0,
+                        "next_level": null,
+                        "size": 64,
+                        "system": "system",
+                        "walker": {
+                            "type": "X86PagetableWalker",
+                            "cxx_class": "gem5::X86ISA::Walker",
+                            "name": "walker",
+                            "path": "system.cpu06.mmu.dtb.walker",
+                            "clk_domain": "system.cpu_clk_domain",
+                            "eventq_index": 0,
+                            "num_squash_per_cycle": 4,
+                            "power_model": [],
+                            "power_state": {
+                                "type": "PowerState",
+                                "cxx_class": "gem5::PowerState",
+                                "name": "power_state",
+                                "path": "system.cpu06.mmu.dtb.walker.power_state",
+                                "clk_gate_bins": 20,
+                                "clk_gate_max": 1000000000000,
+                                "clk_gate_min": 1000,
+                                "default_state": "UNDEFINED",
+                                "eventq_index": 0,
+                                "leaders": [],
+                                "possible_states": []
+                            },
+                            "system": "system",
+                            "port": {
+                                "role": "GEM5 REQUESTOR",
+                                "peer": "system.membus.cpu_side_ports[34]",
+                                "is_source": "True"
+                            }
+                        }
+                    },
+                    "eventq_index": 0,
+                    "itb": {
+                        "type": "X86TLB",
+                        "cxx_class": "gem5::X86ISA::TLB",
+                        "name": "itb",
+                        "path": "system.cpu06.mmu.itb",
+                        "entry_type": "instruction",
+                        "eventq_index": 0,
+                        "next_level": null,
+                        "size": 64,
+                        "system": "system",
+                        "walker": {
+                            "type": "X86PagetableWalker",
+                            "cxx_class": "gem5::X86ISA::Walker",
+                            "name": "walker",
+                            "path": "system.cpu06.mmu.itb.walker",
+                            "clk_domain": "system.cpu_clk_domain",
+                            "eventq_index": 0,
+                            "num_squash_per_cycle": 4,
+                            "power_model": [],
+                            "power_state": {
+                                "type": "PowerState",
+                                "cxx_class": "gem5::PowerState",
+                                "name": "power_state",
+                                "path": "system.cpu06.mmu.itb.walker.power_state",
+                                "clk_gate_bins": 20,
+                                "clk_gate_max": 1000000000000,
+                                "clk_gate_min": 1000,
+                                "default_state": "UNDEFINED",
+                                "eventq_index": 0,
+                                "leaders": [],
+                                "possible_states": []
+                            },
+                            "system": "system",
+                            "port": {
+                                "role": "GEM5 REQUESTOR",
+                                "peer": "system.membus.cpu_side_ports[33]",
+                                "is_source": "True"
+                            }
+                        }
+                    }
+                },
+                "numThreads": 1,
+                "power_gating_on_idle": false,
+                "power_model": [],
+                "power_state": {
+                    "type": "PowerState",
+                    "cxx_class": "gem5::PowerState",
+                    "name": "power_state",
+                    "path": "system.cpu06.power_state",
+                    "clk_gate_bins": 20,
+                    "clk_gate_max": 1000000000000,
+                    "clk_gate_min": 1000,
+                    "default_state": "UNDEFINED",
+                    "eventq_index": 0,
+                    "leaders": [],
+                    "possible_states": [
+                        "ON",
+                        "CLK_GATED",
+                        "OFF"
+                    ]
+                },
+                "progress_interval": 0,
+                "pwr_gating_latency": 300,
+                "simpoint_start_insts": [],
+                "simulate_data_stalls": false,
+                "simulate_inst_stalls": false,
+                "socket_id": 0,
+                "switched_out": false,
+                "syscallRetryLatency": 10000,
+                "system": "system",
+                "tracer": {
+                    "type": "ExeTracer",
+                    "cxx_class": "gem5::Trace::ExeTracer",
+                    "name": "tracer",
+                    "path": "system.cpu06.tracer",
+                    "eventq_index": 0
+                },
+                "width": 1,
+                "workload": [
+                    "system.cpu00.workload"
+                ],
+                "dcache_port": {
+                    "role": "GEM5 REQUESTOR",
+                    "peer": "system.membus.cpu_side_ports[32]",
+                    "is_source": "True"
+                },
+                "icache_port": {
+                    "role": "GEM5 REQUESTOR",
+                    "peer": "system.membus.cpu_side_ports[31]",
+                    "is_source": "True"
+                }
+            },
+            {
+                "type": "AtomicSimpleCPU",
+                "cxx_class": "gem5::AtomicSimpleCPU",
+                "name": "cpu07",
+                "path": "system.cpu07",
+                "branchPred": null,
+                "checker": null,
+                "clk_domain": "system.cpu_clk_domain",
+                "cpu_id": 7,
+                "decoder": [
+                    {
+                        "type": "X86Decoder",
+                        "cxx_class": "gem5::X86ISA::Decoder",
+                        "name": "decoder",
+                        "path": "system.cpu07.decoder",
+                        "eventq_index": 0,
+                        "isa": "system.cpu07.isa"
+                    }
+                ],
+                "do_checkpoint_insts": true,
+                "do_statistics_insts": true,
+                "eventq_index": 0,
+                "function_trace": false,
+                "function_trace_start": 0,
+                "interrupts": [
+                    {
+                        "type": "X86LocalApic",
+                        "cxx_class": "gem5::X86ISA::Interrupts",
+                        "name": "interrupts",
+                        "path": "system.cpu07.interrupts",
+                        "clk_domain": {
+                            "type": "DerivedClockDomain",
+                            "cxx_class": "gem5::DerivedClockDomain",
+                            "name": "clk_domain",
+                            "path": "system.cpu07.interrupts.clk_domain",
+                            "clk_divider": 16,
+                            "clk_domain": "system.cpu_clk_domain",
+                            "eventq_index": 0
+                        },
+                        "eventq_index": 0,
+                        "int_latency": 1000,
+                        "pio_latency": 100000,
+                        "system": "system",
+                        "int_requestor": {
+                            "role": "GEM5 REQUESTOR",
+                            "peer": "system.membus.cpu_side_ports[40]",
+                            "is_source": "True"
+                        },
+                        "int_responder": {
+                            "role": "GEM5 RESPONDER",
+                            "peer": "system.membus.mem_side_ports[15]",
+                            "is_source": "False"
+                        },
+                        "pio": {
+                            "role": "GEM5 RESPONDER",
+                            "peer": "system.membus.mem_side_ports[14]",
+                            "is_source": "False"
+                        }
+                    }
+                ],
+                "isa": [
+                    {
+                        "type": "X86ISA",
+                        "cxx_class": "gem5::X86ISA::ISA",
+                        "name": "isa",
+                        "path": "system.cpu07.isa",
+                        "eventq_index": 0,
+                        "vendor_string": "M5 Simulator"
+                    }
+                ],
+                "max_insts_all_threads": 0,
+                "max_insts_any_thread": 0,
+                "mmu": {
+                    "type": "X86MMU",
+                    "cxx_class": "gem5::X86ISA::MMU",
+                    "name": "mmu",
+                    "path": "system.cpu07.mmu",
+                    "dtb": {
+                        "type": "X86TLB",
+                        "cxx_class": "gem5::X86ISA::TLB",
+                        "name": "dtb",
+                        "path": "system.cpu07.mmu.dtb",
+                        "entry_type": "data",
+                        "eventq_index": 0,
+                        "next_level": null,
+                        "size": 64,
+                        "system": "system",
+                        "walker": {
+                            "type": "X86PagetableWalker",
+                            "cxx_class": "gem5::X86ISA::Walker",
+                            "name": "walker",
+                            "path": "system.cpu07.mmu.dtb.walker",
+                            "clk_domain": "system.cpu_clk_domain",
+                            "eventq_index": 0,
+                            "num_squash_per_cycle": 4,
+                            "power_model": [],
+                            "power_state": {
+                                "type": "PowerState",
+                                "cxx_class": "gem5::PowerState",
+                                "name": "power_state",
+                                "path": "system.cpu07.mmu.dtb.walker.power_state",
+                                "clk_gate_bins": 20,
+                                "clk_gate_max": 1000000000000,
+                                "clk_gate_min": 1000,
+                                "default_state": "UNDEFINED",
+                                "eventq_index": 0,
+                                "leaders": [],
+                                "possible_states": []
+                            },
+                            "system": "system",
+                            "port": {
+                                "role": "GEM5 REQUESTOR",
+                                "peer": "system.membus.cpu_side_ports[39]",
+                                "is_source": "True"
+                            }
+                        }
+                    },
+                    "eventq_index": 0,
+                    "itb": {
+                        "type": "X86TLB",
+                        "cxx_class": "gem5::X86ISA::TLB",
+                        "name": "itb",
+                        "path": "system.cpu07.mmu.itb",
+                        "entry_type": "instruction",
+                        "eventq_index": 0,
+                        "next_level": null,
+                        "size": 64,
+                        "system": "system",
+                        "walker": {
+                            "type": "X86PagetableWalker",
+                            "cxx_class": "gem5::X86ISA::Walker",
+                            "name": "walker",
+                            "path": "system.cpu07.mmu.itb.walker",
+                            "clk_domain": "system.cpu_clk_domain",
+                            "eventq_index": 0,
+                            "num_squash_per_cycle": 4,
+                            "power_model": [],
+                            "power_state": {
+                                "type": "PowerState",
+                                "cxx_class": "gem5::PowerState",
+                                "name": "power_state",
+                                "path": "system.cpu07.mmu.itb.walker.power_state",
+                                "clk_gate_bins": 20,
+                                "clk_gate_max": 1000000000000,
+                                "clk_gate_min": 1000,
+                                "default_state": "UNDEFINED",
+                                "eventq_index": 0,
+                                "leaders": [],
+                                "possible_states": []
+                            },
+                            "system": "system",
+                            "port": {
+                                "role": "GEM5 REQUESTOR",
+                                "peer": "system.membus.cpu_side_ports[38]",
+                                "is_source": "True"
+                            }
+                        }
+                    }
+                },
+                "numThreads": 1,
+                "power_gating_on_idle": false,
+                "power_model": [],
+                "power_state": {
+                    "type": "PowerState",
+                    "cxx_class": "gem5::PowerState",
+                    "name": "power_state",
+                    "path": "system.cpu07.power_state",
+                    "clk_gate_bins": 20,
+                    "clk_gate_max": 1000000000000,
+                    "clk_gate_min": 1000,
+                    "default_state": "UNDEFINED",
+                    "eventq_index": 0,
+                    "leaders": [],
+                    "possible_states": [
+                        "ON",
+                        "CLK_GATED",
+                        "OFF"
+                    ]
+                },
+                "progress_interval": 0,
+                "pwr_gating_latency": 300,
+                "simpoint_start_insts": [],
+                "simulate_data_stalls": false,
+                "simulate_inst_stalls": false,
+                "socket_id": 0,
+                "switched_out": false,
+                "syscallRetryLatency": 10000,
+                "system": "system",
+                "tracer": {
+                    "type": "ExeTracer",
+                    "cxx_class": "gem5::Trace::ExeTracer",
+                    "name": "tracer",
+                    "path": "system.cpu07.tracer",
+                    "eventq_index": 0
+                },
+                "width": 1,
+                "workload": [
+                    "system.cpu00.workload"
+                ],
+                "dcache_port": {
+                    "role": "GEM5 REQUESTOR",
+                    "peer": "system.membus.cpu_side_ports[37]",
+                    "is_source": "True"
+                },
+                "icache_port": {
+                    "role": "GEM5 REQUESTOR",
+                    "peer": "system.membus.cpu_side_ports[36]",
+                    "is_source": "True"
+                }
+            },
+            {
+                "type": "AtomicSimpleCPU",
+                "cxx_class": "gem5::AtomicSimpleCPU",
+                "name": "cpu08",
+                "path": "system.cpu08",
+                "branchPred": null,
+                "checker": null,
+                "clk_domain": "system.cpu_clk_domain",
+                "cpu_id": 8,
+                "decoder": [
+                    {
+                        "type": "X86Decoder",
+                        "cxx_class": "gem5::X86ISA::Decoder",
+                        "name": "decoder",
+                        "path": "system.cpu08.decoder",
+                        "eventq_index": 0,
+                        "isa": "system.cpu08.isa"
+                    }
+                ],
+                "do_checkpoint_insts": true,
+                "do_statistics_insts": true,
+                "eventq_index": 0,
+                "function_trace": false,
+                "function_trace_start": 0,
+                "interrupts": [
+                    {
+                        "type": "X86LocalApic",
+                        "cxx_class": "gem5::X86ISA::Interrupts",
+                        "name": "interrupts",
+                        "path": "system.cpu08.interrupts",
+                        "clk_domain": {
+                            "type": "DerivedClockDomain",
+                            "cxx_class": "gem5::DerivedClockDomain",
+                            "name": "clk_domain",
+                            "path": "system.cpu08.interrupts.clk_domain",
+                            "clk_divider": 16,
+                            "clk_domain": "system.cpu_clk_domain",
+                            "eventq_index": 0
+                        },
+                        "eventq_index": 0,
+                        "int_latency": 1000,
+                        "pio_latency": 100000,
+                        "system": "system",
+                        "int_requestor": {
+                            "role": "GEM5 REQUESTOR",
+                            "peer": "system.membus.cpu_side_ports[45]",
+                            "is_source": "True"
+                        },
+                        "int_responder": {
+                            "role": "GEM5 RESPONDER",
+                            "peer": "system.membus.mem_side_ports[17]",
+                            "is_source": "False"
+                        },
+                        "pio": {
+                            "role": "GEM5 RESPONDER",
+                            "peer": "system.membus.mem_side_ports[16]",
+                            "is_source": "False"
+                        }
+                    }
+                ],
+                "isa": [
+                    {
+                        "type": "X86ISA",
+                        "cxx_class": "gem5::X86ISA::ISA",
+                        "name": "isa",
+                        "path": "system.cpu08.isa",
+                        "eventq_index": 0,
+                        "vendor_string": "M5 Simulator"
+                    }
+                ],
+                "max_insts_all_threads": 0,
+                "max_insts_any_thread": 0,
+                "mmu": {
+                    "type": "X86MMU",
+                    "cxx_class": "gem5::X86ISA::MMU",
+                    "name": "mmu",
+                    "path": "system.cpu08.mmu",
+                    "dtb": {
+                        "type": "X86TLB",
+                        "cxx_class": "gem5::X86ISA::TLB",
+                        "name": "dtb",
+                        "path": "system.cpu08.mmu.dtb",
+                        "entry_type": "data",
+                        "eventq_index": 0,
+                        "next_level": null,
+                        "size": 64,
+                        "system": "system",
+                        "walker": {
+                            "type": "X86PagetableWalker",
+                            "cxx_class": "gem5::X86ISA::Walker",
+                            "name": "walker",
+                            "path": "system.cpu08.mmu.dtb.walker",
+                            "clk_domain": "system.cpu_clk_domain",
+                            "eventq_index": 0,
+                            "num_squash_per_cycle": 4,
+                            "power_model": [],
+                            "power_state": {
+                                "type": "PowerState",
+                                "cxx_class": "gem5::PowerState",
+                                "name": "power_state",
+                                "path": "system.cpu08.mmu.dtb.walker.power_state",
+                                "clk_gate_bins": 20,
+                                "clk_gate_max": 1000000000000,
+                                "clk_gate_min": 1000,
+                                "default_state": "UNDEFINED",
+                                "eventq_index": 0,
+                                "leaders": [],
+                                "possible_states": []
+                            },
+                            "system": "system",
+                            "port": {
+                                "role": "GEM5 REQUESTOR",
+                                "peer": "system.membus.cpu_side_ports[44]",
+                                "is_source": "True"
+                            }
+                        }
+                    },
+                    "eventq_index": 0,
+                    "itb": {
+                        "type": "X86TLB",
+                        "cxx_class": "gem5::X86ISA::TLB",
+                        "name": "itb",
+                        "path": "system.cpu08.mmu.itb",
+                        "entry_type": "instruction",
+                        "eventq_index": 0,
+                        "next_level": null,
+                        "size": 64,
+                        "system": "system",
+                        "walker": {
+                            "type": "X86PagetableWalker",
+                            "cxx_class": "gem5::X86ISA::Walker",
+                            "name": "walker",
+                            "path": "system.cpu08.mmu.itb.walker",
+                            "clk_domain": "system.cpu_clk_domain",
+                            "eventq_index": 0,
+                            "num_squash_per_cycle": 4,
+                            "power_model": [],
+                            "power_state": {
+                                "type": "PowerState",
+                                "cxx_class": "gem5::PowerState",
+                                "name": "power_state",
+                                "path": "system.cpu08.mmu.itb.walker.power_state",
+                                "clk_gate_bins": 20,
+                                "clk_gate_max": 1000000000000,
+                                "clk_gate_min": 1000,
+                                "default_state": "UNDEFINED",
+                                "eventq_index": 0,
+                                "leaders": [],
+                                "possible_states": []
+                            },
+                            "system": "system",
+                            "port": {
+                                "role": "GEM5 REQUESTOR",
+                                "peer": "system.membus.cpu_side_ports[43]",
+                                "is_source": "True"
+                            }
+                        }
+                    }
+                },
+                "numThreads": 1,
+                "power_gating_on_idle": false,
+                "power_model": [],
+                "power_state": {
+                    "type": "PowerState",
+                    "cxx_class": "gem5::PowerState",
+                    "name": "power_state",
+                    "path": "system.cpu08.power_state",
+                    "clk_gate_bins": 20,
+                    "clk_gate_max": 1000000000000,
+                    "clk_gate_min": 1000,
+                    "default_state": "UNDEFINED",
+                    "eventq_index": 0,
+                    "leaders": [],
+                    "possible_states": [
+                        "ON",
+                        "CLK_GATED",
+                        "OFF"
+                    ]
+                },
+                "progress_interval": 0,
+                "pwr_gating_latency": 300,
+                "simpoint_start_insts": [],
+                "simulate_data_stalls": false,
+                "simulate_inst_stalls": false,
+                "socket_id": 0,
+                "switched_out": false,
+                "syscallRetryLatency": 10000,
+                "system": "system",
+                "tracer": {
+                    "type": "ExeTracer",
+                    "cxx_class": "gem5::Trace::ExeTracer",
+                    "name": "tracer",
+                    "path": "system.cpu08.tracer",
+                    "eventq_index": 0
+                },
+                "width": 1,
+                "workload": [
+                    "system.cpu00.workload"
+                ],
+                "dcache_port": {
+                    "role": "GEM5 REQUESTOR",
+                    "peer": "system.membus.cpu_side_ports[42]",
+                    "is_source": "True"
+                },
+                "icache_port": {
+                    "role": "GEM5 REQUESTOR",
+                    "peer": "system.membus.cpu_side_ports[41]",
+                    "is_source": "True"
+                }
+            },
+            {
+                "type": "AtomicSimpleCPU",
+                "cxx_class": "gem5::AtomicSimpleCPU",
+                "name": "cpu09",
+                "path": "system.cpu09",
+                "branchPred": null,
+                "checker": null,
+                "clk_domain": "system.cpu_clk_domain",
+                "cpu_id": 9,
+                "decoder": [
+                    {
+                        "type": "X86Decoder",
+                        "cxx_class": "gem5::X86ISA::Decoder",
+                        "name": "decoder",
+                        "path": "system.cpu09.decoder",
+                        "eventq_index": 0,
+                        "isa": "system.cpu09.isa"
+                    }
+                ],
+                "do_checkpoint_insts": true,
+                "do_statistics_insts": true,
+                "eventq_index": 0,
+                "function_trace": false,
+                "function_trace_start": 0,
+                "interrupts": [
+                    {
+                        "type": "X86LocalApic",
+                        "cxx_class": "gem5::X86ISA::Interrupts",
+                        "name": "interrupts",
+                        "path": "system.cpu09.interrupts",
+                        "clk_domain": {
+                            "type": "DerivedClockDomain",
+                            "cxx_class": "gem5::DerivedClockDomain",
+                            "name": "clk_domain",
+                            "path": "system.cpu09.interrupts.clk_domain",
+                            "clk_divider": 16,
+                            "clk_domain": "system.cpu_clk_domain",
+                            "eventq_index": 0
+                        },
+                        "eventq_index": 0,
+                        "int_latency": 1000,
+                        "pio_latency": 100000,
+                        "system": "system",
+                        "int_requestor": {
+                            "role": "GEM5 REQUESTOR",
+                            "peer": "system.membus.cpu_side_ports[50]",
+                            "is_source": "True"
+                        },
+                        "int_responder": {
+                            "role": "GEM5 RESPONDER",
+                            "peer": "system.membus.mem_side_ports[19]",
+                            "is_source": "False"
+                        },
+                        "pio": {
+                            "role": "GEM5 RESPONDER",
+                            "peer": "system.membus.mem_side_ports[18]",
+                            "is_source": "False"
+                        }
+                    }
+                ],
+                "isa": [
+                    {
+                        "type": "X86ISA",
+                        "cxx_class": "gem5::X86ISA::ISA",
+                        "name": "isa",
+                        "path": "system.cpu09.isa",
+                        "eventq_index": 0,
+                        "vendor_string": "M5 Simulator"
+                    }
+                ],
+                "max_insts_all_threads": 0,
+                "max_insts_any_thread": 0,
+                "mmu": {
+                    "type": "X86MMU",
+                    "cxx_class": "gem5::X86ISA::MMU",
+                    "name": "mmu",
+                    "path": "system.cpu09.mmu",
+                    "dtb": {
+                        "type": "X86TLB",
+                        "cxx_class": "gem5::X86ISA::TLB",
+                        "name": "dtb",
+                        "path": "system.cpu09.mmu.dtb",
+                        "entry_type": "data",
+                        "eventq_index": 0,
+                        "next_level": null,
+                        "size": 64,
+                        "system": "system",
+                        "walker": {
+                            "type": "X86PagetableWalker",
+                            "cxx_class": "gem5::X86ISA::Walker",
+                            "name": "walker",
+                            "path": "system.cpu09.mmu.dtb.walker",
+                            "clk_domain": "system.cpu_clk_domain",
+                            "eventq_index": 0,
+                            "num_squash_per_cycle": 4,
+                            "power_model": [],
+                            "power_state": {
+                                "type": "PowerState",
+                                "cxx_class": "gem5::PowerState",
+                                "name": "power_state",
+                                "path": "system.cpu09.mmu.dtb.walker.power_state",
+                                "clk_gate_bins": 20,
+                                "clk_gate_max": 1000000000000,
+                                "clk_gate_min": 1000,
+                                "default_state": "UNDEFINED",
+                                "eventq_index": 0,
+                                "leaders": [],
+                                "possible_states": []
+                            },
+                            "system": "system",
+                            "port": {
+                                "role": "GEM5 REQUESTOR",
+                                "peer": "system.membus.cpu_side_ports[49]",
+                                "is_source": "True"
+                            }
+                        }
+                    },
+                    "eventq_index": 0,
+                    "itb": {
+                        "type": "X86TLB",
+                        "cxx_class": "gem5::X86ISA::TLB",
+                        "name": "itb",
+                        "path": "system.cpu09.mmu.itb",
+                        "entry_type": "instruction",
+                        "eventq_index": 0,
+                        "next_level": null,
+                        "size": 64,
+                        "system": "system",
+                        "walker": {
+                            "type": "X86PagetableWalker",
+                            "cxx_class": "gem5::X86ISA::Walker",
+                            "name": "walker",
+                            "path": "system.cpu09.mmu.itb.walker",
+                            "clk_domain": "system.cpu_clk_domain",
+                            "eventq_index": 0,
+                            "num_squash_per_cycle": 4,
+                            "power_model": [],
+                            "power_state": {
+                                "type": "PowerState",
+                                "cxx_class": "gem5::PowerState",
+                                "name": "power_state",
+                                "path": "system.cpu09.mmu.itb.walker.power_state",
+                                "clk_gate_bins": 20,
+                                "clk_gate_max": 1000000000000,
+                                "clk_gate_min": 1000,
+                                "default_state": "UNDEFINED",
+                                "eventq_index": 0,
+                                "leaders": [],
+                                "possible_states": []
+                            },
+                            "system": "system",
+                            "port": {
+                                "role": "GEM5 REQUESTOR",
+                                "peer": "system.membus.cpu_side_ports[48]",
+                                "is_source": "True"
+                            }
+                        }
+                    }
+                },
+                "numThreads": 1,
+                "power_gating_on_idle": false,
+                "power_model": [],
+                "power_state": {
+                    "type": "PowerState",
+                    "cxx_class": "gem5::PowerState",
+                    "name": "power_state",
+                    "path": "system.cpu09.power_state",
+                    "clk_gate_bins": 20,
+                    "clk_gate_max": 1000000000000,
+                    "clk_gate_min": 1000,
+                    "default_state": "UNDEFINED",
+                    "eventq_index": 0,
+                    "leaders": [],
+                    "possible_states": [
+                        "ON",
+                        "CLK_GATED",
+                        "OFF"
+                    ]
+                },
+                "progress_interval": 0,
+                "pwr_gating_latency": 300,
+                "simpoint_start_insts": [],
+                "simulate_data_stalls": false,
+                "simulate_inst_stalls": false,
+                "socket_id": 0,
+                "switched_out": false,
+                "syscallRetryLatency": 10000,
+                "system": "system",
+                "tracer": {
+                    "type": "ExeTracer",
+                    "cxx_class": "gem5::Trace::ExeTracer",
+                    "name": "tracer",
+                    "path": "system.cpu09.tracer",
+                    "eventq_index": 0
+                },
+                "width": 1,
+                "workload": [
+                    "system.cpu00.workload"
+                ],
+                "dcache_port": {
+                    "role": "GEM5 REQUESTOR",
+                    "peer": "system.membus.cpu_side_ports[47]",
+                    "is_source": "True"
+                },
+                "icache_port": {
+                    "role": "GEM5 REQUESTOR",
+                    "peer": "system.membus.cpu_side_ports[46]",
+                    "is_source": "True"
+                }
+            },
+            {
+                "type": "AtomicSimpleCPU",
+                "cxx_class": "gem5::AtomicSimpleCPU",
+                "name": "cpu10",
+                "path": "system.cpu10",
+                "branchPred": null,
+                "checker": null,
+                "clk_domain": "system.cpu_clk_domain",
+                "cpu_id": 10,
+                "decoder": [
+                    {
+                        "type": "X86Decoder",
+                        "cxx_class": "gem5::X86ISA::Decoder",
+                        "name": "decoder",
+                        "path": "system.cpu10.decoder",
+                        "eventq_index": 0,
+                        "isa": "system.cpu10.isa"
+                    }
+                ],
+                "do_checkpoint_insts": true,
+                "do_statistics_insts": true,
+                "eventq_index": 0,
+                "function_trace": false,
+                "function_trace_start": 0,
+                "interrupts": [
+                    {
+                        "type": "X86LocalApic",
+                        "cxx_class": "gem5::X86ISA::Interrupts",
+                        "name": "interrupts",
+                        "path": "system.cpu10.interrupts",
+                        "clk_domain": {
+                            "type": "DerivedClockDomain",
+                            "cxx_class": "gem5::DerivedClockDomain",
+                            "name": "clk_domain",
+                            "path": "system.cpu10.interrupts.clk_domain",
+                            "clk_divider": 16,
+                            "clk_domain": "system.cpu_clk_domain",
+                            "eventq_index": 0
+                        },
+                        "eventq_index": 0,
+                        "int_latency": 1000,
+                        "pio_latency": 100000,
+                        "system": "system",
+                        "int_requestor": {
+                            "role": "GEM5 REQUESTOR",
+                            "peer": "system.membus.cpu_side_ports[55]",
+                            "is_source": "True"
+                        },
+                        "int_responder": {
+                            "role": "GEM5 RESPONDER",
+                            "peer": "system.membus.mem_side_ports[21]",
+                            "is_source": "False"
+                        },
+                        "pio": {
+                            "role": "GEM5 RESPONDER",
+                            "peer": "system.membus.mem_side_ports[20]",
+                            "is_source": "False"
+                        }
+                    }
+                ],
+                "isa": [
+                    {
+                        "type": "X86ISA",
+                        "cxx_class": "gem5::X86ISA::ISA",
+                        "name": "isa",
+                        "path": "system.cpu10.isa",
+                        "eventq_index": 0,
+                        "vendor_string": "M5 Simulator"
+                    }
+                ],
+                "max_insts_all_threads": 0,
+                "max_insts_any_thread": 0,
+                "mmu": {
+                    "type": "X86MMU",
+                    "cxx_class": "gem5::X86ISA::MMU",
+                    "name": "mmu",
+                    "path": "system.cpu10.mmu",
+                    "dtb": {
+                        "type": "X86TLB",
+                        "cxx_class": "gem5::X86ISA::TLB",
+                        "name": "dtb",
+                        "path": "system.cpu10.mmu.dtb",
+                        "entry_type": "data",
+                        "eventq_index": 0,
+                        "next_level": null,
+                        "size": 64,
+                        "system": "system",
+                        "walker": {
+                            "type": "X86PagetableWalker",
+                            "cxx_class": "gem5::X86ISA::Walker",
+                            "name": "walker",
+                            "path": "system.cpu10.mmu.dtb.walker",
+                            "clk_domain": "system.cpu_clk_domain",
+                            "eventq_index": 0,
+                            "num_squash_per_cycle": 4,
+                            "power_model": [],
+                            "power_state": {
+                                "type": "PowerState",
+                                "cxx_class": "gem5::PowerState",
+                                "name": "power_state",
+                                "path": "system.cpu10.mmu.dtb.walker.power_state",
+                                "clk_gate_bins": 20,
+                                "clk_gate_max": 1000000000000,
+                                "clk_gate_min": 1000,
+                                "default_state": "UNDEFINED",
+                                "eventq_index": 0,
+                                "leaders": [],
+                                "possible_states": []
+                            },
+                            "system": "system",
+                            "port": {
+                                "role": "GEM5 REQUESTOR",
+                                "peer": "system.membus.cpu_side_ports[54]",
+                                "is_source": "True"
+                            }
+                        }
+                    },
+                    "eventq_index": 0,
+                    "itb": {
+                        "type": "X86TLB",
+                        "cxx_class": "gem5::X86ISA::TLB",
+                        "name": "itb",
+                        "path": "system.cpu10.mmu.itb",
+                        "entry_type": "instruction",
+                        "eventq_index": 0,
+                        "next_level": null,
+                        "size": 64,
+                        "system": "system",
+                        "walker": {
+                            "type": "X86PagetableWalker",
+                            "cxx_class": "gem5::X86ISA::Walker",
+                            "name": "walker",
+                            "path": "system.cpu10.mmu.itb.walker",
+                            "clk_domain": "system.cpu_clk_domain",
+                            "eventq_index": 0,
+                            "num_squash_per_cycle": 4,
+                            "power_model": [],
+                            "power_state": {
+                                "type": "PowerState",
+                                "cxx_class": "gem5::PowerState",
+                                "name": "power_state",
+                                "path": "system.cpu10.mmu.itb.walker.power_state",
+                                "clk_gate_bins": 20,
+                                "clk_gate_max": 1000000000000,
+                                "clk_gate_min": 1000,
+                                "default_state": "UNDEFINED",
+                                "eventq_index": 0,
+                                "leaders": [],
+                                "possible_states": []
+                            },
+                            "system": "system",
+                            "port": {
+                                "role": "GEM5 REQUESTOR",
+                                "peer": "system.membus.cpu_side_ports[53]",
+                                "is_source": "True"
+                            }
+                        }
+                    }
+                },
+                "numThreads": 1,
+                "power_gating_on_idle": false,
+                "power_model": [],
+                "power_state": {
+                    "type": "PowerState",
+                    "cxx_class": "gem5::PowerState",
+                    "name": "power_state",
+                    "path": "system.cpu10.power_state",
+                    "clk_gate_bins": 20,
+                    "clk_gate_max": 1000000000000,
+                    "clk_gate_min": 1000,
+                    "default_state": "UNDEFINED",
+                    "eventq_index": 0,
+                    "leaders": [],
+                    "possible_states": [
+                        "ON",
+                        "CLK_GATED",
+                        "OFF"
+                    ]
+                },
+                "progress_interval": 0,
+                "pwr_gating_latency": 300,
+                "simpoint_start_insts": [],
+                "simulate_data_stalls": false,
+                "simulate_inst_stalls": false,
+                "socket_id": 0,
+                "switched_out": false,
+                "syscallRetryLatency": 10000,
+                "system": "system",
+                "tracer": {
+                    "type": "ExeTracer",
+                    "cxx_class": "gem5::Trace::ExeTracer",
+                    "name": "tracer",
+                    "path": "system.cpu10.tracer",
+                    "eventq_index": 0
+                },
+                "width": 1,
+                "workload": [
+                    "system.cpu00.workload"
+                ],
+                "dcache_port": {
+                    "role": "GEM5 REQUESTOR",
+                    "peer": "system.membus.cpu_side_ports[52]",
+                    "is_source": "True"
+                },
+                "icache_port": {
+                    "role": "GEM5 REQUESTOR",
+                    "peer": "system.membus.cpu_side_ports[51]",
+                    "is_source": "True"
+                }
+            },
+            {
+                "type": "AtomicSimpleCPU",
+                "cxx_class": "gem5::AtomicSimpleCPU",
+                "name": "cpu11",
+                "path": "system.cpu11",
+                "branchPred": null,
+                "checker": null,
+                "clk_domain": "system.cpu_clk_domain",
+                "cpu_id": 11,
+                "decoder": [
+                    {
+                        "type": "X86Decoder",
+                        "cxx_class": "gem5::X86ISA::Decoder",
+                        "name": "decoder",
+                        "path": "system.cpu11.decoder",
+                        "eventq_index": 0,
+                        "isa": "system.cpu11.isa"
+                    }
+                ],
+                "do_checkpoint_insts": true,
+                "do_statistics_insts": true,
+                "eventq_index": 0,
+                "function_trace": false,
+                "function_trace_start": 0,
+                "interrupts": [
+                    {
+                        "type": "X86LocalApic",
+                        "cxx_class": "gem5::X86ISA::Interrupts",
+                        "name": "interrupts",
+                        "path": "system.cpu11.interrupts",
+                        "clk_domain": {
+                            "type": "DerivedClockDomain",
+                            "cxx_class": "gem5::DerivedClockDomain",
+                            "name": "clk_domain",
+                            "path": "system.cpu11.interrupts.clk_domain",
+                            "clk_divider": 16,
+                            "clk_domain": "system.cpu_clk_domain",
+                            "eventq_index": 0
+                        },
+                        "eventq_index": 0,
+                        "int_latency": 1000,
+                        "pio_latency": 100000,
+                        "system": "system",
+                        "int_requestor": {
+                            "role": "GEM5 REQUESTOR",
+                            "peer": "system.membus.cpu_side_ports[60]",
+                            "is_source": "True"
+                        },
+                        "int_responder": {
+                            "role": "GEM5 RESPONDER",
+                            "peer": "system.membus.mem_side_ports[23]",
+                            "is_source": "False"
+                        },
+                        "pio": {
+                            "role": "GEM5 RESPONDER",
+                            "peer": "system.membus.mem_side_ports[22]",
+                            "is_source": "False"
+                        }
+                    }
+                ],
+                "isa": [
+                    {
+                        "type": "X86ISA",
+                        "cxx_class": "gem5::X86ISA::ISA",
+                        "name": "isa",
+                        "path": "system.cpu11.isa",
+                        "eventq_index": 0,
+                        "vendor_string": "M5 Simulator"
+                    }
+                ],
+                "max_insts_all_threads": 0,
+                "max_insts_any_thread": 0,
+                "mmu": {
+                    "type": "X86MMU",
+                    "cxx_class": "gem5::X86ISA::MMU",
+                    "name": "mmu",
+                    "path": "system.cpu11.mmu",
+                    "dtb": {
+                        "type": "X86TLB",
+                        "cxx_class": "gem5::X86ISA::TLB",
+                        "name": "dtb",
+                        "path": "system.cpu11.mmu.dtb",
+                        "entry_type": "data",
+                        "eventq_index": 0,
+                        "next_level": null,
+                        "size": 64,
+                        "system": "system",
+                        "walker": {
+                            "type": "X86PagetableWalker",
+                            "cxx_class": "gem5::X86ISA::Walker",
+                            "name": "walker",
+                            "path": "system.cpu11.mmu.dtb.walker",
+                            "clk_domain": "system.cpu_clk_domain",
+                            "eventq_index": 0,
+                            "num_squash_per_cycle": 4,
+                            "power_model": [],
+                            "power_state": {
+                                "type": "PowerState",
+                                "cxx_class": "gem5::PowerState",
+                                "name": "power_state",
+                                "path": "system.cpu11.mmu.dtb.walker.power_state",
+                                "clk_gate_bins": 20,
+                                "clk_gate_max": 1000000000000,
+                                "clk_gate_min": 1000,
+                                "default_state": "UNDEFINED",
+                                "eventq_index": 0,
+                                "leaders": [],
+                                "possible_states": []
+                            },
+                            "system": "system",
+                            "port": {
+                                "role": "GEM5 REQUESTOR",
+                                "peer": "system.membus.cpu_side_ports[59]",
+                                "is_source": "True"
+                            }
+                        }
+                    },
+                    "eventq_index": 0,
+                    "itb": {
+                        "type": "X86TLB",
+                        "cxx_class": "gem5::X86ISA::TLB",
+                        "name": "itb",
+                        "path": "system.cpu11.mmu.itb",
+                        "entry_type": "instruction",
+                        "eventq_index": 0,
+                        "next_level": null,
+                        "size": 64,
+                        "system": "system",
+                        "walker": {
+                            "type": "X86PagetableWalker",
+                            "cxx_class": "gem5::X86ISA::Walker",
+                            "name": "walker",
+                            "path": "system.cpu11.mmu.itb.walker",
+                            "clk_domain": "system.cpu_clk_domain",
+                            "eventq_index": 0,
+                            "num_squash_per_cycle": 4,
+                            "power_model": [],
+                            "power_state": {
+                                "type": "PowerState",
+                                "cxx_class": "gem5::PowerState",
+                                "name": "power_state",
+                                "path": "system.cpu11.mmu.itb.walker.power_state",
+                                "clk_gate_bins": 20,
+                                "clk_gate_max": 1000000000000,
+                                "clk_gate_min": 1000,
+                                "default_state": "UNDEFINED",
+                                "eventq_index": 0,
+                                "leaders": [],
+                                "possible_states": []
+                            },
+                            "system": "system",
+                            "port": {
+                                "role": "GEM5 REQUESTOR",
+                                "peer": "system.membus.cpu_side_ports[58]",
+                                "is_source": "True"
+                            }
+                        }
+                    }
+                },
+                "numThreads": 1,
+                "power_gating_on_idle": false,
+                "power_model": [],
+                "power_state": {
+                    "type": "PowerState",
+                    "cxx_class": "gem5::PowerState",
+                    "name": "power_state",
+                    "path": "system.cpu11.power_state",
+                    "clk_gate_bins": 20,
+                    "clk_gate_max": 1000000000000,
+                    "clk_gate_min": 1000,
+                    "default_state": "UNDEFINED",
+                    "eventq_index": 0,
+                    "leaders": [],
+                    "possible_states": [
+                        "ON",
+                        "CLK_GATED",
+                        "OFF"
+                    ]
+                },
+                "progress_interval": 0,
+                "pwr_gating_latency": 300,
+                "simpoint_start_insts": [],
+                "simulate_data_stalls": false,
+                "simulate_inst_stalls": false,
+                "socket_id": 0,
+                "switched_out": false,
+                "syscallRetryLatency": 10000,
+                "system": "system",
+                "tracer": {
+                    "type": "ExeTracer",
+                    "cxx_class": "gem5::Trace::ExeTracer",
+                    "name": "tracer",
+                    "path": "system.cpu11.tracer",
+                    "eventq_index": 0
+                },
+                "width": 1,
+                "workload": [
+                    "system.cpu00.workload"
+                ],
+                "dcache_port": {
+                    "role": "GEM5 REQUESTOR",
+                    "peer": "system.membus.cpu_side_ports[57]",
+                    "is_source": "True"
+                },
+                "icache_port": {
+                    "role": "GEM5 REQUESTOR",
+                    "peer": "system.membus.cpu_side_ports[56]",
+                    "is_source": "True"
+                }
+            }
+        ],
+        "cpu_clk_domain": {
+            "type": "SrcClockDomain",
+            "cxx_class": "gem5::SrcClockDomain",
+            "name": "cpu_clk_domain",
+            "path": "system.cpu_clk_domain",
+            "clock": [
+                500
+            ],
+            "domain_id": -1,
+            "eventq_index": 0,
+            "init_perf_level": 0,
+            "voltage_domain": "system.cpu_voltage_domain"
+        },
+        "cpu_voltage_domain": {
+            "type": "VoltageDomain",
+            "cxx_class": "gem5::VoltageDomain",
+            "name": "cpu_voltage_domain",
+            "path": "system.cpu_voltage_domain",
+            "eventq_index": 0,
+            "voltage": [
+                1.0
+            ]
+        },
+        "dvfs_handler": {
+            "type": "DVFSHandler",
+            "cxx_class": "gem5::DVFSHandler",
+            "name": "dvfs_handler",
+            "path": "system.dvfs_handler",
+            "domains": [],
+            "enable": false,
+            "eventq_index": 0,
+            "sys_clk_domain": "system.clk_domain",
+            "transition_latency": 100000000
+        },
+        "mem_ctrls": [
+            {
+                "type": "SimpleMemory",
+                "cxx_class": "gem5::memory::SimpleMemory",
+                "name": "mem_ctrls",
+                "path": "system.mem_ctrls",
+                "bandwidth": "73.000000",
+                "clk_domain": "system.clk_domain",
+                "conf_table_reported": true,
+                "eventq_index": 0,
+                "image_file": "",
+                "in_addr_map": true,
+                "kvm_map": true,
+                "latency": 30000,
+                "latency_var": 0,
+                "null": false,
+                "power_model": [],
+                "power_state": {
+                    "type": "PowerState",
+                    "cxx_class": "gem5::PowerState",
+                    "name": "power_state",
+                    "path": "system.mem_ctrls.power_state",
+                    "clk_gate_bins": 20,
+                    "clk_gate_max": 1000000000000,
+                    "clk_gate_min": 1000,
+                    "default_state": "UNDEFINED",
+                    "eventq_index": 0,
+                    "leaders": [],
+                    "possible_states": []
+                },
+                "range": "0:536870912",
+                "port": {
+                    "role": "GEM5 RESPONDER",
+                    "peer": "system.membus.mem_side_ports[24]",
+                    "is_source": "False"
+                }
+            }
+        ],
+        "membus": {
+            "type": "CoherentXBar",
+            "cxx_class": "gem5::CoherentXBar",
+            "name": "membus",
+            "path": "system.membus",
+            "clk_domain": "system.clk_domain",
+            "eventq_index": 0,
+            "forward_latency": 4,
+            "frontend_latency": 3,
+            "header_latency": 1,
+            "max_outstanding_snoops": 512,
+            "max_routing_table_size": 512,
+            "point_of_coherency": true,
+            "point_of_unification": true,
+            "power_model": [],
+            "power_state": {
+                "type": "PowerState",
+                "cxx_class": "gem5::PowerState",
+                "name": "power_state",
+                "path": "system.membus.power_state",
+                "clk_gate_bins": 20,
+                "clk_gate_max": 1000000000000,
+                "clk_gate_min": 1000,
+                "default_state": "UNDEFINED",
+                "eventq_index": 0,
+                "leaders": [],
+                "possible_states": []
+            },
+            "response_latency": 2,
+            "snoop_filter": {
+                "type": "SnoopFilter",
+                "cxx_class": "gem5::SnoopFilter",
+                "name": "snoop_filter",
+                "path": "system.membus.snoop_filter",
+                "eventq_index": 0,
+                "lookup_latency": 1,
+                "max_capacity": 8388608,
+                "system": "system"
+            },
+            "snoop_response_latency": 4,
+            "system": "system",
+            "use_default_range": false,
+            "width": 16,
+            "cpu_side_ports": {
+                "role": "GEM5 RESPONDER",
+                "peer": [
+                    "system.system_port",
+                    "system.cpu00.icache_port",
+                    "system.cpu00.dcache_port",
+                    "system.cpu00.mmu.itb.walker.port",
+                    "system.cpu00.mmu.dtb.walker.port",
+                    "system.cpu00.interrupts.int_requestor",
+                    "system.cpu01.icache_port",
+                    "system.cpu01.dcache_port",
+                    "system.cpu01.mmu.itb.walker.port",
+                    "system.cpu01.mmu.dtb.walker.port",
+                    "system.cpu01.interrupts.int_requestor",
+                    "system.cpu02.icache_port",
+                    "system.cpu02.dcache_port",
+                    "system.cpu02.mmu.itb.walker.port",
+                    "system.cpu02.mmu.dtb.walker.port",
+                    "system.cpu02.interrupts.int_requestor",
+                    "system.cpu03.icache_port",
+                    "system.cpu03.dcache_port",
+                    "system.cpu03.mmu.itb.walker.port",
+                    "system.cpu03.mmu.dtb.walker.port",
+                    "system.cpu03.interrupts.int_requestor",
+                    "system.cpu04.icache_port",
+                    "system.cpu04.dcache_port",
+                    "system.cpu04.mmu.itb.walker.port",
+                    "system.cpu04.mmu.dtb.walker.port",
+                    "system.cpu04.interrupts.int_requestor",
+                    "system.cpu05.icache_port",
+                    "system.cpu05.dcache_port",
+                    "system.cpu05.mmu.itb.walker.port",
+                    "system.cpu05.mmu.dtb.walker.port",
+                    "system.cpu05.interrupts.int_requestor",
+                    "system.cpu06.icache_port",
+                    "system.cpu06.dcache_port",
+                    "system.cpu06.mmu.itb.walker.port",
+                    "system.cpu06.mmu.dtb.walker.port",
+                    "system.cpu06.interrupts.int_requestor",
+                    "system.cpu07.icache_port",
+                    "system.cpu07.dcache_port",
+                    "system.cpu07.mmu.itb.walker.port",
+                    "system.cpu07.mmu.dtb.walker.port",
+                    "system.cpu07.interrupts.int_requestor",
+                    "system.cpu08.icache_port",
+                    "system.cpu08.dcache_port",
+                    "system.cpu08.mmu.itb.walker.port",
+                    "system.cpu08.mmu.dtb.walker.port",
+                    "system.cpu08.interrupts.int_requestor",
+                    "system.cpu09.icache_port",
+                    "system.cpu09.dcache_port",
+                    "system.cpu09.mmu.itb.walker.port",
+                    "system.cpu09.mmu.dtb.walker.port",
+                    "system.cpu09.interrupts.int_requestor",
+                    "system.cpu10.icache_port",
+                    "system.cpu10.dcache_port",
+                    "system.cpu10.mmu.itb.walker.port",
+                    "system.cpu10.mmu.dtb.walker.port",
+                    "system.cpu10.interrupts.int_requestor",
+                    "system.cpu11.icache_port",
+                    "system.cpu11.dcache_port",
+                    "system.cpu11.mmu.itb.walker.port",
+                    "system.cpu11.mmu.dtb.walker.port",
+                    "system.cpu11.interrupts.int_requestor"
+                ],
+                "is_source": "False"
+            },
+            "mem_side_ports": {
+                "role": "GEM5 REQUESTOR",
+                "peer": [
+                    "system.cpu00.interrupts.pio",
+                    "system.cpu00.interrupts.int_responder",
+                    "system.cpu01.interrupts.pio",
+                    "system.cpu01.interrupts.int_responder",
+                    "system.cpu02.interrupts.pio",
+                    "system.cpu02.interrupts.int_responder",
+                    "system.cpu03.interrupts.pio",
+                    "system.cpu03.interrupts.int_responder",
+                    "system.cpu04.interrupts.pio",
+                    "system.cpu04.interrupts.int_responder",
+                    "system.cpu05.interrupts.pio",
+                    "system.cpu05.interrupts.int_responder",
+                    "system.cpu06.interrupts.pio",
+                    "system.cpu06.interrupts.int_responder",
+                    "system.cpu07.interrupts.pio",
+                    "system.cpu07.interrupts.int_responder",
+                    "system.cpu08.interrupts.pio",
+                    "system.cpu08.interrupts.int_responder",
+                    "system.cpu09.interrupts.pio",
+                    "system.cpu09.interrupts.int_responder",
+                    "system.cpu10.interrupts.pio",
+                    "system.cpu10.interrupts.int_responder",
+                    "system.cpu11.interrupts.pio",
+                    "system.cpu11.interrupts.int_responder",
+                    "system.mem_ctrls.port"
+                ],
+                "is_source": "True"
+            }
+        },
+        "voltage_domain": {
+            "type": "VoltageDomain",
+            "cxx_class": "gem5::VoltageDomain",
+            "name": "voltage_domain",
+            "path": "system.voltage_domain",
+            "eventq_index": 0,
+            "voltage": [
+                1.0
+            ]
+        },
+        "system_port": {
+            "role": "GEM5 REQUESTOR",
+            "peer": "system.membus.cpu_side_ports[0]",
+            "is_source": "True"
+        }
+    }
+}

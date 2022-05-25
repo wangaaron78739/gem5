@@ -1,0 +1,2397 @@
+digraph G {
+ranksep="1.3";
+subgraph cluster_root {
+color="#000000";
+fillcolor="#bab6ae";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="root \n: Root";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="eventq_index&#61;0&#10;\full_system&#61;false&#10;\sim_quantum&#61;0&#10;\time_sync_enable&#61;false&#10;\time_sync_period&#61;100000000000&#10;\time_sync_spin_threshold&#61;100000000";
+subgraph cluster_system {
+color="#000000";
+fillcolor="#e4e7eb";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="system \n: System";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="cache_line_size&#61;64&#10;\eventq_index&#61;0&#10;\exit_on_work_items&#61;false&#10;\init_param&#61;0&#10;\kvm_vm&#61;Null&#10;\m5ops_base&#61;4294901760&#10;\mem_mode&#61;atomic&#10;\mem_ranges&#61;0:536870912&#10;\memories&#61;system.mem_ctrls&#10;\mmap_using_noreserve&#61;false&#10;\multi_thread&#61;false&#10;\num_work_ids&#61;16&#10;\readfile&#61;&#10;\redirect_paths&#61;system.redirect_paths0 system.redirect_paths1 system.redirect_paths2&#10;\shadow_rom_ranges&#61;&#10;\shared_backstore&#61;&#10;\symbolfile&#61;&#10;\thermal_components&#61;&#10;\thermal_model&#61;Null&#10;\work_begin_ckpt_count&#61;0&#10;\work_begin_cpu_id_exit&#61;-1&#10;\work_begin_exit_count&#61;0&#10;\work_cpus_ckpt_count&#61;0&#10;\work_end_ckpt_count&#61;0&#10;\work_end_exit_count&#61;0&#10;\work_item_id&#61;-1&#10;\workload&#61;system.workload";
+system_system_port [color="#000000", fillcolor="#b6b8bc", fontcolor="#000000", fontname=Arial, fontsize=14, label=system_port, shape=Mrecord, style="rounded, filled"];
+subgraph cluster_system_dvfs_handler {
+color="#000000";
+fillcolor="#bab6ae";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="dvfs_handler \n: DVFSHandler";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="domains&#61;&#10;\enable&#61;false&#10;\eventq_index&#61;0&#10;\sys_clk_domain&#61;system.clk_domain&#10;\transition_latency&#61;100000000";
+}
+
+subgraph cluster_system_cpu00 {
+color="#000000";
+fillcolor="#bbc6d9";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="cpu00 \n: AtomicSimpleCPU";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="branchPred&#61;Null&#10;\checker&#61;Null&#10;\clk_domain&#61;system.cpu_clk_domain&#10;\cpu_id&#61;0&#10;\decoder&#61;system.cpu00.decoder&#10;\do_checkpoint_insts&#61;true&#10;\do_statistics_insts&#61;true&#10;\eventq_index&#61;0&#10;\function_trace&#61;false&#10;\function_trace_start&#61;0&#10;\interrupts&#61;system.cpu00.interrupts&#10;\isa&#61;system.cpu00.isa&#10;\max_insts_all_threads&#61;0&#10;\max_insts_any_thread&#61;0&#10;\mmu&#61;system.cpu00.mmu&#10;\numThreads&#61;1&#10;\power_gating_on_idle&#61;false&#10;\power_model&#61;&#10;\power_state&#61;system.cpu00.power_state&#10;\progress_interval&#61;0&#10;\pwr_gating_latency&#61;300&#10;\simpoint_start_insts&#61;&#10;\simulate_data_stalls&#61;false&#10;\simulate_inst_stalls&#61;false&#10;\socket_id&#61;0&#10;\switched_out&#61;false&#10;\syscallRetryLatency&#61;10000&#10;\system&#61;system&#10;\tracer&#61;system.cpu00.tracer&#10;\width&#61;1&#10;\workload&#61;system.cpu00.workload";
+system_cpu00_icache_port [color="#000000", fillcolor="#959ead", fontcolor="#000000", fontname=Arial, fontsize=14, label=icache_port, shape=Mrecord, style="rounded, filled"];
+system_cpu00_dcache_port [color="#000000", fillcolor="#959ead", fontcolor="#000000", fontname=Arial, fontsize=14, label=dcache_port, shape=Mrecord, style="rounded, filled"];
+subgraph cluster_system_cpu00_mmu {
+color="#000000";
+fillcolor="#bab6ae";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="mmu \n: X86MMU";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="dtb&#61;system.cpu00.mmu.dtb&#10;\eventq_index&#61;0&#10;\itb&#61;system.cpu00.mmu.itb";
+subgraph cluster_system_cpu00_mmu_itb {
+color="#000000";
+fillcolor="#9f9c95";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="itb \n: X86TLB";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="entry_type&#61;instruction&#10;\eventq_index&#61;0&#10;\next_level&#61;Null&#10;\size&#61;64&#10;\system&#61;system&#10;\walker&#61;system.cpu00.mmu.itb.walker";
+subgraph cluster_system_cpu00_mmu_itb_walker {
+color="#000000";
+fillcolor="#84827c";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="walker \n: X86PagetableWalker";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="clk_domain&#61;system.cpu_clk_domain&#10;\eventq_index&#61;0&#10;\num_squash_per_cycle&#61;4&#10;\power_model&#61;&#10;\power_state&#61;system.cpu00.mmu.itb.walker.power_state&#10;\system&#61;system";
+system_cpu00_mmu_itb_walker_port [color="#000000", fillcolor="#6a6863", fontcolor="#000000", fontname=Arial, fontsize=14, label=port, shape=Mrecord, style="rounded, filled"];
+subgraph cluster_system_cpu00_mmu_itb_walker_power_state {
+color="#000000";
+fillcolor="#6a6863";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="power_state \n: PowerState";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="clk_gate_bins&#61;20&#10;\clk_gate_max&#61;1000000000000&#10;\clk_gate_min&#61;1000&#10;\default_state&#61;UNDEFINED&#10;\eventq_index&#61;0&#10;\leaders&#61;&#10;\possible_states&#61;";
+}
+
+}
+
+}
+
+subgraph cluster_system_cpu00_mmu_dtb {
+color="#000000";
+fillcolor="#9f9c95";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="dtb \n: X86TLB";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="entry_type&#61;data&#10;\eventq_index&#61;0&#10;\next_level&#61;Null&#10;\size&#61;64&#10;\system&#61;system&#10;\walker&#61;system.cpu00.mmu.dtb.walker";
+subgraph cluster_system_cpu00_mmu_dtb_walker {
+color="#000000";
+fillcolor="#84827c";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="walker \n: X86PagetableWalker";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="clk_domain&#61;system.cpu_clk_domain&#10;\eventq_index&#61;0&#10;\num_squash_per_cycle&#61;4&#10;\power_model&#61;&#10;\power_state&#61;system.cpu00.mmu.dtb.walker.power_state&#10;\system&#61;system";
+system_cpu00_mmu_dtb_walker_port [color="#000000", fillcolor="#6a6863", fontcolor="#000000", fontname=Arial, fontsize=14, label=port, shape=Mrecord, style="rounded, filled"];
+subgraph cluster_system_cpu00_mmu_dtb_walker_power_state {
+color="#000000";
+fillcolor="#6a6863";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="power_state \n: PowerState";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="clk_gate_bins&#61;20&#10;\clk_gate_max&#61;1000000000000&#10;\clk_gate_min&#61;1000&#10;\default_state&#61;UNDEFINED&#10;\eventq_index&#61;0&#10;\leaders&#61;&#10;\possible_states&#61;";
+}
+
+}
+
+}
+
+}
+
+subgraph cluster_system_cpu00_tracer {
+color="#000000";
+fillcolor="#bab6ae";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="tracer \n: ExeTracer";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="eventq_index&#61;0";
+}
+
+subgraph cluster_system_cpu00_power_state {
+color="#000000";
+fillcolor="#bab6ae";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="power_state \n: PowerState";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="clk_gate_bins&#61;20&#10;\clk_gate_max&#61;1000000000000&#10;\clk_gate_min&#61;1000&#10;\default_state&#61;UNDEFINED&#10;\eventq_index&#61;0&#10;\leaders&#61;&#10;\possible_states&#61;ON CLK_GATED OFF";
+}
+
+subgraph cluster_system_cpu00_workload {
+color="#000000";
+fillcolor="#bab6ae";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="workload \n: Process";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="cmd&#61;./tests/test-progs/test-suite/SingleSource/Benchmarks/Stanford/IntMM&#10;\cwd&#61;/gem5&#10;\drivers&#61;&#10;\egid&#61;100&#10;\env&#61;&#10;\errout&#61;cerr&#10;\euid&#61;100&#10;\eventq_index&#61;0&#10;\executable&#61;./tests/test-progs/test-suite/SingleSource/Benchmarks/Stanford/IntMM&#10;\gid&#61;1001&#10;\input&#61;cin&#10;\kvmInSE&#61;false&#10;\maxStackSize&#61;67108864&#10;\output&#61;cout&#10;\pgid&#61;100&#10;\pid&#61;100&#10;\ppid&#61;0&#10;\release&#61;5.1.0&#10;\simpoint&#61;0&#10;\system&#61;system&#10;\uid&#61;100&#10;\useArchPT&#61;false";
+}
+
+subgraph cluster_system_cpu00_isa {
+color="#000000";
+fillcolor="#bab6ae";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="isa \n: X86ISA";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="eventq_index&#61;0&#10;\vendor_string&#61;M5 Simulator";
+}
+
+subgraph cluster_system_cpu00_decoder {
+color="#000000";
+fillcolor="#bab6ae";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="decoder \n: X86Decoder";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="eventq_index&#61;0&#10;\isa&#61;system.cpu00.isa";
+}
+
+subgraph cluster_system_cpu00_interrupts {
+color="#000000";
+fillcolor="#bab6ae";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="interrupts \n: X86LocalApic";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="clk_domain&#61;system.cpu00.interrupts.clk_domain&#10;\eventq_index&#61;0&#10;\int_latency&#61;1000&#10;\pio_latency&#61;100000&#10;\system&#61;system";
+system_cpu00_interrupts_int_requestor [color="#000000", fillcolor="#94918b", fontcolor="#000000", fontname=Arial, fontsize=14, label=int_requestor, shape=Mrecord, style="rounded, filled"];
+system_cpu00_interrupts_int_responder [color="#000000", fillcolor="#94918b", fontcolor="#000000", fontname=Arial, fontsize=14, label=int_responder, shape=Mrecord, style="rounded, filled"];
+system_cpu00_interrupts_pio [color="#000000", fillcolor="#94918b", fontcolor="#000000", fontname=Arial, fontsize=14, label=pio, shape=Mrecord, style="rounded, filled"];
+subgraph cluster_system_cpu00_interrupts_clk_domain {
+color="#000000";
+fillcolor="#9f9c95";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="clk_domain \n: DerivedClockDomain";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="clk_divider&#61;16&#10;\clk_domain&#61;system.cpu_clk_domain&#10;\eventq_index&#61;0";
+}
+
+}
+
+}
+
+subgraph cluster_system_cpu01 {
+color="#000000";
+fillcolor="#bbc6d9";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="cpu01 \n: AtomicSimpleCPU";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="branchPred&#61;Null&#10;\checker&#61;Null&#10;\clk_domain&#61;system.cpu_clk_domain&#10;\cpu_id&#61;1&#10;\decoder&#61;system.cpu01.decoder&#10;\do_checkpoint_insts&#61;true&#10;\do_statistics_insts&#61;true&#10;\eventq_index&#61;0&#10;\function_trace&#61;false&#10;\function_trace_start&#61;0&#10;\interrupts&#61;system.cpu01.interrupts&#10;\isa&#61;system.cpu01.isa&#10;\max_insts_all_threads&#61;0&#10;\max_insts_any_thread&#61;0&#10;\mmu&#61;system.cpu01.mmu&#10;\numThreads&#61;1&#10;\power_gating_on_idle&#61;false&#10;\power_model&#61;&#10;\power_state&#61;system.cpu01.power_state&#10;\progress_interval&#61;0&#10;\pwr_gating_latency&#61;300&#10;\simpoint_start_insts&#61;&#10;\simulate_data_stalls&#61;false&#10;\simulate_inst_stalls&#61;false&#10;\socket_id&#61;0&#10;\switched_out&#61;false&#10;\syscallRetryLatency&#61;10000&#10;\system&#61;system&#10;\tracer&#61;system.cpu01.tracer&#10;\width&#61;1&#10;\workload&#61;system.cpu00.workload";
+system_cpu01_icache_port [color="#000000", fillcolor="#959ead", fontcolor="#000000", fontname=Arial, fontsize=14, label=icache_port, shape=Mrecord, style="rounded, filled"];
+system_cpu01_dcache_port [color="#000000", fillcolor="#959ead", fontcolor="#000000", fontname=Arial, fontsize=14, label=dcache_port, shape=Mrecord, style="rounded, filled"];
+subgraph cluster_system_cpu01_mmu {
+color="#000000";
+fillcolor="#bab6ae";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="mmu \n: X86MMU";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="dtb&#61;system.cpu01.mmu.dtb&#10;\eventq_index&#61;0&#10;\itb&#61;system.cpu01.mmu.itb";
+subgraph cluster_system_cpu01_mmu_itb {
+color="#000000";
+fillcolor="#9f9c95";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="itb \n: X86TLB";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="entry_type&#61;instruction&#10;\eventq_index&#61;0&#10;\next_level&#61;Null&#10;\size&#61;64&#10;\system&#61;system&#10;\walker&#61;system.cpu01.mmu.itb.walker";
+subgraph cluster_system_cpu01_mmu_itb_walker {
+color="#000000";
+fillcolor="#84827c";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="walker \n: X86PagetableWalker";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="clk_domain&#61;system.cpu_clk_domain&#10;\eventq_index&#61;0&#10;\num_squash_per_cycle&#61;4&#10;\power_model&#61;&#10;\power_state&#61;system.cpu01.mmu.itb.walker.power_state&#10;\system&#61;system";
+system_cpu01_mmu_itb_walker_port [color="#000000", fillcolor="#6a6863", fontcolor="#000000", fontname=Arial, fontsize=14, label=port, shape=Mrecord, style="rounded, filled"];
+subgraph cluster_system_cpu01_mmu_itb_walker_power_state {
+color="#000000";
+fillcolor="#6a6863";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="power_state \n: PowerState";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="clk_gate_bins&#61;20&#10;\clk_gate_max&#61;1000000000000&#10;\clk_gate_min&#61;1000&#10;\default_state&#61;UNDEFINED&#10;\eventq_index&#61;0&#10;\leaders&#61;&#10;\possible_states&#61;";
+}
+
+}
+
+}
+
+subgraph cluster_system_cpu01_mmu_dtb {
+color="#000000";
+fillcolor="#9f9c95";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="dtb \n: X86TLB";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="entry_type&#61;data&#10;\eventq_index&#61;0&#10;\next_level&#61;Null&#10;\size&#61;64&#10;\system&#61;system&#10;\walker&#61;system.cpu01.mmu.dtb.walker";
+subgraph cluster_system_cpu01_mmu_dtb_walker {
+color="#000000";
+fillcolor="#84827c";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="walker \n: X86PagetableWalker";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="clk_domain&#61;system.cpu_clk_domain&#10;\eventq_index&#61;0&#10;\num_squash_per_cycle&#61;4&#10;\power_model&#61;&#10;\power_state&#61;system.cpu01.mmu.dtb.walker.power_state&#10;\system&#61;system";
+system_cpu01_mmu_dtb_walker_port [color="#000000", fillcolor="#6a6863", fontcolor="#000000", fontname=Arial, fontsize=14, label=port, shape=Mrecord, style="rounded, filled"];
+subgraph cluster_system_cpu01_mmu_dtb_walker_power_state {
+color="#000000";
+fillcolor="#6a6863";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="power_state \n: PowerState";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="clk_gate_bins&#61;20&#10;\clk_gate_max&#61;1000000000000&#10;\clk_gate_min&#61;1000&#10;\default_state&#61;UNDEFINED&#10;\eventq_index&#61;0&#10;\leaders&#61;&#10;\possible_states&#61;";
+}
+
+}
+
+}
+
+}
+
+subgraph cluster_system_cpu01_tracer {
+color="#000000";
+fillcolor="#bab6ae";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="tracer \n: ExeTracer";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="eventq_index&#61;0";
+}
+
+subgraph cluster_system_cpu01_power_state {
+color="#000000";
+fillcolor="#bab6ae";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="power_state \n: PowerState";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="clk_gate_bins&#61;20&#10;\clk_gate_max&#61;1000000000000&#10;\clk_gate_min&#61;1000&#10;\default_state&#61;UNDEFINED&#10;\eventq_index&#61;0&#10;\leaders&#61;&#10;\possible_states&#61;ON CLK_GATED OFF";
+}
+
+subgraph cluster_system_cpu01_isa {
+color="#000000";
+fillcolor="#bab6ae";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="isa \n: X86ISA";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="eventq_index&#61;0&#10;\vendor_string&#61;M5 Simulator";
+}
+
+subgraph cluster_system_cpu01_decoder {
+color="#000000";
+fillcolor="#bab6ae";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="decoder \n: X86Decoder";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="eventq_index&#61;0&#10;\isa&#61;system.cpu01.isa";
+}
+
+subgraph cluster_system_cpu01_interrupts {
+color="#000000";
+fillcolor="#bab6ae";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="interrupts \n: X86LocalApic";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="clk_domain&#61;system.cpu01.interrupts.clk_domain&#10;\eventq_index&#61;0&#10;\int_latency&#61;1000&#10;\pio_latency&#61;100000&#10;\system&#61;system";
+system_cpu01_interrupts_int_requestor [color="#000000", fillcolor="#94918b", fontcolor="#000000", fontname=Arial, fontsize=14, label=int_requestor, shape=Mrecord, style="rounded, filled"];
+system_cpu01_interrupts_int_responder [color="#000000", fillcolor="#94918b", fontcolor="#000000", fontname=Arial, fontsize=14, label=int_responder, shape=Mrecord, style="rounded, filled"];
+system_cpu01_interrupts_pio [color="#000000", fillcolor="#94918b", fontcolor="#000000", fontname=Arial, fontsize=14, label=pio, shape=Mrecord, style="rounded, filled"];
+subgraph cluster_system_cpu01_interrupts_clk_domain {
+color="#000000";
+fillcolor="#9f9c95";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="clk_domain \n: DerivedClockDomain";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="clk_divider&#61;16&#10;\clk_domain&#61;system.cpu_clk_domain&#10;\eventq_index&#61;0";
+}
+
+}
+
+}
+
+subgraph cluster_system_cpu02 {
+color="#000000";
+fillcolor="#bbc6d9";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="cpu02 \n: AtomicSimpleCPU";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="branchPred&#61;Null&#10;\checker&#61;Null&#10;\clk_domain&#61;system.cpu_clk_domain&#10;\cpu_id&#61;2&#10;\decoder&#61;system.cpu02.decoder&#10;\do_checkpoint_insts&#61;true&#10;\do_statistics_insts&#61;true&#10;\eventq_index&#61;0&#10;\function_trace&#61;false&#10;\function_trace_start&#61;0&#10;\interrupts&#61;system.cpu02.interrupts&#10;\isa&#61;system.cpu02.isa&#10;\max_insts_all_threads&#61;0&#10;\max_insts_any_thread&#61;0&#10;\mmu&#61;system.cpu02.mmu&#10;\numThreads&#61;1&#10;\power_gating_on_idle&#61;false&#10;\power_model&#61;&#10;\power_state&#61;system.cpu02.power_state&#10;\progress_interval&#61;0&#10;\pwr_gating_latency&#61;300&#10;\simpoint_start_insts&#61;&#10;\simulate_data_stalls&#61;false&#10;\simulate_inst_stalls&#61;false&#10;\socket_id&#61;0&#10;\switched_out&#61;false&#10;\syscallRetryLatency&#61;10000&#10;\system&#61;system&#10;\tracer&#61;system.cpu02.tracer&#10;\width&#61;1&#10;\workload&#61;system.cpu00.workload";
+system_cpu02_icache_port [color="#000000", fillcolor="#959ead", fontcolor="#000000", fontname=Arial, fontsize=14, label=icache_port, shape=Mrecord, style="rounded, filled"];
+system_cpu02_dcache_port [color="#000000", fillcolor="#959ead", fontcolor="#000000", fontname=Arial, fontsize=14, label=dcache_port, shape=Mrecord, style="rounded, filled"];
+subgraph cluster_system_cpu02_mmu {
+color="#000000";
+fillcolor="#bab6ae";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="mmu \n: X86MMU";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="dtb&#61;system.cpu02.mmu.dtb&#10;\eventq_index&#61;0&#10;\itb&#61;system.cpu02.mmu.itb";
+subgraph cluster_system_cpu02_mmu_itb {
+color="#000000";
+fillcolor="#9f9c95";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="itb \n: X86TLB";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="entry_type&#61;instruction&#10;\eventq_index&#61;0&#10;\next_level&#61;Null&#10;\size&#61;64&#10;\system&#61;system&#10;\walker&#61;system.cpu02.mmu.itb.walker";
+subgraph cluster_system_cpu02_mmu_itb_walker {
+color="#000000";
+fillcolor="#84827c";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="walker \n: X86PagetableWalker";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="clk_domain&#61;system.cpu_clk_domain&#10;\eventq_index&#61;0&#10;\num_squash_per_cycle&#61;4&#10;\power_model&#61;&#10;\power_state&#61;system.cpu02.mmu.itb.walker.power_state&#10;\system&#61;system";
+system_cpu02_mmu_itb_walker_port [color="#000000", fillcolor="#6a6863", fontcolor="#000000", fontname=Arial, fontsize=14, label=port, shape=Mrecord, style="rounded, filled"];
+subgraph cluster_system_cpu02_mmu_itb_walker_power_state {
+color="#000000";
+fillcolor="#6a6863";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="power_state \n: PowerState";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="clk_gate_bins&#61;20&#10;\clk_gate_max&#61;1000000000000&#10;\clk_gate_min&#61;1000&#10;\default_state&#61;UNDEFINED&#10;\eventq_index&#61;0&#10;\leaders&#61;&#10;\possible_states&#61;";
+}
+
+}
+
+}
+
+subgraph cluster_system_cpu02_mmu_dtb {
+color="#000000";
+fillcolor="#9f9c95";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="dtb \n: X86TLB";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="entry_type&#61;data&#10;\eventq_index&#61;0&#10;\next_level&#61;Null&#10;\size&#61;64&#10;\system&#61;system&#10;\walker&#61;system.cpu02.mmu.dtb.walker";
+subgraph cluster_system_cpu02_mmu_dtb_walker {
+color="#000000";
+fillcolor="#84827c";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="walker \n: X86PagetableWalker";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="clk_domain&#61;system.cpu_clk_domain&#10;\eventq_index&#61;0&#10;\num_squash_per_cycle&#61;4&#10;\power_model&#61;&#10;\power_state&#61;system.cpu02.mmu.dtb.walker.power_state&#10;\system&#61;system";
+system_cpu02_mmu_dtb_walker_port [color="#000000", fillcolor="#6a6863", fontcolor="#000000", fontname=Arial, fontsize=14, label=port, shape=Mrecord, style="rounded, filled"];
+subgraph cluster_system_cpu02_mmu_dtb_walker_power_state {
+color="#000000";
+fillcolor="#6a6863";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="power_state \n: PowerState";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="clk_gate_bins&#61;20&#10;\clk_gate_max&#61;1000000000000&#10;\clk_gate_min&#61;1000&#10;\default_state&#61;UNDEFINED&#10;\eventq_index&#61;0&#10;\leaders&#61;&#10;\possible_states&#61;";
+}
+
+}
+
+}
+
+}
+
+subgraph cluster_system_cpu02_tracer {
+color="#000000";
+fillcolor="#bab6ae";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="tracer \n: ExeTracer";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="eventq_index&#61;0";
+}
+
+subgraph cluster_system_cpu02_power_state {
+color="#000000";
+fillcolor="#bab6ae";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="power_state \n: PowerState";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="clk_gate_bins&#61;20&#10;\clk_gate_max&#61;1000000000000&#10;\clk_gate_min&#61;1000&#10;\default_state&#61;UNDEFINED&#10;\eventq_index&#61;0&#10;\leaders&#61;&#10;\possible_states&#61;ON CLK_GATED OFF";
+}
+
+subgraph cluster_system_cpu02_isa {
+color="#000000";
+fillcolor="#bab6ae";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="isa \n: X86ISA";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="eventq_index&#61;0&#10;\vendor_string&#61;M5 Simulator";
+}
+
+subgraph cluster_system_cpu02_decoder {
+color="#000000";
+fillcolor="#bab6ae";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="decoder \n: X86Decoder";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="eventq_index&#61;0&#10;\isa&#61;system.cpu02.isa";
+}
+
+subgraph cluster_system_cpu02_interrupts {
+color="#000000";
+fillcolor="#bab6ae";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="interrupts \n: X86LocalApic";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="clk_domain&#61;system.cpu02.interrupts.clk_domain&#10;\eventq_index&#61;0&#10;\int_latency&#61;1000&#10;\pio_latency&#61;100000&#10;\system&#61;system";
+system_cpu02_interrupts_int_requestor [color="#000000", fillcolor="#94918b", fontcolor="#000000", fontname=Arial, fontsize=14, label=int_requestor, shape=Mrecord, style="rounded, filled"];
+system_cpu02_interrupts_int_responder [color="#000000", fillcolor="#94918b", fontcolor="#000000", fontname=Arial, fontsize=14, label=int_responder, shape=Mrecord, style="rounded, filled"];
+system_cpu02_interrupts_pio [color="#000000", fillcolor="#94918b", fontcolor="#000000", fontname=Arial, fontsize=14, label=pio, shape=Mrecord, style="rounded, filled"];
+subgraph cluster_system_cpu02_interrupts_clk_domain {
+color="#000000";
+fillcolor="#9f9c95";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="clk_domain \n: DerivedClockDomain";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="clk_divider&#61;16&#10;\clk_domain&#61;system.cpu_clk_domain&#10;\eventq_index&#61;0";
+}
+
+}
+
+}
+
+subgraph cluster_system_cpu03 {
+color="#000000";
+fillcolor="#bbc6d9";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="cpu03 \n: AtomicSimpleCPU";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="branchPred&#61;Null&#10;\checker&#61;Null&#10;\clk_domain&#61;system.cpu_clk_domain&#10;\cpu_id&#61;3&#10;\decoder&#61;system.cpu03.decoder&#10;\do_checkpoint_insts&#61;true&#10;\do_statistics_insts&#61;true&#10;\eventq_index&#61;0&#10;\function_trace&#61;false&#10;\function_trace_start&#61;0&#10;\interrupts&#61;system.cpu03.interrupts&#10;\isa&#61;system.cpu03.isa&#10;\max_insts_all_threads&#61;0&#10;\max_insts_any_thread&#61;0&#10;\mmu&#61;system.cpu03.mmu&#10;\numThreads&#61;1&#10;\power_gating_on_idle&#61;false&#10;\power_model&#61;&#10;\power_state&#61;system.cpu03.power_state&#10;\progress_interval&#61;0&#10;\pwr_gating_latency&#61;300&#10;\simpoint_start_insts&#61;&#10;\simulate_data_stalls&#61;false&#10;\simulate_inst_stalls&#61;false&#10;\socket_id&#61;0&#10;\switched_out&#61;false&#10;\syscallRetryLatency&#61;10000&#10;\system&#61;system&#10;\tracer&#61;system.cpu03.tracer&#10;\width&#61;1&#10;\workload&#61;system.cpu00.workload";
+system_cpu03_icache_port [color="#000000", fillcolor="#959ead", fontcolor="#000000", fontname=Arial, fontsize=14, label=icache_port, shape=Mrecord, style="rounded, filled"];
+system_cpu03_dcache_port [color="#000000", fillcolor="#959ead", fontcolor="#000000", fontname=Arial, fontsize=14, label=dcache_port, shape=Mrecord, style="rounded, filled"];
+subgraph cluster_system_cpu03_mmu {
+color="#000000";
+fillcolor="#bab6ae";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="mmu \n: X86MMU";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="dtb&#61;system.cpu03.mmu.dtb&#10;\eventq_index&#61;0&#10;\itb&#61;system.cpu03.mmu.itb";
+subgraph cluster_system_cpu03_mmu_itb {
+color="#000000";
+fillcolor="#9f9c95";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="itb \n: X86TLB";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="entry_type&#61;instruction&#10;\eventq_index&#61;0&#10;\next_level&#61;Null&#10;\size&#61;64&#10;\system&#61;system&#10;\walker&#61;system.cpu03.mmu.itb.walker";
+subgraph cluster_system_cpu03_mmu_itb_walker {
+color="#000000";
+fillcolor="#84827c";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="walker \n: X86PagetableWalker";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="clk_domain&#61;system.cpu_clk_domain&#10;\eventq_index&#61;0&#10;\num_squash_per_cycle&#61;4&#10;\power_model&#61;&#10;\power_state&#61;system.cpu03.mmu.itb.walker.power_state&#10;\system&#61;system";
+system_cpu03_mmu_itb_walker_port [color="#000000", fillcolor="#6a6863", fontcolor="#000000", fontname=Arial, fontsize=14, label=port, shape=Mrecord, style="rounded, filled"];
+subgraph cluster_system_cpu03_mmu_itb_walker_power_state {
+color="#000000";
+fillcolor="#6a6863";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="power_state \n: PowerState";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="clk_gate_bins&#61;20&#10;\clk_gate_max&#61;1000000000000&#10;\clk_gate_min&#61;1000&#10;\default_state&#61;UNDEFINED&#10;\eventq_index&#61;0&#10;\leaders&#61;&#10;\possible_states&#61;";
+}
+
+}
+
+}
+
+subgraph cluster_system_cpu03_mmu_dtb {
+color="#000000";
+fillcolor="#9f9c95";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="dtb \n: X86TLB";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="entry_type&#61;data&#10;\eventq_index&#61;0&#10;\next_level&#61;Null&#10;\size&#61;64&#10;\system&#61;system&#10;\walker&#61;system.cpu03.mmu.dtb.walker";
+subgraph cluster_system_cpu03_mmu_dtb_walker {
+color="#000000";
+fillcolor="#84827c";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="walker \n: X86PagetableWalker";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="clk_domain&#61;system.cpu_clk_domain&#10;\eventq_index&#61;0&#10;\num_squash_per_cycle&#61;4&#10;\power_model&#61;&#10;\power_state&#61;system.cpu03.mmu.dtb.walker.power_state&#10;\system&#61;system";
+system_cpu03_mmu_dtb_walker_port [color="#000000", fillcolor="#6a6863", fontcolor="#000000", fontname=Arial, fontsize=14, label=port, shape=Mrecord, style="rounded, filled"];
+subgraph cluster_system_cpu03_mmu_dtb_walker_power_state {
+color="#000000";
+fillcolor="#6a6863";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="power_state \n: PowerState";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="clk_gate_bins&#61;20&#10;\clk_gate_max&#61;1000000000000&#10;\clk_gate_min&#61;1000&#10;\default_state&#61;UNDEFINED&#10;\eventq_index&#61;0&#10;\leaders&#61;&#10;\possible_states&#61;";
+}
+
+}
+
+}
+
+}
+
+subgraph cluster_system_cpu03_tracer {
+color="#000000";
+fillcolor="#bab6ae";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="tracer \n: ExeTracer";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="eventq_index&#61;0";
+}
+
+subgraph cluster_system_cpu03_power_state {
+color="#000000";
+fillcolor="#bab6ae";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="power_state \n: PowerState";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="clk_gate_bins&#61;20&#10;\clk_gate_max&#61;1000000000000&#10;\clk_gate_min&#61;1000&#10;\default_state&#61;UNDEFINED&#10;\eventq_index&#61;0&#10;\leaders&#61;&#10;\possible_states&#61;ON CLK_GATED OFF";
+}
+
+subgraph cluster_system_cpu03_isa {
+color="#000000";
+fillcolor="#bab6ae";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="isa \n: X86ISA";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="eventq_index&#61;0&#10;\vendor_string&#61;M5 Simulator";
+}
+
+subgraph cluster_system_cpu03_decoder {
+color="#000000";
+fillcolor="#bab6ae";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="decoder \n: X86Decoder";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="eventq_index&#61;0&#10;\isa&#61;system.cpu03.isa";
+}
+
+subgraph cluster_system_cpu03_interrupts {
+color="#000000";
+fillcolor="#bab6ae";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="interrupts \n: X86LocalApic";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="clk_domain&#61;system.cpu03.interrupts.clk_domain&#10;\eventq_index&#61;0&#10;\int_latency&#61;1000&#10;\pio_latency&#61;100000&#10;\system&#61;system";
+system_cpu03_interrupts_int_requestor [color="#000000", fillcolor="#94918b", fontcolor="#000000", fontname=Arial, fontsize=14, label=int_requestor, shape=Mrecord, style="rounded, filled"];
+system_cpu03_interrupts_int_responder [color="#000000", fillcolor="#94918b", fontcolor="#000000", fontname=Arial, fontsize=14, label=int_responder, shape=Mrecord, style="rounded, filled"];
+system_cpu03_interrupts_pio [color="#000000", fillcolor="#94918b", fontcolor="#000000", fontname=Arial, fontsize=14, label=pio, shape=Mrecord, style="rounded, filled"];
+subgraph cluster_system_cpu03_interrupts_clk_domain {
+color="#000000";
+fillcolor="#9f9c95";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="clk_domain \n: DerivedClockDomain";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="clk_divider&#61;16&#10;\clk_domain&#61;system.cpu_clk_domain&#10;\eventq_index&#61;0";
+}
+
+}
+
+}
+
+subgraph cluster_system_cpu04 {
+color="#000000";
+fillcolor="#bbc6d9";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="cpu04 \n: AtomicSimpleCPU";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="branchPred&#61;Null&#10;\checker&#61;Null&#10;\clk_domain&#61;system.cpu_clk_domain&#10;\cpu_id&#61;4&#10;\decoder&#61;system.cpu04.decoder&#10;\do_checkpoint_insts&#61;true&#10;\do_statistics_insts&#61;true&#10;\eventq_index&#61;0&#10;\function_trace&#61;false&#10;\function_trace_start&#61;0&#10;\interrupts&#61;system.cpu04.interrupts&#10;\isa&#61;system.cpu04.isa&#10;\max_insts_all_threads&#61;0&#10;\max_insts_any_thread&#61;0&#10;\mmu&#61;system.cpu04.mmu&#10;\numThreads&#61;1&#10;\power_gating_on_idle&#61;false&#10;\power_model&#61;&#10;\power_state&#61;system.cpu04.power_state&#10;\progress_interval&#61;0&#10;\pwr_gating_latency&#61;300&#10;\simpoint_start_insts&#61;&#10;\simulate_data_stalls&#61;false&#10;\simulate_inst_stalls&#61;false&#10;\socket_id&#61;0&#10;\switched_out&#61;false&#10;\syscallRetryLatency&#61;10000&#10;\system&#61;system&#10;\tracer&#61;system.cpu04.tracer&#10;\width&#61;1&#10;\workload&#61;system.cpu00.workload";
+system_cpu04_icache_port [color="#000000", fillcolor="#959ead", fontcolor="#000000", fontname=Arial, fontsize=14, label=icache_port, shape=Mrecord, style="rounded, filled"];
+system_cpu04_dcache_port [color="#000000", fillcolor="#959ead", fontcolor="#000000", fontname=Arial, fontsize=14, label=dcache_port, shape=Mrecord, style="rounded, filled"];
+subgraph cluster_system_cpu04_mmu {
+color="#000000";
+fillcolor="#bab6ae";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="mmu \n: X86MMU";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="dtb&#61;system.cpu04.mmu.dtb&#10;\eventq_index&#61;0&#10;\itb&#61;system.cpu04.mmu.itb";
+subgraph cluster_system_cpu04_mmu_itb {
+color="#000000";
+fillcolor="#9f9c95";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="itb \n: X86TLB";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="entry_type&#61;instruction&#10;\eventq_index&#61;0&#10;\next_level&#61;Null&#10;\size&#61;64&#10;\system&#61;system&#10;\walker&#61;system.cpu04.mmu.itb.walker";
+subgraph cluster_system_cpu04_mmu_itb_walker {
+color="#000000";
+fillcolor="#84827c";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="walker \n: X86PagetableWalker";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="clk_domain&#61;system.cpu_clk_domain&#10;\eventq_index&#61;0&#10;\num_squash_per_cycle&#61;4&#10;\power_model&#61;&#10;\power_state&#61;system.cpu04.mmu.itb.walker.power_state&#10;\system&#61;system";
+system_cpu04_mmu_itb_walker_port [color="#000000", fillcolor="#6a6863", fontcolor="#000000", fontname=Arial, fontsize=14, label=port, shape=Mrecord, style="rounded, filled"];
+subgraph cluster_system_cpu04_mmu_itb_walker_power_state {
+color="#000000";
+fillcolor="#6a6863";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="power_state \n: PowerState";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="clk_gate_bins&#61;20&#10;\clk_gate_max&#61;1000000000000&#10;\clk_gate_min&#61;1000&#10;\default_state&#61;UNDEFINED&#10;\eventq_index&#61;0&#10;\leaders&#61;&#10;\possible_states&#61;";
+}
+
+}
+
+}
+
+subgraph cluster_system_cpu04_mmu_dtb {
+color="#000000";
+fillcolor="#9f9c95";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="dtb \n: X86TLB";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="entry_type&#61;data&#10;\eventq_index&#61;0&#10;\next_level&#61;Null&#10;\size&#61;64&#10;\system&#61;system&#10;\walker&#61;system.cpu04.mmu.dtb.walker";
+subgraph cluster_system_cpu04_mmu_dtb_walker {
+color="#000000";
+fillcolor="#84827c";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="walker \n: X86PagetableWalker";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="clk_domain&#61;system.cpu_clk_domain&#10;\eventq_index&#61;0&#10;\num_squash_per_cycle&#61;4&#10;\power_model&#61;&#10;\power_state&#61;system.cpu04.mmu.dtb.walker.power_state&#10;\system&#61;system";
+system_cpu04_mmu_dtb_walker_port [color="#000000", fillcolor="#6a6863", fontcolor="#000000", fontname=Arial, fontsize=14, label=port, shape=Mrecord, style="rounded, filled"];
+subgraph cluster_system_cpu04_mmu_dtb_walker_power_state {
+color="#000000";
+fillcolor="#6a6863";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="power_state \n: PowerState";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="clk_gate_bins&#61;20&#10;\clk_gate_max&#61;1000000000000&#10;\clk_gate_min&#61;1000&#10;\default_state&#61;UNDEFINED&#10;\eventq_index&#61;0&#10;\leaders&#61;&#10;\possible_states&#61;";
+}
+
+}
+
+}
+
+}
+
+subgraph cluster_system_cpu04_tracer {
+color="#000000";
+fillcolor="#bab6ae";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="tracer \n: ExeTracer";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="eventq_index&#61;0";
+}
+
+subgraph cluster_system_cpu04_power_state {
+color="#000000";
+fillcolor="#bab6ae";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="power_state \n: PowerState";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="clk_gate_bins&#61;20&#10;\clk_gate_max&#61;1000000000000&#10;\clk_gate_min&#61;1000&#10;\default_state&#61;UNDEFINED&#10;\eventq_index&#61;0&#10;\leaders&#61;&#10;\possible_states&#61;ON CLK_GATED OFF";
+}
+
+subgraph cluster_system_cpu04_isa {
+color="#000000";
+fillcolor="#bab6ae";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="isa \n: X86ISA";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="eventq_index&#61;0&#10;\vendor_string&#61;M5 Simulator";
+}
+
+subgraph cluster_system_cpu04_decoder {
+color="#000000";
+fillcolor="#bab6ae";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="decoder \n: X86Decoder";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="eventq_index&#61;0&#10;\isa&#61;system.cpu04.isa";
+}
+
+subgraph cluster_system_cpu04_interrupts {
+color="#000000";
+fillcolor="#bab6ae";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="interrupts \n: X86LocalApic";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="clk_domain&#61;system.cpu04.interrupts.clk_domain&#10;\eventq_index&#61;0&#10;\int_latency&#61;1000&#10;\pio_latency&#61;100000&#10;\system&#61;system";
+system_cpu04_interrupts_int_requestor [color="#000000", fillcolor="#94918b", fontcolor="#000000", fontname=Arial, fontsize=14, label=int_requestor, shape=Mrecord, style="rounded, filled"];
+system_cpu04_interrupts_int_responder [color="#000000", fillcolor="#94918b", fontcolor="#000000", fontname=Arial, fontsize=14, label=int_responder, shape=Mrecord, style="rounded, filled"];
+system_cpu04_interrupts_pio [color="#000000", fillcolor="#94918b", fontcolor="#000000", fontname=Arial, fontsize=14, label=pio, shape=Mrecord, style="rounded, filled"];
+subgraph cluster_system_cpu04_interrupts_clk_domain {
+color="#000000";
+fillcolor="#9f9c95";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="clk_domain \n: DerivedClockDomain";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="clk_divider&#61;16&#10;\clk_domain&#61;system.cpu_clk_domain&#10;\eventq_index&#61;0";
+}
+
+}
+
+}
+
+subgraph cluster_system_cpu05 {
+color="#000000";
+fillcolor="#bbc6d9";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="cpu05 \n: AtomicSimpleCPU";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="branchPred&#61;Null&#10;\checker&#61;Null&#10;\clk_domain&#61;system.cpu_clk_domain&#10;\cpu_id&#61;5&#10;\decoder&#61;system.cpu05.decoder&#10;\do_checkpoint_insts&#61;true&#10;\do_statistics_insts&#61;true&#10;\eventq_index&#61;0&#10;\function_trace&#61;false&#10;\function_trace_start&#61;0&#10;\interrupts&#61;system.cpu05.interrupts&#10;\isa&#61;system.cpu05.isa&#10;\max_insts_all_threads&#61;0&#10;\max_insts_any_thread&#61;0&#10;\mmu&#61;system.cpu05.mmu&#10;\numThreads&#61;1&#10;\power_gating_on_idle&#61;false&#10;\power_model&#61;&#10;\power_state&#61;system.cpu05.power_state&#10;\progress_interval&#61;0&#10;\pwr_gating_latency&#61;300&#10;\simpoint_start_insts&#61;&#10;\simulate_data_stalls&#61;false&#10;\simulate_inst_stalls&#61;false&#10;\socket_id&#61;0&#10;\switched_out&#61;false&#10;\syscallRetryLatency&#61;10000&#10;\system&#61;system&#10;\tracer&#61;system.cpu05.tracer&#10;\width&#61;1&#10;\workload&#61;system.cpu00.workload";
+system_cpu05_icache_port [color="#000000", fillcolor="#959ead", fontcolor="#000000", fontname=Arial, fontsize=14, label=icache_port, shape=Mrecord, style="rounded, filled"];
+system_cpu05_dcache_port [color="#000000", fillcolor="#959ead", fontcolor="#000000", fontname=Arial, fontsize=14, label=dcache_port, shape=Mrecord, style="rounded, filled"];
+subgraph cluster_system_cpu05_mmu {
+color="#000000";
+fillcolor="#bab6ae";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="mmu \n: X86MMU";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="dtb&#61;system.cpu05.mmu.dtb&#10;\eventq_index&#61;0&#10;\itb&#61;system.cpu05.mmu.itb";
+subgraph cluster_system_cpu05_mmu_itb {
+color="#000000";
+fillcolor="#9f9c95";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="itb \n: X86TLB";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="entry_type&#61;instruction&#10;\eventq_index&#61;0&#10;\next_level&#61;Null&#10;\size&#61;64&#10;\system&#61;system&#10;\walker&#61;system.cpu05.mmu.itb.walker";
+subgraph cluster_system_cpu05_mmu_itb_walker {
+color="#000000";
+fillcolor="#84827c";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="walker \n: X86PagetableWalker";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="clk_domain&#61;system.cpu_clk_domain&#10;\eventq_index&#61;0&#10;\num_squash_per_cycle&#61;4&#10;\power_model&#61;&#10;\power_state&#61;system.cpu05.mmu.itb.walker.power_state&#10;\system&#61;system";
+system_cpu05_mmu_itb_walker_port [color="#000000", fillcolor="#6a6863", fontcolor="#000000", fontname=Arial, fontsize=14, label=port, shape=Mrecord, style="rounded, filled"];
+subgraph cluster_system_cpu05_mmu_itb_walker_power_state {
+color="#000000";
+fillcolor="#6a6863";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="power_state \n: PowerState";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="clk_gate_bins&#61;20&#10;\clk_gate_max&#61;1000000000000&#10;\clk_gate_min&#61;1000&#10;\default_state&#61;UNDEFINED&#10;\eventq_index&#61;0&#10;\leaders&#61;&#10;\possible_states&#61;";
+}
+
+}
+
+}
+
+subgraph cluster_system_cpu05_mmu_dtb {
+color="#000000";
+fillcolor="#9f9c95";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="dtb \n: X86TLB";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="entry_type&#61;data&#10;\eventq_index&#61;0&#10;\next_level&#61;Null&#10;\size&#61;64&#10;\system&#61;system&#10;\walker&#61;system.cpu05.mmu.dtb.walker";
+subgraph cluster_system_cpu05_mmu_dtb_walker {
+color="#000000";
+fillcolor="#84827c";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="walker \n: X86PagetableWalker";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="clk_domain&#61;system.cpu_clk_domain&#10;\eventq_index&#61;0&#10;\num_squash_per_cycle&#61;4&#10;\power_model&#61;&#10;\power_state&#61;system.cpu05.mmu.dtb.walker.power_state&#10;\system&#61;system";
+system_cpu05_mmu_dtb_walker_port [color="#000000", fillcolor="#6a6863", fontcolor="#000000", fontname=Arial, fontsize=14, label=port, shape=Mrecord, style="rounded, filled"];
+subgraph cluster_system_cpu05_mmu_dtb_walker_power_state {
+color="#000000";
+fillcolor="#6a6863";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="power_state \n: PowerState";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="clk_gate_bins&#61;20&#10;\clk_gate_max&#61;1000000000000&#10;\clk_gate_min&#61;1000&#10;\default_state&#61;UNDEFINED&#10;\eventq_index&#61;0&#10;\leaders&#61;&#10;\possible_states&#61;";
+}
+
+}
+
+}
+
+}
+
+subgraph cluster_system_cpu05_tracer {
+color="#000000";
+fillcolor="#bab6ae";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="tracer \n: ExeTracer";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="eventq_index&#61;0";
+}
+
+subgraph cluster_system_cpu05_power_state {
+color="#000000";
+fillcolor="#bab6ae";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="power_state \n: PowerState";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="clk_gate_bins&#61;20&#10;\clk_gate_max&#61;1000000000000&#10;\clk_gate_min&#61;1000&#10;\default_state&#61;UNDEFINED&#10;\eventq_index&#61;0&#10;\leaders&#61;&#10;\possible_states&#61;ON CLK_GATED OFF";
+}
+
+subgraph cluster_system_cpu05_isa {
+color="#000000";
+fillcolor="#bab6ae";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="isa \n: X86ISA";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="eventq_index&#61;0&#10;\vendor_string&#61;M5 Simulator";
+}
+
+subgraph cluster_system_cpu05_decoder {
+color="#000000";
+fillcolor="#bab6ae";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="decoder \n: X86Decoder";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="eventq_index&#61;0&#10;\isa&#61;system.cpu05.isa";
+}
+
+subgraph cluster_system_cpu05_interrupts {
+color="#000000";
+fillcolor="#bab6ae";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="interrupts \n: X86LocalApic";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="clk_domain&#61;system.cpu05.interrupts.clk_domain&#10;\eventq_index&#61;0&#10;\int_latency&#61;1000&#10;\pio_latency&#61;100000&#10;\system&#61;system";
+system_cpu05_interrupts_int_requestor [color="#000000", fillcolor="#94918b", fontcolor="#000000", fontname=Arial, fontsize=14, label=int_requestor, shape=Mrecord, style="rounded, filled"];
+system_cpu05_interrupts_int_responder [color="#000000", fillcolor="#94918b", fontcolor="#000000", fontname=Arial, fontsize=14, label=int_responder, shape=Mrecord, style="rounded, filled"];
+system_cpu05_interrupts_pio [color="#000000", fillcolor="#94918b", fontcolor="#000000", fontname=Arial, fontsize=14, label=pio, shape=Mrecord, style="rounded, filled"];
+subgraph cluster_system_cpu05_interrupts_clk_domain {
+color="#000000";
+fillcolor="#9f9c95";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="clk_domain \n: DerivedClockDomain";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="clk_divider&#61;16&#10;\clk_domain&#61;system.cpu_clk_domain&#10;\eventq_index&#61;0";
+}
+
+}
+
+}
+
+subgraph cluster_system_cpu06 {
+color="#000000";
+fillcolor="#bbc6d9";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="cpu06 \n: AtomicSimpleCPU";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="branchPred&#61;Null&#10;\checker&#61;Null&#10;\clk_domain&#61;system.cpu_clk_domain&#10;\cpu_id&#61;6&#10;\decoder&#61;system.cpu06.decoder&#10;\do_checkpoint_insts&#61;true&#10;\do_statistics_insts&#61;true&#10;\eventq_index&#61;0&#10;\function_trace&#61;false&#10;\function_trace_start&#61;0&#10;\interrupts&#61;system.cpu06.interrupts&#10;\isa&#61;system.cpu06.isa&#10;\max_insts_all_threads&#61;0&#10;\max_insts_any_thread&#61;0&#10;\mmu&#61;system.cpu06.mmu&#10;\numThreads&#61;1&#10;\power_gating_on_idle&#61;false&#10;\power_model&#61;&#10;\power_state&#61;system.cpu06.power_state&#10;\progress_interval&#61;0&#10;\pwr_gating_latency&#61;300&#10;\simpoint_start_insts&#61;&#10;\simulate_data_stalls&#61;false&#10;\simulate_inst_stalls&#61;false&#10;\socket_id&#61;0&#10;\switched_out&#61;false&#10;\syscallRetryLatency&#61;10000&#10;\system&#61;system&#10;\tracer&#61;system.cpu06.tracer&#10;\width&#61;1&#10;\workload&#61;system.cpu00.workload";
+system_cpu06_icache_port [color="#000000", fillcolor="#959ead", fontcolor="#000000", fontname=Arial, fontsize=14, label=icache_port, shape=Mrecord, style="rounded, filled"];
+system_cpu06_dcache_port [color="#000000", fillcolor="#959ead", fontcolor="#000000", fontname=Arial, fontsize=14, label=dcache_port, shape=Mrecord, style="rounded, filled"];
+subgraph cluster_system_cpu06_mmu {
+color="#000000";
+fillcolor="#bab6ae";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="mmu \n: X86MMU";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="dtb&#61;system.cpu06.mmu.dtb&#10;\eventq_index&#61;0&#10;\itb&#61;system.cpu06.mmu.itb";
+subgraph cluster_system_cpu06_mmu_itb {
+color="#000000";
+fillcolor="#9f9c95";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="itb \n: X86TLB";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="entry_type&#61;instruction&#10;\eventq_index&#61;0&#10;\next_level&#61;Null&#10;\size&#61;64&#10;\system&#61;system&#10;\walker&#61;system.cpu06.mmu.itb.walker";
+subgraph cluster_system_cpu06_mmu_itb_walker {
+color="#000000";
+fillcolor="#84827c";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="walker \n: X86PagetableWalker";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="clk_domain&#61;system.cpu_clk_domain&#10;\eventq_index&#61;0&#10;\num_squash_per_cycle&#61;4&#10;\power_model&#61;&#10;\power_state&#61;system.cpu06.mmu.itb.walker.power_state&#10;\system&#61;system";
+system_cpu06_mmu_itb_walker_port [color="#000000", fillcolor="#6a6863", fontcolor="#000000", fontname=Arial, fontsize=14, label=port, shape=Mrecord, style="rounded, filled"];
+subgraph cluster_system_cpu06_mmu_itb_walker_power_state {
+color="#000000";
+fillcolor="#6a6863";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="power_state \n: PowerState";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="clk_gate_bins&#61;20&#10;\clk_gate_max&#61;1000000000000&#10;\clk_gate_min&#61;1000&#10;\default_state&#61;UNDEFINED&#10;\eventq_index&#61;0&#10;\leaders&#61;&#10;\possible_states&#61;";
+}
+
+}
+
+}
+
+subgraph cluster_system_cpu06_mmu_dtb {
+color="#000000";
+fillcolor="#9f9c95";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="dtb \n: X86TLB";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="entry_type&#61;data&#10;\eventq_index&#61;0&#10;\next_level&#61;Null&#10;\size&#61;64&#10;\system&#61;system&#10;\walker&#61;system.cpu06.mmu.dtb.walker";
+subgraph cluster_system_cpu06_mmu_dtb_walker {
+color="#000000";
+fillcolor="#84827c";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="walker \n: X86PagetableWalker";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="clk_domain&#61;system.cpu_clk_domain&#10;\eventq_index&#61;0&#10;\num_squash_per_cycle&#61;4&#10;\power_model&#61;&#10;\power_state&#61;system.cpu06.mmu.dtb.walker.power_state&#10;\system&#61;system";
+system_cpu06_mmu_dtb_walker_port [color="#000000", fillcolor="#6a6863", fontcolor="#000000", fontname=Arial, fontsize=14, label=port, shape=Mrecord, style="rounded, filled"];
+subgraph cluster_system_cpu06_mmu_dtb_walker_power_state {
+color="#000000";
+fillcolor="#6a6863";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="power_state \n: PowerState";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="clk_gate_bins&#61;20&#10;\clk_gate_max&#61;1000000000000&#10;\clk_gate_min&#61;1000&#10;\default_state&#61;UNDEFINED&#10;\eventq_index&#61;0&#10;\leaders&#61;&#10;\possible_states&#61;";
+}
+
+}
+
+}
+
+}
+
+subgraph cluster_system_cpu06_tracer {
+color="#000000";
+fillcolor="#bab6ae";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="tracer \n: ExeTracer";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="eventq_index&#61;0";
+}
+
+subgraph cluster_system_cpu06_power_state {
+color="#000000";
+fillcolor="#bab6ae";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="power_state \n: PowerState";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="clk_gate_bins&#61;20&#10;\clk_gate_max&#61;1000000000000&#10;\clk_gate_min&#61;1000&#10;\default_state&#61;UNDEFINED&#10;\eventq_index&#61;0&#10;\leaders&#61;&#10;\possible_states&#61;ON CLK_GATED OFF";
+}
+
+subgraph cluster_system_cpu06_isa {
+color="#000000";
+fillcolor="#bab6ae";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="isa \n: X86ISA";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="eventq_index&#61;0&#10;\vendor_string&#61;M5 Simulator";
+}
+
+subgraph cluster_system_cpu06_decoder {
+color="#000000";
+fillcolor="#bab6ae";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="decoder \n: X86Decoder";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="eventq_index&#61;0&#10;\isa&#61;system.cpu06.isa";
+}
+
+subgraph cluster_system_cpu06_interrupts {
+color="#000000";
+fillcolor="#bab6ae";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="interrupts \n: X86LocalApic";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="clk_domain&#61;system.cpu06.interrupts.clk_domain&#10;\eventq_index&#61;0&#10;\int_latency&#61;1000&#10;\pio_latency&#61;100000&#10;\system&#61;system";
+system_cpu06_interrupts_int_requestor [color="#000000", fillcolor="#94918b", fontcolor="#000000", fontname=Arial, fontsize=14, label=int_requestor, shape=Mrecord, style="rounded, filled"];
+system_cpu06_interrupts_int_responder [color="#000000", fillcolor="#94918b", fontcolor="#000000", fontname=Arial, fontsize=14, label=int_responder, shape=Mrecord, style="rounded, filled"];
+system_cpu06_interrupts_pio [color="#000000", fillcolor="#94918b", fontcolor="#000000", fontname=Arial, fontsize=14, label=pio, shape=Mrecord, style="rounded, filled"];
+subgraph cluster_system_cpu06_interrupts_clk_domain {
+color="#000000";
+fillcolor="#9f9c95";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="clk_domain \n: DerivedClockDomain";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="clk_divider&#61;16&#10;\clk_domain&#61;system.cpu_clk_domain&#10;\eventq_index&#61;0";
+}
+
+}
+
+}
+
+subgraph cluster_system_cpu07 {
+color="#000000";
+fillcolor="#bbc6d9";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="cpu07 \n: AtomicSimpleCPU";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="branchPred&#61;Null&#10;\checker&#61;Null&#10;\clk_domain&#61;system.cpu_clk_domain&#10;\cpu_id&#61;7&#10;\decoder&#61;system.cpu07.decoder&#10;\do_checkpoint_insts&#61;true&#10;\do_statistics_insts&#61;true&#10;\eventq_index&#61;0&#10;\function_trace&#61;false&#10;\function_trace_start&#61;0&#10;\interrupts&#61;system.cpu07.interrupts&#10;\isa&#61;system.cpu07.isa&#10;\max_insts_all_threads&#61;0&#10;\max_insts_any_thread&#61;0&#10;\mmu&#61;system.cpu07.mmu&#10;\numThreads&#61;1&#10;\power_gating_on_idle&#61;false&#10;\power_model&#61;&#10;\power_state&#61;system.cpu07.power_state&#10;\progress_interval&#61;0&#10;\pwr_gating_latency&#61;300&#10;\simpoint_start_insts&#61;&#10;\simulate_data_stalls&#61;false&#10;\simulate_inst_stalls&#61;false&#10;\socket_id&#61;0&#10;\switched_out&#61;false&#10;\syscallRetryLatency&#61;10000&#10;\system&#61;system&#10;\tracer&#61;system.cpu07.tracer&#10;\width&#61;1&#10;\workload&#61;system.cpu00.workload";
+system_cpu07_icache_port [color="#000000", fillcolor="#959ead", fontcolor="#000000", fontname=Arial, fontsize=14, label=icache_port, shape=Mrecord, style="rounded, filled"];
+system_cpu07_dcache_port [color="#000000", fillcolor="#959ead", fontcolor="#000000", fontname=Arial, fontsize=14, label=dcache_port, shape=Mrecord, style="rounded, filled"];
+subgraph cluster_system_cpu07_mmu {
+color="#000000";
+fillcolor="#bab6ae";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="mmu \n: X86MMU";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="dtb&#61;system.cpu07.mmu.dtb&#10;\eventq_index&#61;0&#10;\itb&#61;system.cpu07.mmu.itb";
+subgraph cluster_system_cpu07_mmu_itb {
+color="#000000";
+fillcolor="#9f9c95";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="itb \n: X86TLB";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="entry_type&#61;instruction&#10;\eventq_index&#61;0&#10;\next_level&#61;Null&#10;\size&#61;64&#10;\system&#61;system&#10;\walker&#61;system.cpu07.mmu.itb.walker";
+subgraph cluster_system_cpu07_mmu_itb_walker {
+color="#000000";
+fillcolor="#84827c";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="walker \n: X86PagetableWalker";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="clk_domain&#61;system.cpu_clk_domain&#10;\eventq_index&#61;0&#10;\num_squash_per_cycle&#61;4&#10;\power_model&#61;&#10;\power_state&#61;system.cpu07.mmu.itb.walker.power_state&#10;\system&#61;system";
+system_cpu07_mmu_itb_walker_port [color="#000000", fillcolor="#6a6863", fontcolor="#000000", fontname=Arial, fontsize=14, label=port, shape=Mrecord, style="rounded, filled"];
+subgraph cluster_system_cpu07_mmu_itb_walker_power_state {
+color="#000000";
+fillcolor="#6a6863";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="power_state \n: PowerState";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="clk_gate_bins&#61;20&#10;\clk_gate_max&#61;1000000000000&#10;\clk_gate_min&#61;1000&#10;\default_state&#61;UNDEFINED&#10;\eventq_index&#61;0&#10;\leaders&#61;&#10;\possible_states&#61;";
+}
+
+}
+
+}
+
+subgraph cluster_system_cpu07_mmu_dtb {
+color="#000000";
+fillcolor="#9f9c95";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="dtb \n: X86TLB";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="entry_type&#61;data&#10;\eventq_index&#61;0&#10;\next_level&#61;Null&#10;\size&#61;64&#10;\system&#61;system&#10;\walker&#61;system.cpu07.mmu.dtb.walker";
+subgraph cluster_system_cpu07_mmu_dtb_walker {
+color="#000000";
+fillcolor="#84827c";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="walker \n: X86PagetableWalker";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="clk_domain&#61;system.cpu_clk_domain&#10;\eventq_index&#61;0&#10;\num_squash_per_cycle&#61;4&#10;\power_model&#61;&#10;\power_state&#61;system.cpu07.mmu.dtb.walker.power_state&#10;\system&#61;system";
+system_cpu07_mmu_dtb_walker_port [color="#000000", fillcolor="#6a6863", fontcolor="#000000", fontname=Arial, fontsize=14, label=port, shape=Mrecord, style="rounded, filled"];
+subgraph cluster_system_cpu07_mmu_dtb_walker_power_state {
+color="#000000";
+fillcolor="#6a6863";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="power_state \n: PowerState";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="clk_gate_bins&#61;20&#10;\clk_gate_max&#61;1000000000000&#10;\clk_gate_min&#61;1000&#10;\default_state&#61;UNDEFINED&#10;\eventq_index&#61;0&#10;\leaders&#61;&#10;\possible_states&#61;";
+}
+
+}
+
+}
+
+}
+
+subgraph cluster_system_cpu07_tracer {
+color="#000000";
+fillcolor="#bab6ae";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="tracer \n: ExeTracer";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="eventq_index&#61;0";
+}
+
+subgraph cluster_system_cpu07_power_state {
+color="#000000";
+fillcolor="#bab6ae";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="power_state \n: PowerState";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="clk_gate_bins&#61;20&#10;\clk_gate_max&#61;1000000000000&#10;\clk_gate_min&#61;1000&#10;\default_state&#61;UNDEFINED&#10;\eventq_index&#61;0&#10;\leaders&#61;&#10;\possible_states&#61;ON CLK_GATED OFF";
+}
+
+subgraph cluster_system_cpu07_isa {
+color="#000000";
+fillcolor="#bab6ae";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="isa \n: X86ISA";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="eventq_index&#61;0&#10;\vendor_string&#61;M5 Simulator";
+}
+
+subgraph cluster_system_cpu07_decoder {
+color="#000000";
+fillcolor="#bab6ae";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="decoder \n: X86Decoder";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="eventq_index&#61;0&#10;\isa&#61;system.cpu07.isa";
+}
+
+subgraph cluster_system_cpu07_interrupts {
+color="#000000";
+fillcolor="#bab6ae";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="interrupts \n: X86LocalApic";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="clk_domain&#61;system.cpu07.interrupts.clk_domain&#10;\eventq_index&#61;0&#10;\int_latency&#61;1000&#10;\pio_latency&#61;100000&#10;\system&#61;system";
+system_cpu07_interrupts_int_requestor [color="#000000", fillcolor="#94918b", fontcolor="#000000", fontname=Arial, fontsize=14, label=int_requestor, shape=Mrecord, style="rounded, filled"];
+system_cpu07_interrupts_int_responder [color="#000000", fillcolor="#94918b", fontcolor="#000000", fontname=Arial, fontsize=14, label=int_responder, shape=Mrecord, style="rounded, filled"];
+system_cpu07_interrupts_pio [color="#000000", fillcolor="#94918b", fontcolor="#000000", fontname=Arial, fontsize=14, label=pio, shape=Mrecord, style="rounded, filled"];
+subgraph cluster_system_cpu07_interrupts_clk_domain {
+color="#000000";
+fillcolor="#9f9c95";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="clk_domain \n: DerivedClockDomain";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="clk_divider&#61;16&#10;\clk_domain&#61;system.cpu_clk_domain&#10;\eventq_index&#61;0";
+}
+
+}
+
+}
+
+subgraph cluster_system_cpu08 {
+color="#000000";
+fillcolor="#bbc6d9";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="cpu08 \n: AtomicSimpleCPU";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="branchPred&#61;Null&#10;\checker&#61;Null&#10;\clk_domain&#61;system.cpu_clk_domain&#10;\cpu_id&#61;8&#10;\decoder&#61;system.cpu08.decoder&#10;\do_checkpoint_insts&#61;true&#10;\do_statistics_insts&#61;true&#10;\eventq_index&#61;0&#10;\function_trace&#61;false&#10;\function_trace_start&#61;0&#10;\interrupts&#61;system.cpu08.interrupts&#10;\isa&#61;system.cpu08.isa&#10;\max_insts_all_threads&#61;0&#10;\max_insts_any_thread&#61;0&#10;\mmu&#61;system.cpu08.mmu&#10;\numThreads&#61;1&#10;\power_gating_on_idle&#61;false&#10;\power_model&#61;&#10;\power_state&#61;system.cpu08.power_state&#10;\progress_interval&#61;0&#10;\pwr_gating_latency&#61;300&#10;\simpoint_start_insts&#61;&#10;\simulate_data_stalls&#61;false&#10;\simulate_inst_stalls&#61;false&#10;\socket_id&#61;0&#10;\switched_out&#61;false&#10;\syscallRetryLatency&#61;10000&#10;\system&#61;system&#10;\tracer&#61;system.cpu08.tracer&#10;\width&#61;1&#10;\workload&#61;system.cpu00.workload";
+system_cpu08_icache_port [color="#000000", fillcolor="#959ead", fontcolor="#000000", fontname=Arial, fontsize=14, label=icache_port, shape=Mrecord, style="rounded, filled"];
+system_cpu08_dcache_port [color="#000000", fillcolor="#959ead", fontcolor="#000000", fontname=Arial, fontsize=14, label=dcache_port, shape=Mrecord, style="rounded, filled"];
+subgraph cluster_system_cpu08_mmu {
+color="#000000";
+fillcolor="#bab6ae";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="mmu \n: X86MMU";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="dtb&#61;system.cpu08.mmu.dtb&#10;\eventq_index&#61;0&#10;\itb&#61;system.cpu08.mmu.itb";
+subgraph cluster_system_cpu08_mmu_itb {
+color="#000000";
+fillcolor="#9f9c95";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="itb \n: X86TLB";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="entry_type&#61;instruction&#10;\eventq_index&#61;0&#10;\next_level&#61;Null&#10;\size&#61;64&#10;\system&#61;system&#10;\walker&#61;system.cpu08.mmu.itb.walker";
+subgraph cluster_system_cpu08_mmu_itb_walker {
+color="#000000";
+fillcolor="#84827c";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="walker \n: X86PagetableWalker";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="clk_domain&#61;system.cpu_clk_domain&#10;\eventq_index&#61;0&#10;\num_squash_per_cycle&#61;4&#10;\power_model&#61;&#10;\power_state&#61;system.cpu08.mmu.itb.walker.power_state&#10;\system&#61;system";
+system_cpu08_mmu_itb_walker_port [color="#000000", fillcolor="#6a6863", fontcolor="#000000", fontname=Arial, fontsize=14, label=port, shape=Mrecord, style="rounded, filled"];
+subgraph cluster_system_cpu08_mmu_itb_walker_power_state {
+color="#000000";
+fillcolor="#6a6863";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="power_state \n: PowerState";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="clk_gate_bins&#61;20&#10;\clk_gate_max&#61;1000000000000&#10;\clk_gate_min&#61;1000&#10;\default_state&#61;UNDEFINED&#10;\eventq_index&#61;0&#10;\leaders&#61;&#10;\possible_states&#61;";
+}
+
+}
+
+}
+
+subgraph cluster_system_cpu08_mmu_dtb {
+color="#000000";
+fillcolor="#9f9c95";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="dtb \n: X86TLB";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="entry_type&#61;data&#10;\eventq_index&#61;0&#10;\next_level&#61;Null&#10;\size&#61;64&#10;\system&#61;system&#10;\walker&#61;system.cpu08.mmu.dtb.walker";
+subgraph cluster_system_cpu08_mmu_dtb_walker {
+color="#000000";
+fillcolor="#84827c";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="walker \n: X86PagetableWalker";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="clk_domain&#61;system.cpu_clk_domain&#10;\eventq_index&#61;0&#10;\num_squash_per_cycle&#61;4&#10;\power_model&#61;&#10;\power_state&#61;system.cpu08.mmu.dtb.walker.power_state&#10;\system&#61;system";
+system_cpu08_mmu_dtb_walker_port [color="#000000", fillcolor="#6a6863", fontcolor="#000000", fontname=Arial, fontsize=14, label=port, shape=Mrecord, style="rounded, filled"];
+subgraph cluster_system_cpu08_mmu_dtb_walker_power_state {
+color="#000000";
+fillcolor="#6a6863";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="power_state \n: PowerState";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="clk_gate_bins&#61;20&#10;\clk_gate_max&#61;1000000000000&#10;\clk_gate_min&#61;1000&#10;\default_state&#61;UNDEFINED&#10;\eventq_index&#61;0&#10;\leaders&#61;&#10;\possible_states&#61;";
+}
+
+}
+
+}
+
+}
+
+subgraph cluster_system_cpu08_tracer {
+color="#000000";
+fillcolor="#bab6ae";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="tracer \n: ExeTracer";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="eventq_index&#61;0";
+}
+
+subgraph cluster_system_cpu08_power_state {
+color="#000000";
+fillcolor="#bab6ae";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="power_state \n: PowerState";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="clk_gate_bins&#61;20&#10;\clk_gate_max&#61;1000000000000&#10;\clk_gate_min&#61;1000&#10;\default_state&#61;UNDEFINED&#10;\eventq_index&#61;0&#10;\leaders&#61;&#10;\possible_states&#61;ON CLK_GATED OFF";
+}
+
+subgraph cluster_system_cpu08_isa {
+color="#000000";
+fillcolor="#bab6ae";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="isa \n: X86ISA";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="eventq_index&#61;0&#10;\vendor_string&#61;M5 Simulator";
+}
+
+subgraph cluster_system_cpu08_decoder {
+color="#000000";
+fillcolor="#bab6ae";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="decoder \n: X86Decoder";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="eventq_index&#61;0&#10;\isa&#61;system.cpu08.isa";
+}
+
+subgraph cluster_system_cpu08_interrupts {
+color="#000000";
+fillcolor="#bab6ae";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="interrupts \n: X86LocalApic";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="clk_domain&#61;system.cpu08.interrupts.clk_domain&#10;\eventq_index&#61;0&#10;\int_latency&#61;1000&#10;\pio_latency&#61;100000&#10;\system&#61;system";
+system_cpu08_interrupts_int_requestor [color="#000000", fillcolor="#94918b", fontcolor="#000000", fontname=Arial, fontsize=14, label=int_requestor, shape=Mrecord, style="rounded, filled"];
+system_cpu08_interrupts_int_responder [color="#000000", fillcolor="#94918b", fontcolor="#000000", fontname=Arial, fontsize=14, label=int_responder, shape=Mrecord, style="rounded, filled"];
+system_cpu08_interrupts_pio [color="#000000", fillcolor="#94918b", fontcolor="#000000", fontname=Arial, fontsize=14, label=pio, shape=Mrecord, style="rounded, filled"];
+subgraph cluster_system_cpu08_interrupts_clk_domain {
+color="#000000";
+fillcolor="#9f9c95";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="clk_domain \n: DerivedClockDomain";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="clk_divider&#61;16&#10;\clk_domain&#61;system.cpu_clk_domain&#10;\eventq_index&#61;0";
+}
+
+}
+
+}
+
+subgraph cluster_system_cpu09 {
+color="#000000";
+fillcolor="#bbc6d9";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="cpu09 \n: AtomicSimpleCPU";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="branchPred&#61;Null&#10;\checker&#61;Null&#10;\clk_domain&#61;system.cpu_clk_domain&#10;\cpu_id&#61;9&#10;\decoder&#61;system.cpu09.decoder&#10;\do_checkpoint_insts&#61;true&#10;\do_statistics_insts&#61;true&#10;\eventq_index&#61;0&#10;\function_trace&#61;false&#10;\function_trace_start&#61;0&#10;\interrupts&#61;system.cpu09.interrupts&#10;\isa&#61;system.cpu09.isa&#10;\max_insts_all_threads&#61;0&#10;\max_insts_any_thread&#61;0&#10;\mmu&#61;system.cpu09.mmu&#10;\numThreads&#61;1&#10;\power_gating_on_idle&#61;false&#10;\power_model&#61;&#10;\power_state&#61;system.cpu09.power_state&#10;\progress_interval&#61;0&#10;\pwr_gating_latency&#61;300&#10;\simpoint_start_insts&#61;&#10;\simulate_data_stalls&#61;false&#10;\simulate_inst_stalls&#61;false&#10;\socket_id&#61;0&#10;\switched_out&#61;false&#10;\syscallRetryLatency&#61;10000&#10;\system&#61;system&#10;\tracer&#61;system.cpu09.tracer&#10;\width&#61;1&#10;\workload&#61;system.cpu00.workload";
+system_cpu09_icache_port [color="#000000", fillcolor="#959ead", fontcolor="#000000", fontname=Arial, fontsize=14, label=icache_port, shape=Mrecord, style="rounded, filled"];
+system_cpu09_dcache_port [color="#000000", fillcolor="#959ead", fontcolor="#000000", fontname=Arial, fontsize=14, label=dcache_port, shape=Mrecord, style="rounded, filled"];
+subgraph cluster_system_cpu09_mmu {
+color="#000000";
+fillcolor="#bab6ae";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="mmu \n: X86MMU";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="dtb&#61;system.cpu09.mmu.dtb&#10;\eventq_index&#61;0&#10;\itb&#61;system.cpu09.mmu.itb";
+subgraph cluster_system_cpu09_mmu_itb {
+color="#000000";
+fillcolor="#9f9c95";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="itb \n: X86TLB";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="entry_type&#61;instruction&#10;\eventq_index&#61;0&#10;\next_level&#61;Null&#10;\size&#61;64&#10;\system&#61;system&#10;\walker&#61;system.cpu09.mmu.itb.walker";
+subgraph cluster_system_cpu09_mmu_itb_walker {
+color="#000000";
+fillcolor="#84827c";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="walker \n: X86PagetableWalker";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="clk_domain&#61;system.cpu_clk_domain&#10;\eventq_index&#61;0&#10;\num_squash_per_cycle&#61;4&#10;\power_model&#61;&#10;\power_state&#61;system.cpu09.mmu.itb.walker.power_state&#10;\system&#61;system";
+system_cpu09_mmu_itb_walker_port [color="#000000", fillcolor="#6a6863", fontcolor="#000000", fontname=Arial, fontsize=14, label=port, shape=Mrecord, style="rounded, filled"];
+subgraph cluster_system_cpu09_mmu_itb_walker_power_state {
+color="#000000";
+fillcolor="#6a6863";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="power_state \n: PowerState";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="clk_gate_bins&#61;20&#10;\clk_gate_max&#61;1000000000000&#10;\clk_gate_min&#61;1000&#10;\default_state&#61;UNDEFINED&#10;\eventq_index&#61;0&#10;\leaders&#61;&#10;\possible_states&#61;";
+}
+
+}
+
+}
+
+subgraph cluster_system_cpu09_mmu_dtb {
+color="#000000";
+fillcolor="#9f9c95";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="dtb \n: X86TLB";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="entry_type&#61;data&#10;\eventq_index&#61;0&#10;\next_level&#61;Null&#10;\size&#61;64&#10;\system&#61;system&#10;\walker&#61;system.cpu09.mmu.dtb.walker";
+subgraph cluster_system_cpu09_mmu_dtb_walker {
+color="#000000";
+fillcolor="#84827c";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="walker \n: X86PagetableWalker";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="clk_domain&#61;system.cpu_clk_domain&#10;\eventq_index&#61;0&#10;\num_squash_per_cycle&#61;4&#10;\power_model&#61;&#10;\power_state&#61;system.cpu09.mmu.dtb.walker.power_state&#10;\system&#61;system";
+system_cpu09_mmu_dtb_walker_port [color="#000000", fillcolor="#6a6863", fontcolor="#000000", fontname=Arial, fontsize=14, label=port, shape=Mrecord, style="rounded, filled"];
+subgraph cluster_system_cpu09_mmu_dtb_walker_power_state {
+color="#000000";
+fillcolor="#6a6863";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="power_state \n: PowerState";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="clk_gate_bins&#61;20&#10;\clk_gate_max&#61;1000000000000&#10;\clk_gate_min&#61;1000&#10;\default_state&#61;UNDEFINED&#10;\eventq_index&#61;0&#10;\leaders&#61;&#10;\possible_states&#61;";
+}
+
+}
+
+}
+
+}
+
+subgraph cluster_system_cpu09_tracer {
+color="#000000";
+fillcolor="#bab6ae";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="tracer \n: ExeTracer";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="eventq_index&#61;0";
+}
+
+subgraph cluster_system_cpu09_power_state {
+color="#000000";
+fillcolor="#bab6ae";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="power_state \n: PowerState";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="clk_gate_bins&#61;20&#10;\clk_gate_max&#61;1000000000000&#10;\clk_gate_min&#61;1000&#10;\default_state&#61;UNDEFINED&#10;\eventq_index&#61;0&#10;\leaders&#61;&#10;\possible_states&#61;ON CLK_GATED OFF";
+}
+
+subgraph cluster_system_cpu09_isa {
+color="#000000";
+fillcolor="#bab6ae";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="isa \n: X86ISA";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="eventq_index&#61;0&#10;\vendor_string&#61;M5 Simulator";
+}
+
+subgraph cluster_system_cpu09_decoder {
+color="#000000";
+fillcolor="#bab6ae";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="decoder \n: X86Decoder";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="eventq_index&#61;0&#10;\isa&#61;system.cpu09.isa";
+}
+
+subgraph cluster_system_cpu09_interrupts {
+color="#000000";
+fillcolor="#bab6ae";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="interrupts \n: X86LocalApic";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="clk_domain&#61;system.cpu09.interrupts.clk_domain&#10;\eventq_index&#61;0&#10;\int_latency&#61;1000&#10;\pio_latency&#61;100000&#10;\system&#61;system";
+system_cpu09_interrupts_int_requestor [color="#000000", fillcolor="#94918b", fontcolor="#000000", fontname=Arial, fontsize=14, label=int_requestor, shape=Mrecord, style="rounded, filled"];
+system_cpu09_interrupts_int_responder [color="#000000", fillcolor="#94918b", fontcolor="#000000", fontname=Arial, fontsize=14, label=int_responder, shape=Mrecord, style="rounded, filled"];
+system_cpu09_interrupts_pio [color="#000000", fillcolor="#94918b", fontcolor="#000000", fontname=Arial, fontsize=14, label=pio, shape=Mrecord, style="rounded, filled"];
+subgraph cluster_system_cpu09_interrupts_clk_domain {
+color="#000000";
+fillcolor="#9f9c95";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="clk_domain \n: DerivedClockDomain";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="clk_divider&#61;16&#10;\clk_domain&#61;system.cpu_clk_domain&#10;\eventq_index&#61;0";
+}
+
+}
+
+}
+
+subgraph cluster_system_cpu10 {
+color="#000000";
+fillcolor="#bbc6d9";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="cpu10 \n: AtomicSimpleCPU";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="branchPred&#61;Null&#10;\checker&#61;Null&#10;\clk_domain&#61;system.cpu_clk_domain&#10;\cpu_id&#61;10&#10;\decoder&#61;system.cpu10.decoder&#10;\do_checkpoint_insts&#61;true&#10;\do_statistics_insts&#61;true&#10;\eventq_index&#61;0&#10;\function_trace&#61;false&#10;\function_trace_start&#61;0&#10;\interrupts&#61;system.cpu10.interrupts&#10;\isa&#61;system.cpu10.isa&#10;\max_insts_all_threads&#61;0&#10;\max_insts_any_thread&#61;0&#10;\mmu&#61;system.cpu10.mmu&#10;\numThreads&#61;1&#10;\power_gating_on_idle&#61;false&#10;\power_model&#61;&#10;\power_state&#61;system.cpu10.power_state&#10;\progress_interval&#61;0&#10;\pwr_gating_latency&#61;300&#10;\simpoint_start_insts&#61;&#10;\simulate_data_stalls&#61;false&#10;\simulate_inst_stalls&#61;false&#10;\socket_id&#61;0&#10;\switched_out&#61;false&#10;\syscallRetryLatency&#61;10000&#10;\system&#61;system&#10;\tracer&#61;system.cpu10.tracer&#10;\width&#61;1&#10;\workload&#61;system.cpu00.workload";
+system_cpu10_icache_port [color="#000000", fillcolor="#959ead", fontcolor="#000000", fontname=Arial, fontsize=14, label=icache_port, shape=Mrecord, style="rounded, filled"];
+system_cpu10_dcache_port [color="#000000", fillcolor="#959ead", fontcolor="#000000", fontname=Arial, fontsize=14, label=dcache_port, shape=Mrecord, style="rounded, filled"];
+subgraph cluster_system_cpu10_mmu {
+color="#000000";
+fillcolor="#bab6ae";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="mmu \n: X86MMU";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="dtb&#61;system.cpu10.mmu.dtb&#10;\eventq_index&#61;0&#10;\itb&#61;system.cpu10.mmu.itb";
+subgraph cluster_system_cpu10_mmu_itb {
+color="#000000";
+fillcolor="#9f9c95";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="itb \n: X86TLB";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="entry_type&#61;instruction&#10;\eventq_index&#61;0&#10;\next_level&#61;Null&#10;\size&#61;64&#10;\system&#61;system&#10;\walker&#61;system.cpu10.mmu.itb.walker";
+subgraph cluster_system_cpu10_mmu_itb_walker {
+color="#000000";
+fillcolor="#84827c";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="walker \n: X86PagetableWalker";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="clk_domain&#61;system.cpu_clk_domain&#10;\eventq_index&#61;0&#10;\num_squash_per_cycle&#61;4&#10;\power_model&#61;&#10;\power_state&#61;system.cpu10.mmu.itb.walker.power_state&#10;\system&#61;system";
+system_cpu10_mmu_itb_walker_port [color="#000000", fillcolor="#6a6863", fontcolor="#000000", fontname=Arial, fontsize=14, label=port, shape=Mrecord, style="rounded, filled"];
+subgraph cluster_system_cpu10_mmu_itb_walker_power_state {
+color="#000000";
+fillcolor="#6a6863";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="power_state \n: PowerState";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="clk_gate_bins&#61;20&#10;\clk_gate_max&#61;1000000000000&#10;\clk_gate_min&#61;1000&#10;\default_state&#61;UNDEFINED&#10;\eventq_index&#61;0&#10;\leaders&#61;&#10;\possible_states&#61;";
+}
+
+}
+
+}
+
+subgraph cluster_system_cpu10_mmu_dtb {
+color="#000000";
+fillcolor="#9f9c95";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="dtb \n: X86TLB";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="entry_type&#61;data&#10;\eventq_index&#61;0&#10;\next_level&#61;Null&#10;\size&#61;64&#10;\system&#61;system&#10;\walker&#61;system.cpu10.mmu.dtb.walker";
+subgraph cluster_system_cpu10_mmu_dtb_walker {
+color="#000000";
+fillcolor="#84827c";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="walker \n: X86PagetableWalker";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="clk_domain&#61;system.cpu_clk_domain&#10;\eventq_index&#61;0&#10;\num_squash_per_cycle&#61;4&#10;\power_model&#61;&#10;\power_state&#61;system.cpu10.mmu.dtb.walker.power_state&#10;\system&#61;system";
+system_cpu10_mmu_dtb_walker_port [color="#000000", fillcolor="#6a6863", fontcolor="#000000", fontname=Arial, fontsize=14, label=port, shape=Mrecord, style="rounded, filled"];
+subgraph cluster_system_cpu10_mmu_dtb_walker_power_state {
+color="#000000";
+fillcolor="#6a6863";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="power_state \n: PowerState";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="clk_gate_bins&#61;20&#10;\clk_gate_max&#61;1000000000000&#10;\clk_gate_min&#61;1000&#10;\default_state&#61;UNDEFINED&#10;\eventq_index&#61;0&#10;\leaders&#61;&#10;\possible_states&#61;";
+}
+
+}
+
+}
+
+}
+
+subgraph cluster_system_cpu10_tracer {
+color="#000000";
+fillcolor="#bab6ae";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="tracer \n: ExeTracer";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="eventq_index&#61;0";
+}
+
+subgraph cluster_system_cpu10_power_state {
+color="#000000";
+fillcolor="#bab6ae";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="power_state \n: PowerState";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="clk_gate_bins&#61;20&#10;\clk_gate_max&#61;1000000000000&#10;\clk_gate_min&#61;1000&#10;\default_state&#61;UNDEFINED&#10;\eventq_index&#61;0&#10;\leaders&#61;&#10;\possible_states&#61;ON CLK_GATED OFF";
+}
+
+subgraph cluster_system_cpu10_isa {
+color="#000000";
+fillcolor="#bab6ae";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="isa \n: X86ISA";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="eventq_index&#61;0&#10;\vendor_string&#61;M5 Simulator";
+}
+
+subgraph cluster_system_cpu10_decoder {
+color="#000000";
+fillcolor="#bab6ae";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="decoder \n: X86Decoder";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="eventq_index&#61;0&#10;\isa&#61;system.cpu10.isa";
+}
+
+subgraph cluster_system_cpu10_interrupts {
+color="#000000";
+fillcolor="#bab6ae";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="interrupts \n: X86LocalApic";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="clk_domain&#61;system.cpu10.interrupts.clk_domain&#10;\eventq_index&#61;0&#10;\int_latency&#61;1000&#10;\pio_latency&#61;100000&#10;\system&#61;system";
+system_cpu10_interrupts_int_requestor [color="#000000", fillcolor="#94918b", fontcolor="#000000", fontname=Arial, fontsize=14, label=int_requestor, shape=Mrecord, style="rounded, filled"];
+system_cpu10_interrupts_int_responder [color="#000000", fillcolor="#94918b", fontcolor="#000000", fontname=Arial, fontsize=14, label=int_responder, shape=Mrecord, style="rounded, filled"];
+system_cpu10_interrupts_pio [color="#000000", fillcolor="#94918b", fontcolor="#000000", fontname=Arial, fontsize=14, label=pio, shape=Mrecord, style="rounded, filled"];
+subgraph cluster_system_cpu10_interrupts_clk_domain {
+color="#000000";
+fillcolor="#9f9c95";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="clk_domain \n: DerivedClockDomain";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="clk_divider&#61;16&#10;\clk_domain&#61;system.cpu_clk_domain&#10;\eventq_index&#61;0";
+}
+
+}
+
+}
+
+subgraph cluster_system_cpu11 {
+color="#000000";
+fillcolor="#bbc6d9";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="cpu11 \n: AtomicSimpleCPU";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="branchPred&#61;Null&#10;\checker&#61;Null&#10;\clk_domain&#61;system.cpu_clk_domain&#10;\cpu_id&#61;11&#10;\decoder&#61;system.cpu11.decoder&#10;\do_checkpoint_insts&#61;true&#10;\do_statistics_insts&#61;true&#10;\eventq_index&#61;0&#10;\function_trace&#61;false&#10;\function_trace_start&#61;0&#10;\interrupts&#61;system.cpu11.interrupts&#10;\isa&#61;system.cpu11.isa&#10;\max_insts_all_threads&#61;0&#10;\max_insts_any_thread&#61;0&#10;\mmu&#61;system.cpu11.mmu&#10;\numThreads&#61;1&#10;\power_gating_on_idle&#61;false&#10;\power_model&#61;&#10;\power_state&#61;system.cpu11.power_state&#10;\progress_interval&#61;0&#10;\pwr_gating_latency&#61;300&#10;\simpoint_start_insts&#61;&#10;\simulate_data_stalls&#61;false&#10;\simulate_inst_stalls&#61;false&#10;\socket_id&#61;0&#10;\switched_out&#61;false&#10;\syscallRetryLatency&#61;10000&#10;\system&#61;system&#10;\tracer&#61;system.cpu11.tracer&#10;\width&#61;1&#10;\workload&#61;system.cpu00.workload";
+system_cpu11_icache_port [color="#000000", fillcolor="#959ead", fontcolor="#000000", fontname=Arial, fontsize=14, label=icache_port, shape=Mrecord, style="rounded, filled"];
+system_cpu11_dcache_port [color="#000000", fillcolor="#959ead", fontcolor="#000000", fontname=Arial, fontsize=14, label=dcache_port, shape=Mrecord, style="rounded, filled"];
+subgraph cluster_system_cpu11_mmu {
+color="#000000";
+fillcolor="#bab6ae";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="mmu \n: X86MMU";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="dtb&#61;system.cpu11.mmu.dtb&#10;\eventq_index&#61;0&#10;\itb&#61;system.cpu11.mmu.itb";
+subgraph cluster_system_cpu11_mmu_itb {
+color="#000000";
+fillcolor="#9f9c95";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="itb \n: X86TLB";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="entry_type&#61;instruction&#10;\eventq_index&#61;0&#10;\next_level&#61;Null&#10;\size&#61;64&#10;\system&#61;system&#10;\walker&#61;system.cpu11.mmu.itb.walker";
+subgraph cluster_system_cpu11_mmu_itb_walker {
+color="#000000";
+fillcolor="#84827c";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="walker \n: X86PagetableWalker";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="clk_domain&#61;system.cpu_clk_domain&#10;\eventq_index&#61;0&#10;\num_squash_per_cycle&#61;4&#10;\power_model&#61;&#10;\power_state&#61;system.cpu11.mmu.itb.walker.power_state&#10;\system&#61;system";
+system_cpu11_mmu_itb_walker_port [color="#000000", fillcolor="#6a6863", fontcolor="#000000", fontname=Arial, fontsize=14, label=port, shape=Mrecord, style="rounded, filled"];
+subgraph cluster_system_cpu11_mmu_itb_walker_power_state {
+color="#000000";
+fillcolor="#6a6863";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="power_state \n: PowerState";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="clk_gate_bins&#61;20&#10;\clk_gate_max&#61;1000000000000&#10;\clk_gate_min&#61;1000&#10;\default_state&#61;UNDEFINED&#10;\eventq_index&#61;0&#10;\leaders&#61;&#10;\possible_states&#61;";
+}
+
+}
+
+}
+
+subgraph cluster_system_cpu11_mmu_dtb {
+color="#000000";
+fillcolor="#9f9c95";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="dtb \n: X86TLB";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="entry_type&#61;data&#10;\eventq_index&#61;0&#10;\next_level&#61;Null&#10;\size&#61;64&#10;\system&#61;system&#10;\walker&#61;system.cpu11.mmu.dtb.walker";
+subgraph cluster_system_cpu11_mmu_dtb_walker {
+color="#000000";
+fillcolor="#84827c";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="walker \n: X86PagetableWalker";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="clk_domain&#61;system.cpu_clk_domain&#10;\eventq_index&#61;0&#10;\num_squash_per_cycle&#61;4&#10;\power_model&#61;&#10;\power_state&#61;system.cpu11.mmu.dtb.walker.power_state&#10;\system&#61;system";
+system_cpu11_mmu_dtb_walker_port [color="#000000", fillcolor="#6a6863", fontcolor="#000000", fontname=Arial, fontsize=14, label=port, shape=Mrecord, style="rounded, filled"];
+subgraph cluster_system_cpu11_mmu_dtb_walker_power_state {
+color="#000000";
+fillcolor="#6a6863";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="power_state \n: PowerState";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="clk_gate_bins&#61;20&#10;\clk_gate_max&#61;1000000000000&#10;\clk_gate_min&#61;1000&#10;\default_state&#61;UNDEFINED&#10;\eventq_index&#61;0&#10;\leaders&#61;&#10;\possible_states&#61;";
+}
+
+}
+
+}
+
+}
+
+subgraph cluster_system_cpu11_tracer {
+color="#000000";
+fillcolor="#bab6ae";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="tracer \n: ExeTracer";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="eventq_index&#61;0";
+}
+
+subgraph cluster_system_cpu11_power_state {
+color="#000000";
+fillcolor="#bab6ae";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="power_state \n: PowerState";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="clk_gate_bins&#61;20&#10;\clk_gate_max&#61;1000000000000&#10;\clk_gate_min&#61;1000&#10;\default_state&#61;UNDEFINED&#10;\eventq_index&#61;0&#10;\leaders&#61;&#10;\possible_states&#61;ON CLK_GATED OFF";
+}
+
+subgraph cluster_system_cpu11_isa {
+color="#000000";
+fillcolor="#bab6ae";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="isa \n: X86ISA";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="eventq_index&#61;0&#10;\vendor_string&#61;M5 Simulator";
+}
+
+subgraph cluster_system_cpu11_decoder {
+color="#000000";
+fillcolor="#bab6ae";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="decoder \n: X86Decoder";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="eventq_index&#61;0&#10;\isa&#61;system.cpu11.isa";
+}
+
+subgraph cluster_system_cpu11_interrupts {
+color="#000000";
+fillcolor="#bab6ae";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="interrupts \n: X86LocalApic";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="clk_domain&#61;system.cpu11.interrupts.clk_domain&#10;\eventq_index&#61;0&#10;\int_latency&#61;1000&#10;\pio_latency&#61;100000&#10;\system&#61;system";
+system_cpu11_interrupts_int_requestor [color="#000000", fillcolor="#94918b", fontcolor="#000000", fontname=Arial, fontsize=14, label=int_requestor, shape=Mrecord, style="rounded, filled"];
+system_cpu11_interrupts_int_responder [color="#000000", fillcolor="#94918b", fontcolor="#000000", fontname=Arial, fontsize=14, label=int_responder, shape=Mrecord, style="rounded, filled"];
+system_cpu11_interrupts_pio [color="#000000", fillcolor="#94918b", fontcolor="#000000", fontname=Arial, fontsize=14, label=pio, shape=Mrecord, style="rounded, filled"];
+subgraph cluster_system_cpu11_interrupts_clk_domain {
+color="#000000";
+fillcolor="#9f9c95";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="clk_domain \n: DerivedClockDomain";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="clk_divider&#61;16&#10;\clk_domain&#61;system.cpu_clk_domain&#10;\eventq_index&#61;0";
+}
+
+}
+
+}
+
+subgraph cluster_system_voltage_domain {
+color="#000000";
+fillcolor="#bab6ae";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="voltage_domain \n: VoltageDomain";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="eventq_index&#61;0&#10;\voltage&#61;1.0";
+}
+
+subgraph cluster_system_clk_domain {
+color="#000000";
+fillcolor="#bab6ae";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="clk_domain \n: SrcClockDomain";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="clock&#61;1000&#10;\domain_id&#61;-1&#10;\eventq_index&#61;0&#10;\init_perf_level&#61;0&#10;\voltage_domain&#61;system.voltage_domain";
+}
+
+subgraph cluster_system_cpu_voltage_domain {
+color="#000000";
+fillcolor="#bab6ae";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="cpu_voltage_domain \n: VoltageDomain";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="eventq_index&#61;0&#10;\voltage&#61;1.0";
+}
+
+subgraph cluster_system_cpu_clk_domain {
+color="#000000";
+fillcolor="#bab6ae";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="cpu_clk_domain \n: SrcClockDomain";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="clock&#61;500&#10;\domain_id&#61;-1&#10;\eventq_index&#61;0&#10;\init_perf_level&#61;0&#10;\voltage_domain&#61;system.cpu_voltage_domain";
+}
+
+subgraph cluster_system_membus {
+color="#000000";
+fillcolor="#6f798c";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="membus \n: SystemXBar";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="clk_domain&#61;system.clk_domain&#10;\eventq_index&#61;0&#10;\forward_latency&#61;4&#10;\frontend_latency&#61;3&#10;\header_latency&#61;1&#10;\max_outstanding_snoops&#61;512&#10;\max_routing_table_size&#61;512&#10;\point_of_coherency&#61;true&#10;\point_of_unification&#61;true&#10;\power_model&#61;&#10;\power_state&#61;system.membus.power_state&#10;\response_latency&#61;2&#10;\snoop_filter&#61;system.membus.snoop_filter&#10;\snoop_response_latency&#61;4&#10;\system&#61;system&#10;\use_default_range&#61;false&#10;\width&#61;16";
+system_membus_cpu_side_ports [color="#000000", fillcolor="#586070", fontcolor="#000000", fontname=Arial, fontsize=14, label=cpu_side_ports, shape=Mrecord, style="rounded, filled"];
+system_membus_mem_side_ports [color="#000000", fillcolor="#586070", fontcolor="#000000", fontname=Arial, fontsize=14, label=mem_side_ports, shape=Mrecord, style="rounded, filled"];
+subgraph cluster_system_membus_snoop_filter {
+color="#000000";
+fillcolor="#bab6ae";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="snoop_filter \n: SnoopFilter";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="eventq_index&#61;0&#10;\lookup_latency&#61;1&#10;\max_capacity&#61;8388608&#10;\system&#61;system";
+}
+
+subgraph cluster_system_membus_power_state {
+color="#000000";
+fillcolor="#bab6ae";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="power_state \n: PowerState";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="clk_gate_bins&#61;20&#10;\clk_gate_max&#61;1000000000000&#10;\clk_gate_min&#61;1000&#10;\default_state&#61;UNDEFINED&#10;\eventq_index&#61;0&#10;\leaders&#61;&#10;\possible_states&#61;";
+}
+
+}
+
+subgraph cluster_system_mem_ctrls {
+color="#000000";
+fillcolor="#5e5958";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="mem_ctrls \n: SimpleMemory";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="bandwidth&#61;73.000000&#10;\clk_domain&#61;system.clk_domain&#10;\conf_table_reported&#61;true&#10;\eventq_index&#61;0&#10;\image_file&#61;&#10;\in_addr_map&#61;true&#10;\kvm_map&#61;true&#10;\latency&#61;30000&#10;\latency_var&#61;0&#10;\null&#61;false&#10;\power_model&#61;&#10;\power_state&#61;system.mem_ctrls.power_state&#10;\range&#61;0:536870912";
+system_mem_ctrls_port [color="#000000", fillcolor="#4b4746", fontcolor="#000000", fontname=Arial, fontsize=14, label=port, shape=Mrecord, style="rounded, filled"];
+subgraph cluster_system_mem_ctrls_power_state {
+color="#000000";
+fillcolor="#bab6ae";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="power_state \n: PowerState";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="clk_gate_bins&#61;20&#10;\clk_gate_max&#61;1000000000000&#10;\clk_gate_min&#61;1000&#10;\default_state&#61;UNDEFINED&#10;\eventq_index&#61;0&#10;\leaders&#61;&#10;\possible_states&#61;";
+}
+
+}
+
+subgraph cluster_system_redirect_paths0 {
+color="#000000";
+fillcolor="#bab6ae";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="redirect_paths0 \n: RedirectPath";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="app_path&#61;/proc&#10;\eventq_index&#61;0&#10;\host_paths&#61;always-out/fs/proc";
+}
+
+subgraph cluster_system_redirect_paths1 {
+color="#000000";
+fillcolor="#bab6ae";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="redirect_paths1 \n: RedirectPath";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="app_path&#61;/sys&#10;\eventq_index&#61;0&#10;\host_paths&#61;always-out/fs/sys";
+}
+
+subgraph cluster_system_redirect_paths2 {
+color="#000000";
+fillcolor="#bab6ae";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="redirect_paths2 \n: RedirectPath";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="app_path&#61;/tmp&#10;\eventq_index&#61;0&#10;\host_paths&#61;always-out/fs/tmp";
+}
+
+subgraph cluster_system_workload {
+color="#000000";
+fillcolor="#bab6ae";
+fontcolor="#000000";
+fontname=Arial;
+fontsize=14;
+label="workload \n: X86EmuLinux";
+shape=Mrecord;
+style="rounded, filled";
+tooltip="eventq_index&#61;0&#10;\wait_for_remote_gdb&#61;false";
+}
+
+}
+
+}
+
+system_system_port -> system_membus_cpu_side_ports  [dir=forward];
+system_membus_cpu_side_ports -> system_cpu00_icache_port  [dir=back];
+system_membus_cpu_side_ports -> system_cpu00_dcache_port  [dir=back];
+system_membus_cpu_side_ports -> system_cpu00_mmu_itb_walker_port  [dir=back];
+system_membus_cpu_side_ports -> system_cpu00_mmu_dtb_walker_port  [dir=back];
+system_membus_cpu_side_ports -> system_cpu00_interrupts_int_requestor  [dir=back];
+system_membus_cpu_side_ports -> system_cpu01_icache_port  [dir=back];
+system_membus_cpu_side_ports -> system_cpu01_dcache_port  [dir=back];
+system_membus_cpu_side_ports -> system_cpu01_mmu_itb_walker_port  [dir=back];
+system_membus_cpu_side_ports -> system_cpu01_mmu_dtb_walker_port  [dir=back];
+system_membus_cpu_side_ports -> system_cpu01_interrupts_int_requestor  [dir=back];
+system_membus_cpu_side_ports -> system_cpu02_icache_port  [dir=back];
+system_membus_cpu_side_ports -> system_cpu02_dcache_port  [dir=back];
+system_membus_cpu_side_ports -> system_cpu02_mmu_itb_walker_port  [dir=back];
+system_membus_cpu_side_ports -> system_cpu02_mmu_dtb_walker_port  [dir=back];
+system_membus_cpu_side_ports -> system_cpu02_interrupts_int_requestor  [dir=back];
+system_membus_cpu_side_ports -> system_cpu03_icache_port  [dir=back];
+system_membus_cpu_side_ports -> system_cpu03_dcache_port  [dir=back];
+system_membus_cpu_side_ports -> system_cpu03_mmu_itb_walker_port  [dir=back];
+system_membus_cpu_side_ports -> system_cpu03_mmu_dtb_walker_port  [dir=back];
+system_membus_cpu_side_ports -> system_cpu03_interrupts_int_requestor  [dir=back];
+system_membus_cpu_side_ports -> system_cpu04_icache_port  [dir=back];
+system_membus_cpu_side_ports -> system_cpu04_dcache_port  [dir=back];
+system_membus_cpu_side_ports -> system_cpu04_mmu_itb_walker_port  [dir=back];
+system_membus_cpu_side_ports -> system_cpu04_mmu_dtb_walker_port  [dir=back];
+system_membus_cpu_side_ports -> system_cpu04_interrupts_int_requestor  [dir=back];
+system_membus_cpu_side_ports -> system_cpu05_icache_port  [dir=back];
+system_membus_cpu_side_ports -> system_cpu05_dcache_port  [dir=back];
+system_membus_cpu_side_ports -> system_cpu05_mmu_itb_walker_port  [dir=back];
+system_membus_cpu_side_ports -> system_cpu05_mmu_dtb_walker_port  [dir=back];
+system_membus_cpu_side_ports -> system_cpu05_interrupts_int_requestor  [dir=back];
+system_membus_cpu_side_ports -> system_cpu06_icache_port  [dir=back];
+system_membus_cpu_side_ports -> system_cpu06_dcache_port  [dir=back];
+system_membus_cpu_side_ports -> system_cpu06_mmu_itb_walker_port  [dir=back];
+system_membus_cpu_side_ports -> system_cpu06_mmu_dtb_walker_port  [dir=back];
+system_membus_cpu_side_ports -> system_cpu06_interrupts_int_requestor  [dir=back];
+system_membus_cpu_side_ports -> system_cpu07_icache_port  [dir=back];
+system_membus_cpu_side_ports -> system_cpu07_dcache_port  [dir=back];
+system_membus_cpu_side_ports -> system_cpu07_mmu_itb_walker_port  [dir=back];
+system_membus_cpu_side_ports -> system_cpu07_mmu_dtb_walker_port  [dir=back];
+system_membus_cpu_side_ports -> system_cpu07_interrupts_int_requestor  [dir=back];
+system_membus_cpu_side_ports -> system_cpu08_icache_port  [dir=back];
+system_membus_cpu_side_ports -> system_cpu08_dcache_port  [dir=back];
+system_membus_cpu_side_ports -> system_cpu08_mmu_itb_walker_port  [dir=back];
+system_membus_cpu_side_ports -> system_cpu08_mmu_dtb_walker_port  [dir=back];
+system_membus_cpu_side_ports -> system_cpu08_interrupts_int_requestor  [dir=back];
+system_membus_cpu_side_ports -> system_cpu09_icache_port  [dir=back];
+system_membus_cpu_side_ports -> system_cpu09_dcache_port  [dir=back];
+system_membus_cpu_side_ports -> system_cpu09_mmu_itb_walker_port  [dir=back];
+system_membus_cpu_side_ports -> system_cpu09_mmu_dtb_walker_port  [dir=back];
+system_membus_cpu_side_ports -> system_cpu09_interrupts_int_requestor  [dir=back];
+system_membus_cpu_side_ports -> system_cpu10_icache_port  [dir=back];
+system_membus_cpu_side_ports -> system_cpu10_dcache_port  [dir=back];
+system_membus_cpu_side_ports -> system_cpu10_mmu_itb_walker_port  [dir=back];
+system_membus_cpu_side_ports -> system_cpu10_mmu_dtb_walker_port  [dir=back];
+system_membus_cpu_side_ports -> system_cpu10_interrupts_int_requestor  [dir=back];
+system_membus_cpu_side_ports -> system_cpu11_icache_port  [dir=back];
+system_membus_cpu_side_ports -> system_cpu11_dcache_port  [dir=back];
+system_membus_cpu_side_ports -> system_cpu11_mmu_itb_walker_port  [dir=back];
+system_membus_cpu_side_ports -> system_cpu11_mmu_dtb_walker_port  [dir=back];
+system_membus_cpu_side_ports -> system_cpu11_interrupts_int_requestor  [dir=back];
+system_membus_mem_side_ports -> system_cpu00_interrupts_pio  [dir=forward];
+system_membus_mem_side_ports -> system_cpu00_interrupts_int_responder  [dir=forward];
+system_membus_mem_side_ports -> system_cpu01_interrupts_pio  [dir=forward];
+system_membus_mem_side_ports -> system_cpu01_interrupts_int_responder  [dir=forward];
+system_membus_mem_side_ports -> system_cpu02_interrupts_pio  [dir=forward];
+system_membus_mem_side_ports -> system_cpu02_interrupts_int_responder  [dir=forward];
+system_membus_mem_side_ports -> system_cpu03_interrupts_pio  [dir=forward];
+system_membus_mem_side_ports -> system_cpu03_interrupts_int_responder  [dir=forward];
+system_membus_mem_side_ports -> system_cpu04_interrupts_pio  [dir=forward];
+system_membus_mem_side_ports -> system_cpu04_interrupts_int_responder  [dir=forward];
+system_membus_mem_side_ports -> system_cpu05_interrupts_pio  [dir=forward];
+system_membus_mem_side_ports -> system_cpu05_interrupts_int_responder  [dir=forward];
+system_membus_mem_side_ports -> system_cpu06_interrupts_pio  [dir=forward];
+system_membus_mem_side_ports -> system_cpu06_interrupts_int_responder  [dir=forward];
+system_membus_mem_side_ports -> system_cpu07_interrupts_pio  [dir=forward];
+system_membus_mem_side_ports -> system_cpu07_interrupts_int_responder  [dir=forward];
+system_membus_mem_side_ports -> system_cpu08_interrupts_pio  [dir=forward];
+system_membus_mem_side_ports -> system_cpu08_interrupts_int_responder  [dir=forward];
+system_membus_mem_side_ports -> system_cpu09_interrupts_pio  [dir=forward];
+system_membus_mem_side_ports -> system_cpu09_interrupts_int_responder  [dir=forward];
+system_membus_mem_side_ports -> system_cpu10_interrupts_pio  [dir=forward];
+system_membus_mem_side_ports -> system_cpu10_interrupts_int_responder  [dir=forward];
+system_membus_mem_side_ports -> system_cpu11_interrupts_pio  [dir=forward];
+system_membus_mem_side_ports -> system_cpu11_interrupts_int_responder  [dir=forward];
+system_membus_mem_side_ports -> system_mem_ctrls_port  [dir=forward];
+}

@@ -1,0 +1,5 @@
+sudo docker run -u 1000:1000 --volume /home/aaronwang/Documents/Github/gem5:/gem5 --rm -it gcr.io/gem5-test/ubuntu-20.04_all-dependencies:v21-2
+
+scons build/X86/gem5.opt -j24
+
+./build/X86/gem5.opt ./configs/example/se.py -c ./tests/test-progs/test-suite/SingleSource/Benchmarks/Stanford/Bubblesort

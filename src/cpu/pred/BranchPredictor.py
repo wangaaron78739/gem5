@@ -761,3 +761,28 @@ class MultiperspectivePerceptronTAGE8KB(MultiperspectivePerceptronTAGE):
     tage = MPP_TAGE_8KB()
     loop_predictor = MPP_LoopPredictor_8KB()
     statistical_corrector = MPP_StatisticalCorrector_8KB()
+
+class AlwaysBP(BranchPredictor):
+    type = 'AlwaysBP'
+    cxx_class = 'gem5::branch_prediction::AlwaysBP'
+    cxx_header = "cpu/pred/always.hh"
+
+    localPredictorSize = Param.Unsigned(2048, "Size of local predictor")
+    localCtrBits = Param.Unsigned(2, "Bits per counter")
+
+class Perceptron(BranchPredictor):
+    type = 'Perceptron'
+    cxx_class = 'gem5::branch_prediction::Perceptron'
+    cxx_header = "cpu/pred/perceptron.hh"
+
+    globalPredictorSize = Param.Unsigned(8192, "Size of global predictor")
+    globalCtrBits = Param.Unsigned(2, "Bits per counter")    
+
+    
+class PathPerceptron(BranchPredictor):
+    type = 'PathPerceptron'
+    cxx_class = 'gem5::branch_prediction::PathPerceptron'
+    cxx_header = "cpu/pred/path_perceptron.hh"
+
+    globalPredictorSize = Param.Unsigned(8192, "Size of global predictor")
+    globalCtrBits = Param.Unsigned(2, "Bits per counter")  
