@@ -1,0 +1,10 @@
+cond_misses : 12007724
+indirect_misses : 267
+host_seconds : 6296.40
+sim seconds : 0.503554
+cond_num : 257321602
+indirect_num : 7737
+instruction_num : 1624867547
+lookup_num : 266306525
+mpki: 7.3900
+accuracy: 0.9549

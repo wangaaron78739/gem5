@@ -23,19 +23,16 @@ class Perceptron : public BPredUnit {
   void squash(ThreadID tid, void *bp_history);
 
  private:
-  unsigned globalPredictorSize;
-  std::vector<unsigned> globalHistory;
-  unsigned globalHistoryBits;
-  unsigned globalHistoryMask;
-  unsigned historyRegisterMask;
-  unsigned perceptronNum;
+  unsigned K;
+  std::vector<unsigned> GH;
+  unsigned ghBits;
+  unsigned ghMask;
+  unsigned hrMask;
+  unsigned N;
   unsigned theta;
-  std::vector<std::vector<unsigned>> weights;
-
-  void updateGlobalHistTaken(ThreadID tid);
-  void updateGlobalHistNotTaken(ThreadID tid);
+  std::vector<std::vector<unsigned>> W;
   struct BPHistory {
-    unsigned globalHistory;
+    unsigned GH;
     bool globalPredTaken;
     bool globalUsed;
   };

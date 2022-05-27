@@ -27,25 +27,25 @@ private:
   
   
   
-  unsigned globalPredictorSize;
-  std::vector<unsigned> globalHistory;
-  std::vector<unsigned> selectiveGlobalHistory;
-  std::vector<unsigned> globalRegister;
-  std::vector<unsigned> selectiveGlobalRegister;
+  unsigned K;
+  std::vector<unsigned> GH;
+  std::vector<unsigned> SH;
+  std::vector<unsigned> GR;
+  std::vector<unsigned> SR;
   std::vector<unsigned> path;
-  unsigned globalHistoryBits;
-  unsigned globalHistoryMask;
-  unsigned historyRegisterMask;
-  unsigned numberOfPerceptrons;
+  unsigned ghBits;
+  unsigned ghMask;
+  unsigned hrMask;
+  unsigned N;
   unsigned theta;
-  unsigned max_weight;
-  unsigned min_weight;
-  std::vector<std::vector<unsigned>> weights;
+  unsigned maxW;
+  unsigned minW;
+  std::vector<std::vector<unsigned>> W;
   void updatePath(Addr branch_addr);
   struct BPHistory {
-	unsigned globalHistory;
-	bool globalPredTaken;
-	bool globalUsed;
+  	unsigned GH;
+  	bool globalPredTaken;
+  	bool globalUsed;
   };
   
   unsigned saturatedUpdate (unsigned weight, bool inc); 

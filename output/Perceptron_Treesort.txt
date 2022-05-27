@@ -1,0 +1,121 @@
+Global frequency set at 1000000000000 ticks per second
+build/X86/mem/mem_interface.cc:791: warn: DRAM device capacity (8192 Mbytes) does not match the address range assigned (512 Mbytes)
+0: system.remote_gdb: listening for remote gdb on port 7019
+gem5 Simulator System.  http://gem5.org
+gem5 is copyrighted software; use the --copyright option for details.
+
+gem5 version 21.2.1.1
+gem5 compiled May 25 2022 13:09:48
+gem5 started May 26 2022 14:56:34
+gem5 executing on 7e50ff312eb7, pid 105
+command line: ./build/X86/gem5.opt ./configs/example/se.py --bp-type=Perceptron --cpu-type=O3CPU --l1d_size=64kB --l1i_size=16kB --caches -c ./tests/test-progs/test-suite/SingleSource/Benchmarks/Stanford/Treesort
+
+**** REAL SIMULATION ****
+build/X86/sim/simulate.cc:194: info: Entering event queue @ 0.  Starting simulation...
+build/X86/arch/x86/cpuid.cc:180: warn: x86 cpuid family 0x0000: unimplemented function 13
+build/X86/sim/mem_state.cc:443: info: Increasing stack size by one page.
+build/X86/sim/syscall_emul.cc:74: warn: ignoring syscall mprotect(...)
+build/X86/sim/syscall_emul.cc:74: warn: ignoring syscall mprotect(...)
+build/X86/sim/syscall_emul.cc:74: warn: ignoring syscall mprotect(...)
+build/X86/sim/syscall_emul.cc:74: warn: ignoring syscall mprotect(...)
+-15239
+-15986
+-10769
+2540
+-8555
+-48454
+-44053
+15224
+14193
+-24666
+-35161
+-10556
+-46323
+-7086
+-26077
+-47152
+-43671
+-9026
+-9633
+-17764
+-44411
+5354
+4955
+6952
+-415
+-10026
+-7913
+5492
+-11011
+13442
+-24685
+5504
+4697
+-3090
+-38193
+-47284
+-19851
+-23782
+7883
+-26920
+-36527
+-29178
+-43129
+-20444
+-13587
+-16206
+-36605
+-208
+-1207
+1822
+-30913
+-20484
+-411
+-4790
+-35269
+-20856
+-28607
+-16586
+-9737
+-22828
+11485
+-30494
+3699
+1248
+4153
+5710
+12207
+-2900
+13909
+-3206
+6571
+-40392
+-42191
+-37786
+-38809
+-1660
+-1331
+-29422
+-34845
+9872
+-44759
+8574
+-39905
+5468
+-42427
+-19030
+2331
+-19992
+-11743
+-27242
+727
+-22476
+13501
+-12990
+-21165
+-39872
+-16871
+10414
+9359
+4620
+Exiting @ tick 231120424000 because exiting with last active thread context

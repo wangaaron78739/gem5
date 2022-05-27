@@ -9,100 +9,82 @@ namespace gem5 {
 namespace branch_prediction {
 PathPerceptron::PathPerceptron(const PathPerceptronParams &params)
     : BPredUnit(params),
-      globalPredictorSize(params.globalPredictorSize),
-      globalHistory(params.numThreads, 0),
-      selectiveGlobalHistory(params.numThreads, 0),
-      globalHistoryBits(ceilLog2(params.globalPredictorSize)) {
-  if (!isPowerOf2(globalPredictorSize)) {
+      K(params.globalPredictorSize),
+      GH(params.numThreads, 0),
+      SH(params.numThreads, 0),
+      ghBits(ceilLog2(params.globalPredictorSize)) {
+  if (!isPowerOf2(K)) {
     fatal("Invalid global predictor size!\n");
-  }
-
-  globalHistoryMask = globalPredictorSize - 1;
-
-  historyRegisterMask = mask(globalHistoryBits);
-
-  if (globalHistoryMask > historyRegisterMask)
-    fatal("Global predictor too large for global history bits!\n");
-
-  selectiveGlobalRegister.assign(globalPredictorSize + 1, 0);
-
-  globalRegister.assign(globalPredictorSize + 1, 0);
-
-  numberOfPerceptrons = 10;
-
-  theta = 2.14 * (globalPredictorSize + 1) + 20.58;
-
-  weights.assign(numberOfPerceptrons,
-                 std::vector<unsigned>(globalPredictorSize + 1, 0));
-
-  max_weight = (1 << (globalHistoryBits - 1)) - 1;
-  min_weight = -(max_weight + 1);
+  } 
+  ghMask = K - 1; 
+  hrMask = mask(ghBits); 
+  if (ghMask > hrMask)
+    fatal("Global predictor too large for global history bits!\n"); 
+  SR.assign(K + 1, 0); 
+  GR.assign(K + 1, 0); 
+  N = 10; 
+  theta = 2.14 * (K + 1) + 20.58; 
+  W.assign(N, std::vector<unsigned>(K + 1, 0)); 
+  maxW = (1 << (ghBits - 1)) - 1;
+  minW = -(maxW + 1);
 }
 
 void PathPerceptron::btbUpdate(ThreadID tid, Addr branch_addr,
                                void *&bp_history) {
-  globalHistory[tid] &= (historyRegisterMask & ~1ULL);
+  GH[tid] &= (hrMask & ~1ULL);
 }
 
 void PathPerceptron::updatePath(Addr branch_addr) {
   path.insert(path.begin(), branch_addr);
-  if (path.size() > (globalPredictorSize + 1)) path.pop_back();
+  if (path.size() > (K + 1)) path.pop_back();
 }
 
 unsigned PathPerceptron::saturatedUpdate(unsigned weight, bool inc) {
-  if (inc && (weight < max_weight))
+  if (inc && (weight < maxW))
     return weight + 1;
-  else if (!inc && (weight > min_weight))
+  if (!inc && (weight > minW))
     return weight - 1;
   return weight;
 }
 
 bool PathPerceptron::lookup(ThreadID tid, Addr branch_addr, void *&bp_history) {
-  updatePath(branch_addr);
-
-  unsigned k_j;
-
-  int curPerceptron = branch_addr % numberOfPerceptrons;
-  int y_out =
-      weights[curPerceptron][0] + selectiveGlobalRegister[globalPredictorSize];
-  bool result = (y_out >= 0);
+  updatePath(branch_addr); 
+  unsigned k_j; 
+  int curr = branch_addr % N;
+  int pred = W[curr][0] + SR[K];
+  bool result = (pred >= 0);
 
   BPHistory *history = new BPHistory;
-  history->globalHistory = selectiveGlobalHistory[tid];
+  history->GH = SH[tid];
   history->globalPredTaken = result;
   bp_history = (void *)history;
 
-  std::vector<unsigned> selectiveRegister_new;
-  selectiveRegister_new.assign(globalPredictorSize + 1, 0);
+  std::vector<unsigned> newSR;
+  newSR.assign(K + 1, 0);
 
-  for (int j = 1; j <= globalPredictorSize; j++) {
-    k_j = globalPredictorSize - j;
-    selectiveRegister_new[k_j + 1] = selectiveGlobalRegister[k_j];
-    if (result)
-      selectiveRegister_new[k_j + 1] += weights[curPerceptron][j];
-    else
-      selectiveRegister_new[k_j + 1] -= weights[curPerceptron][j];
+  for (int j = 1; j <= K; j++) {
+    k_j = K - j;
+    newSR[k_j + 1] = SR[k_j] + (result) ? W[curr][j] : -W[curr][j];
   }
 
-  selectiveGlobalRegister = selectiveRegister_new;
-  selectiveGlobalRegister[0] = 0;
+  SR = newSR;
+  SR[0] = 0;
 
-  selectiveGlobalHistory[tid] = ((selectiveGlobalHistory[tid] << 1) | result);
-  selectiveGlobalHistory[tid] =
-      (selectiveGlobalHistory[tid] & historyRegisterMask);
+  SH[tid] = ((SH[tid] << 1) | result);
+  SH[tid] = (SH[tid] & hrMask);
   return result;
 }
 
 void PathPerceptron::uncondBranch(ThreadID tid, Addr pc, void *&bp_history) {
   BPHistory *history = new BPHistory;
-  history->globalHistory = selectiveGlobalHistory[tid];
+  history->GH = SH[tid];
   history->globalPredTaken = true;
   history->globalUsed = true;
   bp_history = static_cast<void *>(history);
 
   updatePath(pc);
-  selectiveGlobalHistory[tid] = ((selectiveGlobalHistory[tid] << 1) | 1);
-  selectiveGlobalHistory[tid] &= historyRegisterMask;
+  SH[tid] = ((SH[tid] << 1) | 1);
+  SH[tid] &= hrMask;
 }
 
 void PathPerceptron::update(ThreadID tid, Addr branch_addr, bool taken,
@@ -110,56 +92,41 @@ void PathPerceptron::update(ThreadID tid, Addr branch_addr, bool taken,
                             const StaticInstPtr &inst, Addr corrTarget) {
   assert(bp_history);
   unsigned k, k_j;
-  int curPerceptron = branch_addr % numberOfPerceptrons;
-  int y_out =
-      weights[curPerceptron][0] + selectiveGlobalRegister[globalPredictorSize];
-
-  unsigned thread_history = selectiveGlobalHistory[tid];
-
-  std::vector<unsigned> R_prime;
-  R_prime.assign(globalPredictorSize + 1, 0);
-
-  for (int j = 1; j <= globalPredictorSize; j++) {
-    k_j = globalPredictorSize - j;
-    R_prime[k_j + 1] = globalRegister[k_j];
-
-    if (taken)
-      R_prime[k_j + 1] += weights[curPerceptron][j];
-    else
-      R_prime[k_j + 1] -= weights[curPerceptron][j];
+  int curr = branch_addr % N;
+  int pred = W[curr][0] + SR[K]; 
+  unsigned thread_history = SH[tid]; 
+  std::vector<unsigned> newR;
+  newR.assign(K + 1, 0); 
+  for (int j = 1; j <= K; j++) {
+    k_j = K - j;
+    newR[k_j + 1] = GR[k_j] + taken ? W[curr][j] : -W[curr][j];
   }
 
-  globalRegister = R_prime;
-  globalRegister[0] = 0;
+  GR = newR;
+  GR[0] = 0; 
+  GH[tid] = ((GH[tid] << 1) | taken);
+  GH[tid] &= hrMask;
 
-  globalHistory[tid] = ((globalHistory[tid] << 1) | taken);
-  globalHistory[tid] &= historyRegisterMask;
-
-  if (squashed || (abs(y_out) <= theta)) {
+  if (squashed || (abs(pred) <= theta)) {
     if (squashed) {
-      selectiveGlobalHistory[tid] = globalHistory[tid];
-      selectiveGlobalRegister = globalRegister;
+      SH[tid] = GH[tid];
+      SR = GR;
     }
 
-    weights[curPerceptron][0] =
-        saturatedUpdate(weights[curPerceptron][0], taken);
-    for (int j = 1; j <= globalPredictorSize; j++) {
-      k = (path[j % path.size()] % numberOfPerceptrons);
-      weights[k][j] =
-          saturatedUpdate(weights[k][j], ((thread_history >> j) & 1) == taken);
+    W[curr][0] = saturatedUpdate(W[curr][0], taken);
+    for (int j = 1; j <= K; j++) {
+      k = (path[j % path.size()] % N);
+      W[k][j] = saturatedUpdate(W[k][j], ((thread_history >> j) & 1) == taken);
     }
   }
 }
 
 void PathPerceptron::squash(ThreadID tid, void *bp_history) {
   BPHistory *history = static_cast<BPHistory *>(bp_history);
-  selectiveGlobalHistory[tid] = globalHistory[tid];
-  selectiveGlobalRegister = globalRegister;
+  SH[tid] = GH[tid];
+  SR = GR;
   delete history;
 }
 
 }  // namespace branch_prediction
-// branch_prediction::PathPerceptron *PathPerceptronParams::create() const {
-//   return new branch_prediction::PathPerceptron(*this);
-// }
 }  // namespace gem5

@@ -1,0 +1,121 @@
+Global frequency set at 1000000000000 ticks per second
+build/X86/mem/mem_interface.cc:791: warn: DRAM device capacity (8192 Mbytes) does not match the address range assigned (512 Mbytes)
+0: system.remote_gdb: listening for remote gdb on port 7019
+gem5 Simulator System.  http://gem5.org
+gem5 is copyrighted software; use the --copyright option for details.
+
+gem5 version 21.2.1.1
+gem5 compiled May 25 2022 13:09:48
+gem5 started May 26 2022 16:21:32
+gem5 executing on 7e50ff312eb7, pid 449
+command line: ./build/X86/gem5.opt ./configs/example/se.py --bp-type=TAGE --cpu-type=O3CPU --l1d_size=64kB --l1i_size=16kB --caches -c ./tests/test-progs/test-suite/SingleSource/Benchmarks/Stanford/Bubblesort
+
+**** REAL SIMULATION ****
+build/X86/sim/simulate.cc:194: info: Entering event queue @ 0.  Starting simulation...
+build/X86/arch/x86/cpuid.cc:180: warn: x86 cpuid family 0x0000: unimplemented function 13
+build/X86/sim/mem_state.cc:443: info: Increasing stack size by one page.
+build/X86/sim/syscall_emul.cc:74: warn: ignoring syscall mprotect(...)
+build/X86/sim/syscall_emul.cc:74: warn: ignoring syscall mprotect(...)
+build/X86/sim/syscall_emul.cc:74: warn: ignoring syscall mprotect(...)
+build/X86/sim/syscall_emul.cc:74: warn: ignoring syscall mprotect(...)
+-50000
+-49783
+-49692
+-49678
+-49470
+-49442
+-49423
+-49393
+-49388
+-49184
+-48907
+-48821
+-48807
+-48750
+-48705
+-48704
+-48454
+-48432
+-47989
+-47757
+-47642
+-47607
+-47503
+-47378
+-47284
+-47206
+-47156
+-47152
+-46907
+-46856
+-46737
+-46734
+-46323
+-46122
+-45996
+-45765
+-45583
+-45547
+-45431
+-45322
+-45290
+-44932
+-44759
+-44411
+-44378
+-44344
+-44163
+-44089
+-44053
+-43907
+-43809
+-43671
+-43623
+-43588
+-43400
+-43373
+-43255
+-43129
+-42918
+-42791
+-42427
+-42191
+-42101
+-42057
+-41994
+-41976
+-41632
+-41313
+-40933
+-40713
+-40665
+-40503
+-40392
+-40014
+-39944
+-39905
+-39878
+-39872
+-39853
+-39848
+-39788
+-39774
+-39455
+-39398
+-39387
+-38809
+-38547
+-38351
+-38347
+-38333
+-38309
+-38301
+-38259
+-38193
+-38015
+-37987
+-37795
+-37786
+-37434
+-37366
+Exiting @ tick 111273249500 because exiting with last active thread context

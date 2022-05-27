@@ -1,0 +1,121 @@
+Global frequency set at 1000000000000 ticks per second
+build/X86/mem/mem_interface.cc:791: warn: DRAM device capacity (8192 Mbytes) does not match the address range assigned (512 Mbytes)
+0: system.remote_gdb: listening for remote gdb on port 7002
+gem5 Simulator System.  http://gem5.org
+gem5 is copyrighted software; use the --copyright option for details.
+
+gem5 version 21.2.1.1
+gem5 compiled May 25 2022 13:09:48
+gem5 started May 26 2022 16:46:35
+gem5 executing on 7e50ff312eb7, pid 522
+command line: ./build/X86/gem5.opt ./configs/example/se.py --bp-type=TournamentBP --cpu-type=O3CPU --l1d_size=64kB --l1i_size=16kB --caches -c ./tests/test-progs/test-suite/SingleSource/Benchmarks/Stanford/Towers
+
+**** REAL SIMULATION ****
+build/X86/sim/simulate.cc:194: info: Entering event queue @ 0.  Starting simulation...
+build/X86/arch/x86/cpuid.cc:180: warn: x86 cpuid family 0x0000: unimplemented function 13
+build/X86/sim/mem_state.cc:443: info: Increasing stack size by one page.
+build/X86/sim/syscall_emul.cc:74: warn: ignoring syscall mprotect(...)
+build/X86/sim/syscall_emul.cc:74: warn: ignoring syscall mprotect(...)
+build/X86/sim/syscall_emul.cc:74: warn: ignoring syscall mprotect(...)
+build/X86/sim/syscall_emul.cc:74: warn: ignoring syscall mprotect(...)
+16383
+16383
+16383
+16383
+16383
+16383
+16383
+16383
+16383
+16383
+16383
+16383
+16383
+16383
+16383
+16383
+16383
+16383
+16383
+16383
+16383
+16383
+16383
+16383
+16383
+16383
+16383
+16383
+16383
+16383
+16383
+16383
+16383
+16383
+16383
+16383
+16383
+16383
+16383
+16383
+16383
+16383
+16383
+16383
+16383
+16383
+16383
+16383
+16383
+16383
+16383
+16383
+16383
+16383
+16383
+16383
+16383
+16383
+16383
+16383
+16383
+16383
+16383
+16383
+16383
+16383
+16383
+16383
+16383
+16383
+16383
+16383
+16383
+16383
+16383
+16383
+16383
+16383
+16383
+16383
+16383
+16383
+16383
+16383
+16383
+16383
+16383
+16383
+16383
+16383
+16383
+16383
+16383
+16383
+16383
+16383
+16383
+16383
+16383
+16383
+Exiting @ tick 59267822500 because exiting with last active thread context
